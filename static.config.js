@@ -1,28 +1,49 @@
 import path from 'path'
 import axios from 'axios'
+import materials from 'data/materials.json'
 
 export default {
-  getRoutes: async () => {
-    const { data: posts } = await axios.get(
-      'https://jsonplaceholder.typicode.com/posts'
-    )
-
+  getRoutes: () => {
+    console.log(materials)
+    // TODO: folders
     return [
       {
-        path: '/blog',
+        path: '/',
         getData: () => ({
-          posts,
+          materials,
         }),
-        children: posts.map(post => ({
-          path: `/post/${post.id}`,
-          template: 'src/containers/Post',
+        children: materials.map(material => ({
+          path: `/${material.folder}/${material.slug}`,
+          template: 'src/containers/Material',
           getData: () => ({
-            post,
+            materials,
+            material,
           }),
         })),
       },
     ]
   },
+  // getRoutes: async () => {
+  //   const { data: posts } = await axios.get(
+  //     'https://jsonplaceholder.typicode.com/posts'
+  //   )
+
+  //   return [
+  //     {
+  //       path: '/blog',
+  //       getData: () => ({
+  //         posts,
+  //       }),
+  //       children: posts.map(post => ({
+  //         path: `/post/${post.id}`,
+  //         template: 'src/containers/Post',
+  //         getData: () => ({
+  //           post,
+  //         }),
+  //       })),
+  //     },
+  //   ]
+  // },
   plugins: [
     [
       require.resolve('react-static-plugin-source-filesystem'),
