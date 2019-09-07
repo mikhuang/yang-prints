@@ -1,6 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
+import theme from './theme'
 
 // Your top level component
 import App from './App'
@@ -16,10 +18,14 @@ if (typeof document !== 'undefined') {
     ? ReactDOM.hydrate
     : ReactDOM.render
 
+  const muiTheme = createMuiTheme(theme)
+
   const render = Comp => {
     renderMethod(
       <AppContainer>
-        <Comp />
+        <MuiThemeProvider theme={muiTheme}>
+          <Comp />
+        </MuiThemeProvider>
       </AppContainer>,
       target
     )

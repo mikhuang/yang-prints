@@ -1,17 +1,23 @@
 import React from 'react'
 import { useRouteData } from 'react-static'
 import { Link } from 'components/Router'
+import Typography from '@material-ui/core/Typography'
+// import Material from '../containers/Material'
+import { toMaterialEntity } from '../entities/Material'
 
 export default () => {
-  const { materials } = useRouteData()
+  const { materials: materialsData } = useRouteData()
+  const materials = toMaterialEntity(materialsData)
   return (
     <div style={{ textAlign: 'center' }}>
-      <h1>Welcome to React-Static</h1>
+      <Typography>Welcome to React-Static</Typography>
       {materials.map(material => {
-        const url = `${material.folder}/${material.slug}`
         return (
-          <div key={url}>
-            <Link to={url}>{material.slug}</Link>
+          <div key={material.url}>
+            <Link to={material.url}>
+              <img src={material.thumbSrc} alt={material.slug} />
+              {material.slug}
+            </Link>
           </div>
         )
       })}

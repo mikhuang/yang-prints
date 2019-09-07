@@ -1,10 +1,13 @@
 import path from 'path'
-import axios from 'axios'
-import materials from 'data/materials.json'
+// import axios from 'axios'
+import materials from './data/materials.json'
+import { createGenerateClassName } from '@material-ui/styles'
+import Material from './src/entities/Material'
+
+const generateClassName = createGenerateClassName()
 
 export default {
   getRoutes: () => {
-    console.log(materials)
     // TODO: folders
     return [
       {
@@ -13,7 +16,7 @@ export default {
           materials,
         }),
         children: materials.map(material => ({
-          path: `/${material.folder}/${material.slug}`,
+          path: new Material(material).url,
           template: 'src/containers/Material',
           getData: () => ({
             materials,
@@ -53,5 +56,13 @@ export default {
     ],
     require.resolve('react-static-plugin-reach-router'),
     require.resolve('react-static-plugin-sitemap'),
+    [
+      'react-static-plugin-jss',
+      {
+        providerProps: {
+          generateClassName,
+        },
+      },
+    ],
   ],
 }
