@@ -1,3 +1,6 @@
+/**
+ * abstraction for material data, includes getters for images etc
+ */
 export default class Material {
   constructor(material) {
     this.category = material.category
@@ -18,14 +21,17 @@ export default class Material {
   get thumbSrc() {
     const [pathFolder, pathFile] = this.path.split('/')
     const [pathFilename, pathFileExt] = pathFile.split('.')
-    return require(`../media/${pathFolder}/thumb/${pathFilename}.jpg`)
+    return `/media/${pathFolder}/thumb/${pathFilename}.jpg`
   }
 
   get src() {
-    return require(`../media/${this.path}`)
+    return `/media/${this.path}`
   }
 }
 
+/**
+ * Given a list of material entries, instantiate classes for them
+ */
 export const toMaterialEntity = data => {
   return data.map(datum => new Material(datum))
 }
