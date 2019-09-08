@@ -1,13 +1,13 @@
+import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
+import Box from '@material-ui/core/Box'
+import cx from 'clsx'
 import { Link } from 'components/Router'
 import groupBy from 'lodash/groupBy'
 import React from 'react'
 import { useRouteData } from 'react-static'
 import { MATERIAL_FOLDERS, toMaterialEntity } from '../entities/Material'
-import Grid from '@material-ui/core/Grid'
-import CardMedia from '@material-ui/core/CardMedia'
-import { makeStyles } from '@material-ui/core/styles'
-import cx from 'clsx'
+
 const useStyles = makeStyles(theme => ({
   row: {},
   rowInner: {
@@ -18,19 +18,24 @@ const useStyles = makeStyles(theme => ({
     '&::-webkit-scrollbar': {
       '-webkit-appearance': 'none',
       height: theme.spacing(1.5),
+      backgroundColor: 'rgba(0,0,0,.05)',
     },
 
     '&::-webkit-scrollbar-thumb': {
-      borderRadius: theme.spacing(1),
-      backgroundColor: 'rgba(0,0,0,.5)',
+      // borderRadius: theme.spacing(1),
+      backgroundColor: 'rgba(0,0,0,.25)',
       '-webkit-box-shadow': '0 0 1px rgba(255,255,255,.5)',
     },
   },
   media: {
-    boxShadow: '0 0 0.5em rgba(0,0,0,.5)',
+    boxShadow: '0 0.15em 0.25em rgba(0,0,0,.5)',
     margin: theme.spacing(2),
     maxHeight: 200,
     maxWidth: 200,
+    transition: 'box-shadow .25s',
+    '&:hover': {
+      boxShadow: '0 0.15em 0.4em rgba(0,0,0,.65)',
+    },
     [theme.breakpoints.up('sm')]: {
       maxHeight: 250,
       maxWidth: 250,
@@ -72,11 +77,13 @@ export default () => {
         const folder = MATERIAL_FOLDERS[folderKey]
         const folderMaterials = materialsByFolder[folderKey]
         return (
-          <div key={folderKey} className={classes.row}>
-            <div className={classes.rowHeader}>
-              <Typography variant="caption">{folder.title}</Typography>
-              <Link to={folder.url}>View all</Link>
-            </div>
+          <Box mb={5} key={folderKey} className={classes.row}>
+            <Box display="flex" p={2} justifyContent="space-between">
+              <Typography>{folder.title}</Typography>
+              <Link to={folder.url}>
+                <Typography variant="caption">View all</Typography>
+              </Link>
+            </Box>
             <div key={folderKey} className={classes.rowInner}>
               {folderMaterials.slice(0, 5).map(material => {
                 return (
@@ -92,7 +99,7 @@ export default () => {
                 )
               })}
             </div>
-          </div>
+          </Box>
         )
       })}
     </div>
