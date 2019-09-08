@@ -41,7 +41,7 @@ export default () => {
 
   const { materials: materialsData } = useRouteData()
   const materials = toMaterialEntity(materialsData)
-  const materialsByFolder = groupBy(materials, 'folder')
+  const materialsByFolder = groupBy(materials, 'folderId')
 
   return (
     <div>

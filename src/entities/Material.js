@@ -28,13 +28,13 @@ export default class Material {
     this.creator = material.creator
     this.path = material.path
     this.slug = material.slug
-    this.folder = material.folder
+    this.folderId = material.folder
     this.description = material.description
     this.srcPath = material.src_path
   }
 
   get url() {
-    return `/${this.folder}/${this.slug}`
+    return `${this.folder.url}${this.slug}`
   }
 
   get thumbSrc() {
@@ -43,8 +43,16 @@ export default class Material {
     return `/media/${pathFolder}/thumb/${pathFilename}.jpg`
   }
 
+  get downloadUrlExt() {
+    return this.downloadUrl.split('.')[1]
+  }
+
   get downloadUrl() {
     return `/media/${this.path}`
+  }
+
+  get folder() {
+    return MATERIAL_FOLDERS[this.folderId] || {}
   }
 }
 

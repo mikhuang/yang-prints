@@ -46,6 +46,12 @@ export default function Navbar() {
           onKeyDown={closeDrawer}
         >
           <List>
+            <ListItem component={Link} to={'/'} button>
+              <ListItemText primary="Home" />
+            </ListItem>
+          </List>
+          <Divider />
+          <List>
             {Object.keys(MATERIAL_FOLDERS).map(folderKey => {
               const folder = MATERIAL_FOLDERS[folderKey]
               return (
@@ -62,16 +68,10 @@ export default function Navbar() {
           </List>
           <Divider />
           <List>
-            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))}
+            <ListItem component={Link} to={'/about/'} button>
+              <ListItemText primary="About" />
+            </ListItem>
           </List>
-          <Divider />
         </div>
       </Drawer>
       <AppBar position="static">

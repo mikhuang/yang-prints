@@ -47,7 +47,7 @@ export default function MaterialThumb({ material, zoom = 1, className = '' }) {
     <Link key={material.url} to={material.url}>
       <img
         className={cx(className, classes.material, {
-          [classes[`material-${material.folder}`]]: true,
+          [classes[`material-${material.folderId}`]]: true,
         })}
         src={material.thumbSrc}
         alt={material.slug}

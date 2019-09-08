@@ -30,7 +30,7 @@ export default function Material() {
         flexWrap="wrap"
       >
         {materials
-          .filter(x => x.folder === folderKey)
+          .filter(x => x.folderId === folderKey)
           .map(material => (
             <MaterialThumb
               zoom={1.5}
