@@ -1,3 +1,22 @@
+export const MATERIAL_FOLDERS = {
+  poster: {
+    title: 'Posters',
+    url: '/poster/',
+  },
+  handout: {
+    title: 'Handouts',
+    url: '/handout/',
+  },
+  square: {
+    title: 'Square/Post-its',
+    url: '/square/',
+  },
+  bcard: {
+    title: 'Business Cards',
+    url: '/bcard/',
+  },
+}
+
 /**
  * abstraction for material data, includes getters for images etc
  */
@@ -20,7 +39,7 @@ export default class Material {
 
   get thumbSrc() {
     const [pathFolder, pathFile] = this.path.split('/')
-    const [pathFilename, pathFileExt] = pathFile.split('.')
+    const [pathFilename] = pathFile.split('.')
     return `/media/${pathFolder}/thumb/${pathFilename}.jpg`
   }
 

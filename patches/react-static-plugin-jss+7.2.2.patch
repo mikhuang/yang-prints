@@ -1,0 +1,40 @@
+diff --git a/node_modules/react-static-plugin-jss/node.api.js b/node_modules/react-static-plugin-jss/node.api.js
+index 8447c43..f5ccf37 100644
+--- a/node_modules/react-static-plugin-jss/node.api.js
++++ b/node_modules/react-static-plugin-jss/node.api.js
+@@ -7,9 +7,7 @@ exports["default"] = void 0;
+ 
+ var _react = _interopRequireDefault(require("react"));
+ 
+-var _JssProvider = _interopRequireDefault(require("react-jss/lib/JssProvider"));
+-
+-var _jss = require("react-jss/lib/jss");
++var _reactJss = require("react-jss");
+ 
+ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+ 
+@@ -33,10 +31,10 @@ var _default = function _default(_ref) {
+       var meta = _ref2.meta;
+       return function (props) {
+         // Create a sheetsRegistry instance.
+-        meta.jssSheetsRegistry = new _jss.SheetsRegistry(); // TODO we could actually add the style removal here too in a compoenntDidMount:
++        meta.jssSheetsRegistry = new _reactJss.SheetsRegistry(); // TODO we could actually add the style removal here too in a compoenntDidMount:
+         // https://github.com/cssinjs/examples/blob/gh-pages/react-ssr/src/client.js
+ 
+-        return _react["default"].createElement(_JssProvider["default"], _extends({}, providerProps, {
++        return _react["default"].createElement(_reactJss.JssProvider, _extends({}, providerProps, {
+           registry: meta.jssSheetsRegistry
+         }), _react["default"].createElement(App, props));
+       };
+diff --git a/node_modules/react-static-plugin-jss/src/node.api.js b/node_modules/react-static-plugin-jss/src/node.api.js
+index 639a3ff..220b8df 100644
+--- a/node_modules/react-static-plugin-jss/src/node.api.js
++++ b/node_modules/react-static-plugin-jss/src/node.api.js
+@@ -1,6 +1,5 @@
+ import React from 'react'
+-import JssProvider from 'react-jss/lib/JssProvider'
+-import { SheetsRegistry } from 'react-jss/lib/jss'
++import { JssProvider, SheetsRegistry } from 'react-jss'
+ 
+ export default ({ providerProps = {} }) => ({
+   // NOTE: This whole process could likely be extracted into a reusable
