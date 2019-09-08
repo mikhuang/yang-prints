@@ -35,7 +35,7 @@ const useStyles = makeStyles(theme => ({
     textAlign: 'right',
   },
   creator: {
-    color: '#666',
+    color: theme.palette.secondary.light,
   },
 }))
 
@@ -58,7 +58,7 @@ export default function Material() {
   return (
     <Fragment>
       <Box px={2} py={1}>
-        <Breadcrumbs aria-label="breadcrumb">
+        <Breadcrumbs separator="›" aria-label="breadcrumb">
           <MaterialLink component={RouterLink} color="inherit" to="/">
             Home
           </MaterialLink>
@@ -94,8 +94,8 @@ export default function Material() {
         <Box mb={3}>
           <Button
             className={classes.button}
-            variant="outlined"
-            color="primary"
+            variant="contained"
+            color="secondary"
             size="large"
             component="a"
             download

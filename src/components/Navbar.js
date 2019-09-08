@@ -5,14 +5,10 @@ import Drawer from '@material-ui/core/Drawer'
 import IconButton from '@material-ui/core/IconButton'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
-import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import { makeStyles } from '@material-ui/core/styles'
 import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
-import MailIcon from '@material-ui/icons/Mail'
 import MenuIcon from '@material-ui/icons/Menu'
-import InboxIcon from '@material-ui/icons/MoveToInbox'
 import React, { Fragment, useState } from 'react'
 import { Link } from '../components/Router'
 import { MATERIAL_FOLDERS } from '../entities/Material'
@@ -25,10 +21,14 @@ const useStyles = makeStyles(theme => ({
     width: 'auto',
   },
   menuButton: {
-    marginRight: theme.spacing(2),
+    marginRight: theme.spacing(0.5),
   },
   title: {
-    flexGrow: 1,
+    marginRight: 'auto',
+    fontSize: '130%',
+  },
+  titleHighlight: {
+    color: theme.palette.secondary.main,
   },
 }))
 
@@ -86,11 +86,14 @@ export default function Navbar() {
             <MenuIcon />
           </IconButton>
 
-          <Typography variant="h6" className={classes.title}>
-            <Link to={'/'}>
-              <span style={{ color: 'white' }}>Yang Prints</span>
-            </Link>
-          </Typography>
+          <Button
+            component={Link}
+            to="/"
+            color="inherit"
+            className={classes.title}
+          >
+            YANG<span className={classes.titleHighlight}>PRINTS</span>
+          </Button>
 
           <Button component={Link} to="/about" color="inherit">
             About

@@ -1,10 +1,10 @@
 import Box from '@material-ui/core/Box'
 import Container from '@material-ui/core/Container'
 import { makeStyles } from '@material-ui/core/styles'
-import Typography from '@material-ui/core/Typography'
 import React from 'react'
 import { useRouteData } from 'react-static'
 import MaterialThumb from '../components/MaterialThumb'
+import Title from '../components/Title'
 import { toMaterialEntity } from '../entities/Material'
 
 const useStyles = makeStyles(theme => ({
@@ -21,7 +21,7 @@ export default function Material() {
   return (
     <Container>
       <Box mt={3}>
-        <Typography variant="h5">{folder.title}</Typography>
+        <Title variant="h5">{folder.title}</Title>
       </Box>
       <Box
         display="flex"

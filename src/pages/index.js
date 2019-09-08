@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import MaterialThumb from 'components/MaterialThumb'
 import { Link } from 'components/Router'
+import Title from 'components/Title'
 import groupBy from 'lodash/groupBy'
 import orderBy from 'lodash/orderBy'
 import React from 'react'
@@ -52,7 +53,7 @@ export default () => {
           <Box mb={5} key={folderKey} className={classes.row}>
             <Link to={folder.url}>
               <Box display="flex" p={2} justifyContent="space-between">
-                <Typography>{folder.title}</Typography>
+                <Title>{folder.title}</Title>
                 <Typography variant="caption">View all</Typography>
               </Box>
             </Link>
