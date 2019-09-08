@@ -43,7 +43,7 @@ export default class Material {
     return `/media/${pathFolder}/thumb/${pathFilename}.jpg`
   }
 
-  get src() {
+  get downloadUrl() {
     return `/media/${this.path}`
   }
 }

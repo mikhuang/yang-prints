@@ -4,6 +4,7 @@ import Typography from '@material-ui/core/Typography'
 import MaterialThumb from 'components/MaterialThumb'
 import { Link } from 'components/Router'
 import groupBy from 'lodash/groupBy'
+import orderBy from 'lodash/orderBy'
 import React from 'react'
 import { useRouteData } from 'react-static'
 import { MATERIAL_FOLDERS, toMaterialEntity } from '../entities/Material'
@@ -28,7 +29,10 @@ const useStyles = makeStyles(theme => ({
     },
   },
   material: {
-    margin: theme.spacing(2),
+    margin: theme.spacing(1),
+    [theme.breakpoints.up('sm')]: {
+      margin: theme.spacing(2),
+    },
   },
 }))
 
@@ -49,18 +53,19 @@ export default () => {
             <Link to={folder.url}>
               <Box display="flex" p={2} justifyContent="space-between">
                 <Typography>{folder.title}</Typography>
-
                 <Typography variant="caption">View all</Typography>
               </Box>
             </Link>
             <div key={folderKey} className={classes.rowInner}>
-              {folderMaterials.slice(0, 5).map(material => (
-                <MaterialThumb
-                  className={classes.material}
-                  key={material.slug}
-                  material={material}
-                />
-              ))}
+              {orderBy(folderMaterials, ['date'], ['desc'])
+                .slice(0, 5)
+                .map(material => (
+                  <MaterialThumb
+                    className={classes.material}
+                    key={material.slug}
+                    material={material}
+                  />
+                ))}
             </div>
           </Box>
         )
