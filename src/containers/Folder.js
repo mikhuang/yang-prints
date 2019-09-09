@@ -2,7 +2,7 @@ import Box from '@material-ui/core/Box'
 import Container from '@material-ui/core/Container'
 import { makeStyles } from '@material-ui/core/styles'
 import React from 'react'
-import { useRouteData } from 'react-static'
+import { useRouteData, Head } from 'react-static'
 import MaterialThumb from '../components/MaterialThumb'
 import Title from '../components/Title'
 import { toMaterialEntity } from '../entities/Material'
@@ -20,6 +20,9 @@ export default function Material() {
   const materials = toMaterialEntity(materialsData)
   return (
     <Container>
+      <Head>
+        <title>Yang2020 {folder.title}</title>
+      </Head>
       <Box mt={3}>
         <Title variant="h5">{folder.title}</Title>
       </Box>
