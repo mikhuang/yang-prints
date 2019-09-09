@@ -12,7 +12,7 @@ import MenuIcon from '@material-ui/icons/Menu'
 import React, { Fragment, useState } from 'react'
 import { Link } from '../components/Router'
 import { MATERIAL_FOLDERS } from '../entities/Material'
-
+import cx from 'clsx'
 const useStyles = makeStyles(theme => ({
   list: {
     width: 250,
@@ -29,6 +29,9 @@ const useStyles = makeStyles(theme => ({
   },
   titleHighlight: {
     color: theme.palette.secondary.main,
+  },
+  contrastColor: {
+    color: theme.palette.primary.contrastText,
   },
 }))
 
@@ -89,13 +92,16 @@ export default function Navbar() {
           <Button
             component={Link}
             to="/"
-            color="inherit"
-            className={classes.title}
+            className={cx(classes.contrastColor, classes.title)}
           >
             YANG<span className={classes.titleHighlight}>PRINTS</span>
           </Button>
 
-          <Button component={Link} to="/about" color="inherit">
+          <Button
+            component={Link}
+            to="/about"
+            className={classes.contrastColor}
+          >
             About
           </Button>
         </Toolbar>

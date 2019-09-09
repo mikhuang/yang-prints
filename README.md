@@ -1,6 +1,6 @@
 # Yang Prints
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/cf6666f4-3ace-4d7d-8a7a-764804a44bf9/deploy-status)](https://app.netlify.com/sites/gallant-yonath-c7341f/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/cf6666f4-3ace-4d7d-8a7a-764804a44bf9/deploy-status)](https://app.netlify.com/sites/gallant-yonath-c7341f/deploys) deploys to https://gallant-yonath-c7341f.netlify.com
 
 Design doc https://docs.google.com/document/d/1jCGLqFaIzJGq8D6josI9v5f0oG3R0w5stiPzg_f6PsE/edit
 
