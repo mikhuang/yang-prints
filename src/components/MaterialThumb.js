@@ -39,6 +39,14 @@ const useStyles = makeStyles(theme => ({
       maxHeight: zoom * 170,
     },
   }),
+  'material-sticker': ({ zoom }) => ({
+    maxHeight: zoom * 70,
+    maxWidth: zoom * 70,
+    [theme.breakpoints.up('sm')]: {
+      maxHeight: zoom * 170,
+      maxWidth: zoom * 170,
+    },
+  }),
 }))
 
 export default function MaterialThumb({ material, zoom = 1, className = '' }) {

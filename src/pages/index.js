@@ -10,6 +10,8 @@ import React from 'react'
 import { useRouteData } from 'react-static'
 import { MATERIAL_FOLDERS, toMaterialEntity } from '../entities/Material'
 
+const ROW_LIMIT = 8
+
 const useStyles = makeStyles(theme => ({
   row: {},
   rowInner: {
@@ -17,15 +19,15 @@ const useStyles = makeStyles(theme => ({
     overflowX: 'scroll',
     display: 'flex',
     alignItems: 'center',
+    padding: theme.spacing(2, 0),
     '&::-webkit-scrollbar': {
       '-webkit-appearance': 'none',
-      height: theme.spacing(1.5),
-      backgroundColor: 'rgba(0,0,0,.05)',
+      height: theme.spacing(1.25),
+      backgroundColor: theme.palette.grey[300],
     },
-
     '&::-webkit-scrollbar-thumb': {
-      // borderRadius: theme.spacing(1),
-      backgroundColor: 'rgba(0,0,0,.25)',
+      borderRadius: theme.spacing(1),
+      backgroundColor: theme.palette.secondary.main,
       '-webkit-box-shadow': '0 0 1px rgba(255,255,255,.5)',
     },
   },
@@ -52,14 +54,14 @@ export default () => {
         return (
           <Box mb={5} key={folderKey} className={classes.row}>
             <Link to={folder.url}>
-              <Box display="flex" p={2} justifyContent="space-between">
+              <Box display="flex" p={2} pb={0} justifyContent="space-between">
                 <Title>{folder.title}</Title>
                 <Typography variant="caption">View all</Typography>
               </Box>
             </Link>
             <div key={folderKey} className={classes.rowInner}>
               {orderBy(folderMaterials, ['date'], ['desc'])
-                .slice(0, 5)
+                .slice(0, ROW_LIMIT)
                 .map(material => (
                   <MaterialThumb
                     className={classes.material}

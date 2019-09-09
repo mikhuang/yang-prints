@@ -3,10 +3,6 @@ export const MATERIAL_FOLDERS = {
     title: 'Posters',
     url: '/poster/',
   },
-  handout: {
-    title: 'Handouts',
-    url: '/handout/',
-  },
   square: {
     title: 'Square/Post-its',
     url: '/square/',
@@ -14,6 +10,14 @@ export const MATERIAL_FOLDERS = {
   bcard: {
     title: 'Business Cards',
     url: '/bcard/',
+  },
+  sticker: {
+    title: 'Stickers',
+    url: '/sticker/',
+  },
+  handout: {
+    title: 'Handouts',
+    url: '/handout/',
   },
 }
 

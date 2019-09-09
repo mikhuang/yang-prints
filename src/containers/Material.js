@@ -55,6 +55,11 @@ export default function Material() {
   const currentIndex = folderMaterials.findIndex(x => x.slug === material.slug)
   const prev = folderMaterials[currentIndex - 1]
   const next = folderMaterials[currentIndex + 1]
+
+  // if we have originalUrl, link the creator
+  const creatorLinkProps = material.originalUrl
+    ? { component: 'a', href: material.originalUrl, target: '_blank' }
+    : {}
   return (
     <Fragment>
       <Box px={2} py={1}>
@@ -84,8 +89,12 @@ export default function Material() {
             alt={material.slug}
           />
         </a>
-        <Box p={1}>
-          <Typography variant="caption" className={classes.creator}>
+        <Box p={1} px={2}>
+          <Typography
+            {...creatorLinkProps}
+            variant="caption"
+            className={classes.creator}
+          >
             By {material.creator}
           </Typography>
         </Box>
