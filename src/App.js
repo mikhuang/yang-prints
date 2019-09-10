@@ -1,13 +1,15 @@
+import Box from '@material-ui/core/Box'
+import CircularProgress from '@material-ui/core/CircularProgress'
 import CssBaseline from '@material-ui/core/CssBaseline'
+import { Location } from '@reach/router'
 import Navbar from 'components/Navbar'
 import { Router } from 'components/Router'
 import React from 'react'
-import { Root, Routes, Head } from 'react-static'
+import { Head, Root, Routes } from 'react-static'
+import Analytics from './Analytics'
 import './app.css'
-import CircularProgress from '@material-ui/core/CircularProgress'
-import Box from '@material-ui/core/Box'
 
-function App() {
+function App(props) {
   return (
     <Root>
       <Head>
@@ -20,6 +22,7 @@ function App() {
         />
       </Head>
       <CssBaseline />
+      <Location>{({ location }) => <Analytics location={location} />}</Location>
       <Navbar />
       <React.Suspense
         fallback={
