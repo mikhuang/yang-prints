@@ -19,6 +19,10 @@ export const MATERIAL_FOLDERS = {
     title: 'Handouts',
     url: '/handout/',
   },
+  banner: {
+    title: 'Banners',
+    url: '/banner/',
+  },
 }
 
 /**

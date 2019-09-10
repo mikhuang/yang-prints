@@ -1,4 +1,5 @@
 import Box from '@material-ui/core/Box'
+import Button from '@material-ui/core/Button'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import MaterialThumb from 'components/MaterialThumb'
@@ -37,6 +38,10 @@ const useStyles = makeStyles(theme => ({
       margin: theme.spacing(2),
     },
   },
+  buttonBig: {
+    padding: theme.spacing(2),
+    minWidth: 250,
+  },
 }))
 
 export default () => {
@@ -69,6 +74,18 @@ export default () => {
                     material={material}
                   />
                 ))}
+              {folderMaterials.length > ROW_LIMIT && (
+                <Box p={2}>
+                  <Button
+                    variant="outlined"
+                    className={classes.buttonBig}
+                    component={Link}
+                    to={folder.url}
+                  >
+                    More {folder.title}
+                  </Button>
+                </Box>
+              )}
             </div>
           </Box>
         )

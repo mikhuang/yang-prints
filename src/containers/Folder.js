@@ -1,15 +1,26 @@
 import Box from '@material-ui/core/Box'
+import Grid from '@material-ui/core/Grid'
 import Container from '@material-ui/core/Container'
 import { makeStyles } from '@material-ui/core/styles'
-import React from 'react'
-import { useRouteData, Head } from 'react-static'
+import orderBy from 'lodash/orderBy'
+import React, { Fragment } from 'react'
+import { Head, useRouteData } from 'react-static'
 import MaterialThumb from '../components/MaterialThumb'
 import Title from '../components/Title'
 import { toMaterialEntity } from '../entities/Material'
 
 const useStyles = makeStyles(theme => ({
+  grid: { padding: theme.spacing(1) },
+  gridItem: {
+    textAlign: 'center',
+  },
+  link: {
+    padding: theme.spacing(2, 1),
+    display: 'inline-block',
+    maxWidth: 350,
+  },
   material: {
-    margin: theme.spacing(2, 1),
+    maxHeight: 350,
   },
 }))
 
@@ -19,30 +30,38 @@ export default function Material() {
   const { materials: materialsData, folder, folderKey } = useRouteData()
   const materials = toMaterialEntity(materialsData)
   return (
-    <Container>
+    <Fragment>
       <Head>
         <title>Yang2020 {folder.title}</title>
       </Head>
-      <Box mt={3}>
-        <Title variant="h5">{folder.title}</Title>
+      <Box p={2} mt={1}>
+        <Title variant="h4">{folder.title}</Title>
       </Box>
-      <Box
-        display="flex"
-        justifyContent="space-around"
+
+      <Grid
+        // spacing={2}
+        // display="flex"
+        // justifyContent="space-around"
         alignItems="center"
-        flexWrap="wrap"
+        // flexWrap="wrap"
+        className={classes.grid}
+        justify="center"
+        container
       >
-        {materials
+        {orderBy(materials, ['date'], ['desc'])
           .filter(x => x.folderId === folderKey)
           .map(material => (
-            <MaterialThumb
-              zoom={1.5}
-              className={classes.material}
-              key={material.slug}
-              material={material}
-            />
+            <Grid item xs={6} sm={4} lg={3} xl={2} className={classes.gridItem}>
+              <MaterialThumb
+                linkClassName={classes.link}
+                className={classes.material}
+                sized={false}
+                key={material.slug}
+                material={material}
+              />
+            </Grid>
           ))}
-      </Box>
-    </Container>
+      </Grid>
+    </Fragment>
   )
 }
