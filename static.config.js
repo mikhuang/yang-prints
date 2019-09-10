@@ -1,20 +1,8 @@
-import { createGenerateClassName, ServerStyleSheets } from '@material-ui/styles'
 import path from 'path'
 import materials from './data/materials.json'
 import Material, { MATERIAL_FOLDERS } from './src/entities/Material'
 
-const generateClassName = createGenerateClassName()
-
 export default {
-  beforeRenderToHtml: (App, { meta }) => {
-    meta.muiSheets = new ServerStyleSheets()
-
-    return meta.muiSheets.collect(App)
-  },
-  headElements: (elements, { meta }) => [
-    ...elements,
-    meta.muiSheets.getStyleElement(),
-  ],
   getRoutes: () => {
     const folderPages = Object.keys(MATERIAL_FOLDERS).map(folderKey => {
       const folder = MATERIAL_FOLDERS[folderKey]
@@ -57,13 +45,5 @@ export default {
     ],
     require.resolve('react-static-plugin-reach-router'),
     require.resolve('react-static-plugin-sitemap'),
-    [
-      'react-static-plugin-jss',
-      {
-        providerProps: {
-          generateClassName,
-        },
-      },
-    ],
   ],
 }
