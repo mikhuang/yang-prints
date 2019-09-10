@@ -6,7 +6,8 @@ import Grid from '@material-ui/core/Grid'
 import { default as MaterialLink } from '@material-ui/core/Link'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
-import SaveAltSharpIcon from '@material-ui/icons/SaveAltSharp'
+import SaveIcon from '@material-ui/icons/SaveAltSharp'
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCartSharp'
 import { Link as RouterLink } from '@reach/router'
 import { Link } from 'components/Router'
 import orderBy from 'lodash/orderBy'
@@ -29,7 +30,8 @@ const useStyles = makeStyles(theme => ({
     marginRight: theme.spacing(1),
   },
   button: {
-    width: '100%',
+    flexGrow: 1,
+    margin: theme.spacing(0, 1, 1),
   },
   rightNext: {
     textAlign: 'right',
@@ -100,21 +102,38 @@ export default function Material() {
         </Box>
       </Box>
       <Container>
-        <Box mb={3}>
-          <Button
-            className={classes.button}
-            variant="contained"
-            color="secondary"
-            size="large"
-            component="a"
-            download
-            rel="noreferrer noopener"
-            href={material.downloadUrl}
-            target="_blank"
-          >
-            <SaveAltSharpIcon className={classes.icon} />
-            Download .{material.downloadUrlExt}
-          </Button>
+        <Box mx={-1}>
+          <Box mb={3} display="flex" flexWrap="wrap">
+            {material.buyUrl && (
+              <Button
+                className={classes.button}
+                variant="contained"
+                color="primary"
+                size="large"
+                component="a"
+                rel="noreferrer noopener"
+                href={material.buyUrl}
+                target="_blank"
+              >
+                <ShoppingCartIcon className={classes.icon} />
+                Buy from creator
+              </Button>
+            )}
+            <Button
+              className={classes.button}
+              variant="contained"
+              color="secondary"
+              size="large"
+              component="a"
+              download
+              rel="noreferrer noopener"
+              href={material.downloadUrl}
+              target="_blank"
+            >
+              <SaveIcon className={classes.icon} />
+              Download .{material.downloadUrlExt}
+            </Button>
+          </Box>
         </Box>
         <Grid container>
           <Grid item xs={6}>

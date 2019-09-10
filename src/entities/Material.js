@@ -39,6 +39,7 @@ export default class Material {
     this.folderId = material.folder
     this.description = material.description
     this.srcPath = material.src_path
+    this.buyUrl = material.buy_url
   }
 
   get url() {
