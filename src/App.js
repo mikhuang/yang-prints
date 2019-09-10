@@ -4,6 +4,8 @@ import { Router } from 'components/Router'
 import React from 'react'
 import { Root, Routes, Head } from 'react-static'
 import './app.css'
+import CircularProgress from '@material-ui/core/CircularProgress'
+import Box from '@material-ui/core/Box'
 
 function App() {
   return (
@@ -19,7 +21,13 @@ function App() {
       </Head>
       <CssBaseline />
       <Navbar />
-      <React.Suspense fallback={<em>Loading...</em>}>
+      <React.Suspense
+        fallback={
+          <Box p={3} textAlign="center">
+            <CircularProgress />
+          </Box>
+        }
+      >
         <Router>
           <Routes path="*" />
         </Router>

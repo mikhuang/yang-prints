@@ -35,8 +35,10 @@ export default class Material {
     this.originalUrl = material.original_url
     this.creator = material.creator
     this.path = material.path
+    this.filename = material.filename
     this.slug = material.slug
     this.folderId = material.folder
+    this.title = material.title
     this.description = material.description
     this.srcPath = material.src_path
     this.buyUrl = material.buy_url
@@ -47,17 +49,16 @@ export default class Material {
   }
 
   get thumbSrc() {
-    const [pathFolder, pathFile] = this.path.split('/')
-    const [pathFilename] = pathFile.split('.')
-    return `/media/${pathFolder}/thumb/${pathFilename}.jpg`
+    const [pathFilename] = this.filename.split('.')
+    return `/media/${this.path}/thumb/${pathFilename}.jpg`
+  }
+
+  get downloadUrl() {
+    return `/media/${this.path}/${this.filename}`
   }
 
   get downloadUrlExt() {
     return this.downloadUrl.split('.')[1]
-  }
-
-  get downloadUrl() {
-    return `/media/${this.path}`
   }
 
   get folder() {

@@ -56,6 +56,7 @@ export default () => {
       {Object.keys(MATERIAL_FOLDERS).map(folderKey => {
         const folder = MATERIAL_FOLDERS[folderKey]
         const folderMaterials = materialsByFolder[folderKey]
+        const addlCount = folderMaterials.length - ROW_LIMIT
         return (
           <Box mb={5} key={folderKey} className={classes.row}>
             <Link to={folder.url}>
@@ -74,7 +75,7 @@ export default () => {
                     material={material}
                   />
                 ))}
-              {folderMaterials.length > ROW_LIMIT && (
+              {addlCount > 0 && (
                 <Box p={2}>
                   <Button
                     variant="outlined"
@@ -82,7 +83,7 @@ export default () => {
                     component={Link}
                     to={folder.url}
                   >
-                    More {folder.title}
+                    {addlCount} more {folder.title}
                   </Button>
                 </Box>
               )}

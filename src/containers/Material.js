@@ -12,7 +12,7 @@ import { Link as RouterLink } from '@reach/router'
 import { Link } from 'components/Router'
 import orderBy from 'lodash/orderBy'
 import React, { Fragment } from 'react'
-import { useRouteData } from 'react-static'
+import { Head, useRouteData } from 'react-static'
 import MaterialThumb from '../components/MaterialThumb'
 import {
   default as MaterialEntity,
@@ -39,6 +39,10 @@ const useStyles = makeStyles(theme => ({
   creator: {
     color: theme.palette.secondary.light,
   },
+  title: {
+    color: theme.palette.grey[300],
+    float: 'right',
+  },
 }))
 
 export default function Material() {
@@ -64,6 +68,19 @@ export default function Material() {
     : {}
   return (
     <Fragment>
+      <Head>
+        <meta charSet="UTF-8" />
+        <title>
+          YangPrints - {material.title || 'Andrew Yang 2020 Print materials'}
+        </title>
+        <meta
+          name="description"
+          content={
+            `${material.description} - ${material.folder.title} for Andrew Yang` ||
+            'Andrew Yang 2020 posters, handouts, flyers, sticker templates to download and print.'
+          }
+        />
+      </Head>
       <Box px={2} py={1}>
         <Breadcrumbs separator="›" aria-label="breadcrumb">
           <MaterialLink component={RouterLink} color="inherit" to="/">
@@ -88,7 +105,7 @@ export default function Material() {
           <img
             className={classes.img}
             src={material.thumbSrc}
-            alt={material.slug}
+            alt={material.title || material.slug}
           />
         </a>
         <Box p={1} px={2}>
@@ -98,6 +115,10 @@ export default function Material() {
             className={classes.creator}
           >
             By {material.creator}
+          </Typography>
+          <Typography variant="caption" className={classes.title}>
+            {material.title} {material.title && material.description ? '-' : ''}{' '}
+            {material.description}
           </Typography>
         </Box>
       </Box>
