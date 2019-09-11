@@ -3,6 +3,7 @@ import CircularProgress from '@material-ui/core/CircularProgress'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { Location } from '@reach/router'
 import Navbar from 'components/Navbar'
+import Footer from 'components/Footer'
 import { Router } from 'components/Router'
 import React from 'react'
 import { Head, Root, Routes } from 'react-static'
@@ -35,6 +36,7 @@ function App(props) {
           <Routes path="*" />
         </Router>
       </React.Suspense>
+      <Footer />
     </Root>
   )
 }

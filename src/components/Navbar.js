@@ -72,7 +72,7 @@ export default function Navbar() {
           <Divider />
           <List>
             <ListItem component={Link} to={'/about/'} button>
-              <ListItemText primary="About" />
+              <ListItemText primary="FAQ" />
             </ListItem>
           </List>
         </div>
@@ -102,7 +102,7 @@ export default function Navbar() {
             to="/about"
             className={classes.contrastColor}
           >
-            About
+            FAQ
           </Button>
         </Toolbar>
       </AppBar>

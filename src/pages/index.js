@@ -10,6 +10,7 @@ import orderBy from 'lodash/orderBy'
 import React from 'react'
 import { useRouteData } from 'react-static'
 import { MATERIAL_FOLDERS, toMaterialEntity } from '../entities/Material'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
 
 const ROW_LIMIT = 8
 
@@ -45,6 +46,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 export default () => {
+  const isLarge = useMediaQuery('(min-width:600px)')
   const classes = useStyles()
 
   const { materials: materialsData } = useRouteData()
@@ -52,7 +54,7 @@ export default () => {
   const materialsByFolder = groupBy(materials, 'folderId')
 
   return (
-    <div>
+    <Box my={3}>
       {Object.keys(MATERIAL_FOLDERS).map(folderKey => {
         const folder = MATERIAL_FOLDERS[folderKey]
         const folderMaterials = materialsByFolder[folderKey]
@@ -60,8 +62,14 @@ export default () => {
         return (
           <Box mb={5} key={folderKey} className={classes.row}>
             <Link to={folder.url}>
-              <Box display="flex" p={2} pb={0} justifyContent="space-between">
-                <Title>{folder.title}</Title>
+              <Box
+                display="flex"
+                p={2}
+                pb={0}
+                alignItems="baseline"
+                justifyContent="space-between"
+              >
+                <Title variant={isLarge ? 'h4' : 'h6'}>{folder.title}</Title>
                 <Typography variant="caption">View all</Typography>
               </Box>
             </Link>
@@ -91,6 +99,6 @@ export default () => {
           </Box>
         )
       })}
-    </div>
+    </Box>
   )
 }
