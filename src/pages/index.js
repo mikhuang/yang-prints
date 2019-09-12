@@ -12,7 +12,7 @@ import { useRouteData } from 'react-static'
 import { MATERIAL_FOLDERS, toMaterialEntity } from '../entities/Material'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 
-const ROW_LIMIT = 8
+const ROW_LIMIT = 12
 
 const useStyles = makeStyles(theme => ({
   row: {},

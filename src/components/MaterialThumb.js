@@ -51,9 +51,11 @@ const useStyles = makeStyles(theme => ({
     },
   }),
   'material-sized-banner': ({ zoom }) => ({
-    maxHeight: zoom * 200,
+    maxHeight: zoom * 250,
+    maxWidth: zoom * 250,
     [theme.breakpoints.up('sm')]: {
-      maxHeight: zoom * 300,
+      maxHeight: zoom * 350,
+      maxWidth: zoom * 350,
     },
   }),
 }))

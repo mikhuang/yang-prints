@@ -1,3 +1,4 @@
+import lastIndexOf from 'lodash/lastIndexOf'
 export const MATERIAL_FOLDERS = {
   poster: {
     title: 'Posters',
@@ -25,6 +26,11 @@ export const MATERIAL_FOLDERS = {
   },
 }
 
+function splitFileExt(filename) {
+  const idx = lastIndexOf(filename, '.')
+  return [filename.substr(0, idx), filename.substr(idx + 1)]
+}
+
 /**
  * abstraction for material data, includes getters for images etc
  */
@@ -49,7 +55,7 @@ export default class Material {
   }
 
   get thumbSrc() {
-    const [pathFilename] = this.filename.split('.')
+    const [pathFilename] = splitFileExt(this.filename)
     return `/media/${this.path}/thumb/${pathFilename}.jpg`
   }
 
@@ -58,7 +64,7 @@ export default class Material {
   }
 
   get downloadUrlExt() {
-    return this.downloadUrl.split('.')[1]
+    return splitFileExt(this.downloadUrl)[1]
   }
 
   get folder() {

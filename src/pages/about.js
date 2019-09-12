@@ -39,6 +39,11 @@ export default () => {
         <Typography gutterBottom>
           <ul>
             <li>
+              <Link href="https://drive.google.com/file/d/1BG69BLEiOlvl0W98F3xbN5ysfNTYoSlq/view">
+                Official styleguide
+              </Link>
+            </li>
+            <li>
               <Link href="https://drive.google.com/drive/folders/1W3Gzd6rzV0BnoBXgf3mA59dJORc1aE2n">
                 Official media/press kit for logos and photos
               </Link>
