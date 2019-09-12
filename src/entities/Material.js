@@ -24,6 +24,11 @@ export const MATERIAL_FOLDERS = {
     title: 'Banners',
     url: '/banner/',
   },
+  button: {
+    title: 'Buttons',
+    url: '/button/',
+    isRound: true,
+  },
 }
 
 function splitFileExt(filename) {
@@ -69,6 +74,10 @@ export default class Material {
 
   get folder() {
     return MATERIAL_FOLDERS[this.folderId] || {}
+  }
+
+  get isRound() {
+    return this.folder.isRound
   }
 }
 

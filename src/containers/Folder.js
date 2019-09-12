@@ -38,11 +38,7 @@ export default function Material() {
       </Box>
 
       <Grid
-        // spacing={2}
-        // display="flex"
-        // justifyContent="space-around"
         alignItems="center"
-        // flexWrap="wrap"
         className={classes.grid}
         justify="center"
         container

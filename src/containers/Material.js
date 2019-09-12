@@ -14,6 +14,7 @@ import orderBy from 'lodash/orderBy'
 import React, { Fragment } from 'react'
 import { Head, useRouteData } from 'react-static'
 import MaterialThumb from '../components/MaterialThumb'
+import cx from 'clsx'
 import {
   default as MaterialEntity,
   toMaterialEntity,
@@ -25,6 +26,9 @@ const useStyles = makeStyles(theme => ({
     maxWidth: '100%',
     maxHeight: '50vh',
     display: 'block',
+  },
+  imgRound: {
+    borderRadius: 1000,
   },
   icon: {
     marginRight: theme.spacing(1),
@@ -103,7 +107,9 @@ export default function Material() {
           target="_blank"
         >
           <img
-            className={classes.img}
+            className={cx(classes.img, {
+              [classes.imgRound]: material.isRound,
+            })}
             src={material.thumbSrc}
             alt={material.title || material.slug}
           />

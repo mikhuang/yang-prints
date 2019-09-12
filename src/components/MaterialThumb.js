@@ -58,6 +58,15 @@ const useStyles = makeStyles(theme => ({
       maxWidth: zoom * 350,
     },
   }),
+  round: { borderRadius: 1000 },
+  'material-sized-button': ({ zoom }) => ({
+    maxHeight: zoom * 80,
+    maxWidth: zoom * 80,
+    [theme.breakpoints.up('sm')]: {
+      maxHeight: zoom * 150,
+      maxWidth: zoom * 150,
+    },
+  }),
 }))
 
 export default function MaterialThumb({
@@ -74,6 +83,7 @@ export default function MaterialThumb({
         className={cx(className, classes.material, {
           [classes[`material-sized-${material.folderId}`]]: sized,
           [classes['material-sized']]: sized,
+          [classes['round']]: material.isRound,
         })}
         src={material.thumbSrc}
         alt={material.slug}
