@@ -4,6 +4,7 @@ import Divider from '@material-ui/core/Divider'
 import Drawer from '@material-ui/core/Drawer'
 import IconButton from '@material-ui/core/IconButton'
 import List from '@material-ui/core/List'
+import Hidden from '@material-ui/core/Hidden'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 import { makeStyles } from '@material-ui/core/styles'
@@ -31,6 +32,7 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.secondary.main,
   },
   contrastColor: {
+    minWidth: 50,
     color: theme.palette.primary.contrastText,
   },
 }))
@@ -97,6 +99,22 @@ export default function Navbar() {
             YANG<span className={classes.titleHighlight}>PRINTS</span>
           </Button>
 
+          <Hidden smDown>
+            {Object.keys(MATERIAL_FOLDERS).map(folderKey => {
+              const folder = MATERIAL_FOLDERS[folderKey]
+              return (
+                <Button
+                  component={Link}
+                  to={folder.url}
+                  button
+                  key={folderKey}
+                  className={classes.contrastColor}
+                >
+                  {folder.shortTitle || folder.title}
+                </Button>
+              )
+            })}
+          </Hidden>
           <Button
             component={Link}
             to="/about"

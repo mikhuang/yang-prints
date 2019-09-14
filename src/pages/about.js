@@ -58,6 +58,11 @@ export default () => {
                 Montserrat font
               </Link>
             </li>
+            <li>
+              <Link href="http://yanggangprintables.com">
+                YangGangPrintables collection of printables
+              </Link>
+            </li>
           </ul>
         </Typography>
       </Box>

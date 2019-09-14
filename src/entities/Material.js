@@ -6,10 +6,12 @@ export const MATERIAL_FOLDERS = {
   },
   square: {
     title: 'Square/Post-its',
+    shortTitle: 'Post-its',
     url: '/square/',
   },
   bcard: {
     title: 'Business Cards',
+    shortTitle: 'Biz Cards',
     url: '/bcard/',
   },
   sticker: {
