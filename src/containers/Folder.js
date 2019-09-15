@@ -40,10 +40,6 @@ export default function Material() {
         <Title variant="h4">{folder.title}</Title>
       </Box>
 
-      <Box px={2} mt={1}>
-        <FolderInstructions folderKey={folderKey} />
-      </Box>
-
       <Grid
         alignItems="center"
         className={classes.grid}
@@ -64,6 +60,9 @@ export default function Material() {
             </Grid>
           ))}
       </Grid>
+      <Box px={2} mt={1}>
+        <FolderInstructions folderKey={folderKey} />
+      </Box>
     </Fragment>
   )
 }

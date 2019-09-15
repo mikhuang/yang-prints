@@ -15,6 +15,7 @@ import orderBy from 'lodash/orderBy'
 import React, { Fragment } from 'react'
 import { Head, useRouteData } from 'react-static'
 import MaterialThumb from '../components/MaterialThumb'
+import ReactGA from 'react-ga'
 import {
   default as MaterialEntity,
   toMaterialEntity,
@@ -27,6 +28,7 @@ const useStyles = makeStyles(theme => ({
     maxWidth: '100%',
     maxHeight: '50vh',
     display: 'block',
+    boxShadow: '0 0.15em 0.25em rgba(0,0,0,.5)',
   },
   imgRound: {
     borderRadius: 1000,
@@ -70,6 +72,14 @@ export default function Material() {
   const creatorLinkProps = material.originalUrl
     ? { component: 'a', href: material.originalUrl, target: '_blank' }
     : {}
+
+  const handleClickMaterial = () => {
+    ReactGA.event({
+      category: 'Material',
+      action: 'Download',
+      label: material.url,
+    })
+  }
   return (
     <Fragment>
       <Head>
@@ -99,12 +109,13 @@ export default function Material() {
           </MaterialLink>
         </Breadcrumbs>
       </Box>
-      <Box pt={3} mb={2} bgcolor={'text.primary'}>
+      <Box py={4} mb={2} bgcolor={'text.primary'}>
         <a
           download
           rel="noreferrer noopener"
           href={material.downloadUrl}
           target="_blank"
+          onClick={handleClickMaterial}
         >
           <img
             className={cx(classes.img, {
@@ -114,27 +125,25 @@ export default function Material() {
             alt={material.title || material.slug}
           />
         </a>
-        <Box p={1} px={2}>
+      </Box>
+      <Container className={classes.container}>
+        <Box my={3}>
+          <Typography variant="h6" display="block">
+            {material.title}
+          </Typography>
           <Typography
             {...creatorLinkProps}
             variant="caption"
             className={classes.creator}
+            gutterBottom
           >
             By {material.creator}
           </Typography>
+          <Typography variant="caption" display="block" gutterBottom>
+            {material.description}
+          </Typography>
         </Box>
-      </Box>
-      <Container className={classes.container}>
-        {(material.title || material.description) && (
-          <Box my={3}>
-            <Typography variant="caption2" display="block" gutterBottom>
-              {material.title}
-            </Typography>
-            <Typography variant="caption" display="block" gutterBottom>
-              {material.description}
-            </Typography>
-          </Box>
-        )}
+
         <Box mx={-1}>
           <Box mb={3} display="flex" flexWrap="wrap">
             {material.buyUrl && (
@@ -162,6 +171,7 @@ export default function Material() {
               rel="noreferrer noopener"
               href={material.downloadUrl}
               target="_blank"
+              onClick={handleClickMaterial}
             >
               <SaveIcon className={classes.icon} />
               Download .{material.downloadUrlExt}
@@ -190,7 +200,7 @@ export default function Material() {
             ) : null}
           </Grid>
         </Grid>
-        <Box mt={1}>
+        <Box mt={6}>
           <FolderInstructions folderKey={material.folderId} />
         </Box>
       </Container>
