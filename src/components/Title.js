@@ -8,18 +8,18 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: 0.2,
     textTransform: 'uppercase',
     fontWeight: theme.typography.fontWeightMedium,
-    '&:after': {
-      content: '"."',
-      color: theme.palette.secondary.main,
-    },
+  },
+  after: {
+    color: theme.palette.secondary.main,
   },
 }))
 
-export default function Title({ children, ...otherProps }) {
+export default function Title({ after = '.', children, ...otherProps }) {
   const classes = useStyles()
   return (
     <Typography {...otherProps} className={classes.title}>
       {children}
+      <span className={classes.after}>{after}</span>
     </Typography>
   )
 }

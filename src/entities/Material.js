@@ -4,6 +4,12 @@ export const MATERIAL_FOLDERS = {
     title: 'Posters',
     url: '/poster/',
   },
+  button: {
+    title: 'Buttons',
+    url: '/button/',
+    isRound: true,
+    gridSizes: { xs: 4, sm: 3, lg: 2, xl: 2 },
+  },
   square: {
     title: 'Square/Post-its',
     shortTitle: 'Post-its',
@@ -25,11 +31,6 @@ export const MATERIAL_FOLDERS = {
   banner: {
     title: 'Banners',
     url: '/banner/',
-  },
-  button: {
-    title: 'Buttons',
-    url: '/button/',
-    isRound: true,
   },
 }
 

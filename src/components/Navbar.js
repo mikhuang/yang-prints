@@ -4,6 +4,7 @@ import Divider from '@material-ui/core/Divider'
 import Drawer from '@material-ui/core/Drawer'
 import IconButton from '@material-ui/core/IconButton'
 import List from '@material-ui/core/List'
+import MaterialLink from '@material-ui/core/Link'
 import Hidden from '@material-ui/core/Hidden'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
@@ -115,6 +116,13 @@ export default function Navbar() {
               )
             })}
           </Hidden>
+          <Button
+            component={MaterialLink}
+            href="https://shop.yang2020.com"
+            className={classes.contrastColor}
+          >
+            SHOP
+          </Button>
           <Button
             component={Link}
             to="/about"

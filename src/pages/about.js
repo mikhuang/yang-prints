@@ -34,6 +34,33 @@ export default () => {
       </Box>
       <Box mb={3}>
         <Typography gutterBottom variant="h6">
+          Where did these designs come from?
+        </Typography>
+        <Typography gutterBottom>
+          The YangGang is creative and passionate. The designs on YangPrints
+          come from all over. Sources are linked where I was able to find them.
+          In general, I really like the following sites:
+          <ul>
+            <li>
+              <Link href="http://bit.ly/PrintLikeAYangster">
+                How to Print Like A Yangster
+              </Link>
+            </li>
+            <li>
+              <Link href="http://andrewyang.vote/canvass">
+                AndrewYang.Vote's Canvassing Materials collection
+              </Link>
+            </li>
+            <li>
+              <Link href="http://yanggangprintables.com">
+                YangGangPrintables collection of printables
+              </Link>
+            </li>
+          </ul>
+        </Typography>
+      </Box>
+      <Box mb={3}>
+        <Typography gutterBottom variant="h6">
           I want to make something. Where do I get logos, photos, fonts, etc?
         </Typography>
         <Typography gutterBottom>
@@ -58,12 +85,8 @@ export default () => {
                 Montserrat font
               </Link>
             </li>
-            <li>
-              <Link href="http://yanggangprintables.com">
-                YangGangPrintables collection of printables
-              </Link>
-            </li>
           </ul>
+          If you'd like to share, please submit your design below.
         </Typography>
       </Box>
     </Container>

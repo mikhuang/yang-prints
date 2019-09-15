@@ -63,8 +63,8 @@ const useStyles = makeStyles(theme => ({
     maxHeight: zoom * 80,
     maxWidth: zoom * 80,
     [theme.breakpoints.up('sm')]: {
-      maxHeight: zoom * 150,
-      maxWidth: zoom * 150,
+      maxHeight: zoom * 130,
+      maxWidth: zoom * 130,
     },
   }),
 }))

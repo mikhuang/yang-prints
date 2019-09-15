@@ -9,16 +9,17 @@ import Typography from '@material-ui/core/Typography'
 import SaveIcon from '@material-ui/icons/SaveAltSharp'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCartSharp'
 import { Link as RouterLink } from '@reach/router'
+import cx from 'clsx'
 import { Link } from 'components/Router'
 import orderBy from 'lodash/orderBy'
 import React, { Fragment } from 'react'
 import { Head, useRouteData } from 'react-static'
 import MaterialThumb from '../components/MaterialThumb'
-import cx from 'clsx'
 import {
   default as MaterialEntity,
   toMaterialEntity,
 } from '../entities/Material'
+import FolderInstructions from '../components/FolderInstructions'
 
 const useStyles = makeStyles(theme => ({
   img: {
@@ -43,9 +44,8 @@ const useStyles = makeStyles(theme => ({
   creator: {
     color: theme.palette.secondary.light,
   },
-  title: {
-    color: theme.palette.grey[300],
-    float: 'right',
+  container: {
+    maxWidth: 800,
   },
 }))
 
@@ -122,13 +122,19 @@ export default function Material() {
           >
             By {material.creator}
           </Typography>
-          <Typography variant="caption" className={classes.title}>
-            {material.title} {material.title && material.description ? '-' : ''}{' '}
-            {material.description}
-          </Typography>
         </Box>
       </Box>
-      <Container>
+      <Container className={classes.container}>
+        {(material.title || material.description) && (
+          <Box my={3}>
+            <Typography variant="caption2" display="block" gutterBottom>
+              {material.title}
+            </Typography>
+            <Typography variant="caption" display="block" gutterBottom>
+              {material.description}
+            </Typography>
+          </Box>
+        )}
         <Box mx={-1}>
           <Box mb={3} display="flex" flexWrap="wrap">
             {material.buyUrl && (
@@ -166,24 +172,27 @@ export default function Material() {
           <Grid item xs={6}>
             {prev ? (
               <div>
+                <MaterialThumb scale={2} material={prev} />
                 <Typography gutterBottom variant="caption" display="block">
                   <Link to={prev.url}>Previous</Link>
                 </Typography>
-                <MaterialThumb scale={2} material={prev} />
               </div>
             ) : null}
           </Grid>
           <Grid item xs={6} className={classes.rightNext}>
             {next ? (
               <div>
+                <MaterialThumb scale={2} material={next} />
                 <Typography gutterBottom variant="caption" display="block">
                   <Link to={next.url}>Next</Link>
                 </Typography>
-                <MaterialThumb scale={2} material={next} />
               </div>
             ) : null}
           </Grid>
         </Grid>
+        <Box mt={1}>
+          <FolderInstructions folderKey={material.folderId} />
+        </Box>
       </Container>
     </Fragment>
   )

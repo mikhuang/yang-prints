@@ -1,5 +1,6 @@
 import Box from '@material-ui/core/Box'
 import Button from '@material-ui/core/Button'
+import MaterialLink from '@material-ui/core/Link'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import MaterialThumb from 'components/MaterialThumb'
@@ -19,6 +20,7 @@ const useStyles = makeStyles(theme => ({
   rowInner: {
     overflow: 'hidden',
     overflowX: 'scroll',
+    '-webkit-overflow-scrolling': 'touch',
     display: 'flex',
     alignItems: 'center',
     padding: theme.spacing(2, 0),
@@ -55,6 +57,12 @@ export default () => {
 
   return (
     <Box my={3}>
+      <Box mx={2} py={3} textAlign="center">
+        <Title variant={isLarge ? 'h2' : 'h4'} after="!">
+          Print All the Yang
+        </Title>
+      </Box>
+
       {Object.keys(MATERIAL_FOLDERS).map(folderKey => {
         const folder = MATERIAL_FOLDERS[folderKey]
         const folderMaterials = materialsByFolder[folderKey]
