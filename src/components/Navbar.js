@@ -12,7 +12,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import Toolbar from '@material-ui/core/Toolbar'
 import MenuIcon from '@material-ui/icons/Menu'
 import React, { Fragment, useState } from 'react'
-import { Link } from '../components/Router'
+import { AdapterLink } from '../components/Router'
 import { MATERIAL_FOLDERS } from '../entities/Material'
 import cx from 'clsx'
 const useStyles = makeStyles(theme => ({
@@ -52,7 +52,7 @@ export default function Navbar() {
           onKeyDown={closeDrawer}
         >
           <List>
-            <ListItem component={Link} to={'/'} button>
+            <ListItem component={AdapterLink} to={'/'} button>
               <ListItemText primary="Home" />
             </ListItem>
           </List>
@@ -62,7 +62,7 @@ export default function Navbar() {
               const folder = MATERIAL_FOLDERS[folderKey]
               return (
                 <ListItem
-                  component={Link}
+                  component={AdapterLink}
                   to={folder.url}
                   button
                   key={folderKey}
@@ -74,7 +74,7 @@ export default function Navbar() {
           </List>
           <Divider />
           <List>
-            <ListItem component={Link} to={'/about/'} button>
+            <ListItem component={AdapterLink} to={'/about/'} button>
               <ListItemText primary="FAQ" />
             </ListItem>
           </List>
@@ -93,7 +93,7 @@ export default function Navbar() {
           </IconButton>
 
           <Button
-            component={Link}
+            component={AdapterLink}
             to="/"
             className={cx(classes.contrastColor, classes.title)}
           >
@@ -105,7 +105,7 @@ export default function Navbar() {
               const folder = MATERIAL_FOLDERS[folderKey]
               return (
                 <Button
-                  component={Link}
+                  component={AdapterLink}
                   to={folder.url}
                   button
                   key={folderKey}
@@ -124,7 +124,7 @@ export default function Navbar() {
             SHOP
           </Button>
           <Button
-            component={Link}
+            component={AdapterLink}
             to="/about"
             className={classes.contrastColor}
           >

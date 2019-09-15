@@ -36,10 +36,12 @@ export default () => {
         <Typography gutterBottom variant="h6">
           Where did these designs come from?
         </Typography>
-        <Typography gutterBottom>
+        <Typography paragraph>
           The YangGang is creative and passionate. The designs on YangPrints
           come from all over. Sources are linked where I was able to find them.
           In general, I really like the following sites:
+        </Typography>
+        <Typography component="div">
           <ul>
             <li>
               <Link href="http://bit.ly/PrintLikeAYangster">
@@ -63,7 +65,7 @@ export default () => {
         <Typography gutterBottom variant="h6">
           I want to make something. Where do I get logos, photos, fonts, etc?
         </Typography>
-        <Typography gutterBottom>
+        <Typography component="div">
           <ul>
             <li>
               <Link href="https://drive.google.com/file/d/1BG69BLEiOlvl0W98F3xbN5ysfNTYoSlq/view">

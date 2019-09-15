@@ -1,6 +1,5 @@
 import Link from '@material-ui/core/Link'
 import Typography from '@material-ui/core/Typography'
-import Title from './Title'
 import React, { Fragment } from 'react'
 
 const InstructionsTitle = () => <Typography variant="caption">TIPS</Typography>
@@ -10,7 +9,7 @@ export default function FolderInstructions({ folderKey }) {
     return (
       <Fragment>
         <InstructionsTitle />
-        <Typography>
+        <Typography component="div">
           <ul>
             <li>These designs are for standard 2 x 3.5" business cards.</li>
             <li>Mix and match fronts and backs!</li>
@@ -43,7 +42,7 @@ export default function FolderInstructions({ folderKey }) {
     return (
       <Fragment>
         <InstructionsTitle />
-        <Typography>
+        <Typography component="div">
           <ul>
             <li>
               <Link href="https://bit.ly/PrintYang">
@@ -68,7 +67,7 @@ export default function FolderInstructions({ folderKey }) {
     return (
       <Fragment>
         <InstructionsTitle />
-        <Typography>
+        <Typography component="div">
           <ul>
             <li>These designs are great for sticky notes.</li>
             <li>
@@ -101,7 +100,7 @@ export default function FolderInstructions({ folderKey }) {
     return (
       <Fragment>
         <InstructionsTitle />
-        <Typography>
+        <Typography component="div">
           <ul>
             <li>
               These designs make 2.25" buttons. They include the necessary

@@ -1,17 +1,16 @@
 import Box from '@material-ui/core/Box'
 import Button from '@material-ui/core/Button'
-import MaterialLink from '@material-ui/core/Link'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
 import MaterialThumb from 'components/MaterialThumb'
-import { Link } from 'components/Router'
+import { AdapterLink, Link } from 'components/Router'
 import Title from 'components/Title'
 import groupBy from 'lodash/groupBy'
 import orderBy from 'lodash/orderBy'
 import React from 'react'
 import { useRouteData } from 'react-static'
 import { MATERIAL_FOLDERS, toMaterialEntity } from '../entities/Material'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
 
 const ROW_LIMIT = 12
 
@@ -96,7 +95,7 @@ export default () => {
                   <Button
                     variant="outlined"
                     className={classes.buttonBig}
-                    component={Link}
+                    component={AdapterLink}
                     to={folder.url}
                   >
                     {addlCount} more {folder.title}

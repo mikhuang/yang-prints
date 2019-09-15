@@ -2,8 +2,9 @@ import Box from '@material-ui/core/Box'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { Location } from '@reach/router'
-import Navbar from 'components/Navbar'
 import Footer from 'components/Footer'
+import ManageScroll from 'components/ManageScroll'
+import Navbar from 'components/Navbar'
 import { Router } from 'components/Router'
 import React from 'react'
 import { Head, Root, Routes } from 'react-static'
@@ -23,6 +24,7 @@ function App(props) {
         />
       </Head>
       <CssBaseline />
+      <ManageScroll />
       <Location>{({ location }) => <Analytics location={location} />}</Location>
       <Navbar />
       <React.Suspense
@@ -32,7 +34,7 @@ function App(props) {
           </Box>
         }
       >
-        <Router>
+        <Router primary={false}>
           <Routes path="*" />
         </Router>
       </React.Suspense>
