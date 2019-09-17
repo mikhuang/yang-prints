@@ -10,7 +10,10 @@ if (typeof window !== 'undefined') {
 const AutoScrollToTop = ({ children }) => (
   <Location>
     {() => {
-      if (typeof window.history !== 'undefined') {
+      if (
+        typeof window !== 'undefined' &&
+        typeof window.history !== 'undefined'
+      ) {
         // Ininitial rendering and back/forward navigation uses browsers
         // native scroll history mechanism which tracks scroll position
         // for each history entry automatically

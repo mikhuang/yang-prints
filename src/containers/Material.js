@@ -61,7 +61,6 @@ const useStyles = makeStyles(theme => ({
 }))
 
 export default function Material(props) {
-  console.log(props)
   const classes = useStyles()
 
   const { materials: materialsData, material: materialData } = useRouteData()
