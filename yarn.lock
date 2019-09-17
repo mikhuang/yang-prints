@@ -3971,6 +3971,10 @@ hosted-git-info@^2.1.4:
   version "2.8.4"
   resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.8.4.tgz#44119abaf4bc64692a16ace34700fed9c03e2546"
 
+hotkeys-js@3.7.1:
+  version "3.7.1"
+  resolved "https://registry.yarnpkg.com/hotkeys-js/-/hotkeys-js-3.7.1.tgz#851f92fc3ae18f6a0b0cf77449f0e4b961a6c083"
+
 hpack.js@^2.1.6:
   version "2.1.6"
   resolved "https://registry.yarnpkg.com/hpack.js/-/hpack.js-2.1.6.tgz#87774c0949e513f42e84575b3c45681fade2a0b2"
@@ -6476,6 +6480,12 @@ react-hot-loader@^4.12.11, react-hot-loader@^4.3.6:
     react-lifecycles-compat "^3.0.4"
     shallowequal "^1.1.0"
     source-map "^0.7.3"
+
+react-hotkeys-hook@^1.5.3:
+  version "1.5.3"
+  resolved "https://registry.yarnpkg.com/react-hotkeys-hook/-/react-hotkeys-hook-1.5.3.tgz#975e90084be2524940b631e1cd8641a5d3bf8d80"
+  dependencies:
+    hotkeys-js "3.7.1"
 
 react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.6:
   version "16.9.0"

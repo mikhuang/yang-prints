@@ -8,6 +8,8 @@ import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import SaveIcon from '@material-ui/icons/SaveAltSharp'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCartSharp'
+import ArrowBack from '@material-ui/icons/ArrowBackIosSharp'
+import ArrowForward from '@material-ui/icons/ArrowForwardIosSharp'
 import { Link as RouterLink } from '@reach/router'
 import cx from 'clsx'
 import { Link } from 'components/Router'
@@ -21,14 +23,18 @@ import {
   toMaterialEntity,
 } from '../entities/Material'
 import FolderInstructions from '../components/FolderInstructions'
+import { useHotkeys } from 'react-hotkeys-hook'
+import { navigate } from '@reach/router'
 
 const useStyles = makeStyles(theme => ({
   img: {
-    margin: '0 auto',
     maxWidth: '100%',
     maxHeight: '50vh',
-    display: 'block',
-    boxShadow: '0 0.15em 0.25em rgba(0,0,0,.5)',
+    boxShadow: '0 0.5em 2em rgba(0,0,0,.35)',
+    transition: 'box-shadow .25s',
+    '&:hover': {
+      boxShadow: '0 0.5em 2.5em rgba(0,0,0,.65)',
+    },
   },
   imgRound: {
     borderRadius: 1000,
@@ -49,9 +55,13 @@ const useStyles = makeStyles(theme => ({
   container: {
     maxWidth: 800,
   },
+  navLink: {
+    margin: theme.spacing(1, 0),
+  },
 }))
 
-export default function Material() {
+export default function Material(props) {
+  console.log(props)
   const classes = useStyles()
 
   const { materials: materialsData, material: materialData } = useRouteData()
@@ -67,6 +77,15 @@ export default function Material() {
   const currentIndex = folderMaterials.findIndex(x => x.slug === material.slug)
   const prev = folderMaterials[currentIndex - 1]
   const next = folderMaterials[currentIndex + 1]
+
+  function goToUrl(m) {
+    if (m && m.url) {
+      navigate(m.url)
+    }
+  }
+
+  useHotkeys('right', () => goToUrl(next), [next, goToUrl])
+  useHotkeys('left', () => goToUrl(prev), [prev, goToUrl])
 
   // if we have originalUrl, link the creator
   const creatorLinkProps = material.originalUrl
@@ -109,7 +128,7 @@ export default function Material() {
           </MaterialLink>
         </Breadcrumbs>
       </Box>
-      <Box py={4} mb={2} bgcolor={'text.primary'}>
+      <Box mb={1} display="flex" justifyContent="center">
         <a
           download
           rel="noreferrer noopener"
@@ -182,20 +201,32 @@ export default function Material() {
           <Grid item xs={6}>
             {prev ? (
               <div>
+                <Button
+                  component={Link}
+                  to={prev.url}
+                  className={classes.navLink}
+                >
+                  <ArrowBack />
+                  Previous
+                </Button>
+                <br />
                 <MaterialThumb scale={2} material={prev} />
-                <Typography gutterBottom variant="caption" display="block">
-                  <Link to={prev.url}>Previous</Link>
-                </Typography>
               </div>
             ) : null}
           </Grid>
           <Grid item xs={6} className={classes.rightNext}>
             {next ? (
               <div>
+                <Button
+                  component={Link}
+                  to={next.url}
+                  className={classes.navLink}
+                >
+                  Next
+                  <ArrowForward />
+                </Button>
+                <br />
                 <MaterialThumb scale={2} material={next} />
-                <Typography gutterBottom variant="caption" display="block">
-                  <Link to={next.url}>Next</Link>
-                </Typography>
               </div>
             ) : null}
           </Grid>
