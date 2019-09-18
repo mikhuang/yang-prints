@@ -4,6 +4,11 @@ export const MATERIAL_FOLDERS = {
     title: 'Posters',
     url: '/poster/',
   },
+  bcard: {
+    title: 'Business Cards',
+    shortTitle: 'Biz Cards',
+    url: '/bcard/',
+  },
   button: {
     title: 'Buttons',
     url: '/button/',
@@ -14,11 +19,6 @@ export const MATERIAL_FOLDERS = {
     title: 'Square/Post-its',
     shortTitle: 'Post-its',
     url: '/square/',
-  },
-  bcard: {
-    title: 'Business Cards',
-    shortTitle: 'Biz Cards',
-    url: '/bcard/',
   },
   sticker: {
     title: 'Stickers',
