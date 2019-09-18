@@ -35,8 +35,12 @@ export const MATERIAL_FOLDERS = {
 }
 
 function splitFileExt(filename) {
-  const idx = lastIndexOf(filename, '.')
-  return [filename.substr(0, idx), filename.substr(idx + 1)]
+  const possibleFilename = filename.split('/').pop()
+  const idx = lastIndexOf(possibleFilename, '.')
+  if (idx !== -1) {
+    return [possibleFilename.substr(0, idx), possibleFilename.substr(idx + 1)]
+  }
+  return []
 }
 
 /**
@@ -72,7 +76,13 @@ export default class Material {
   }
 
   get downloadUrlExt() {
-    return splitFileExt(this.downloadUrl)[1]
+    const parts = splitFileExt(this.downloadUrl)
+    return parts[1] ? parts[1] : null
+  }
+
+  get srcExt() {
+    const parts = splitFileExt(this.srcPath)
+    return parts[1] ? parts[1] : null
   }
 
   get folder() {

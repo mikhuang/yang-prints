@@ -8,6 +8,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import SaveIcon from '@material-ui/icons/SaveAltSharp'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCartSharp'
+import PhotoIcon from '@material-ui/icons/InsertPhotoSharp'
 import ArrowBack from '@material-ui/icons/ArrowBackIosSharp'
 import ArrowForward from '@material-ui/icons/ArrowForwardIosSharp'
 import { Link as RouterLink } from '@reach/router'
@@ -194,6 +195,21 @@ export default function Material(props) {
               <SaveIcon className={classes.icon} />
               Download .{material.downloadUrlExt}
             </Button>
+            {material.srcPath && (
+              <Button
+                className={classes.button}
+                variant="contained"
+                color="primary"
+                size="large"
+                component="a"
+                rel="noreferrer noopener"
+                href={material.srcPath}
+                target="_blank"
+              >
+                <PhotoIcon className={classes.icon} />
+                Source{material.srcExt && ` .${material.srcExt}`}
+              </Button>
+            )}
           </Box>
         </Box>
         <Grid container>
@@ -201,7 +217,7 @@ export default function Material(props) {
             {prev ? (
               <div>
                 <Button
-                  component={Link}
+                  component={RouterLink}
                   to={prev.url}
                   className={classes.navLink}
                 >
@@ -217,7 +233,7 @@ export default function Material(props) {
             {next ? (
               <div>
                 <Button
-                  component={Link}
+                  component={RouterLink}
                   to={next.url}
                   className={classes.navLink}
                 >

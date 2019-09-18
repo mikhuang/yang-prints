@@ -107,7 +107,6 @@ export default function Navbar() {
                 <Button
                   component={AdapterLink}
                   to={folder.url}
-                  button
                   key={folderKey}
                   className={classes.contrastColor}
                 >
