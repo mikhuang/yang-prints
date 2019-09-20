@@ -42,8 +42,11 @@ export default function Navbar() {
       </Box>
 
       <Typography gutterBottom variant="caption">
-        This website is not affiliated with the official Yang2020 campaign. The
-        official website for Yang2020 can be found at{' '}
+        All artwork is property of their creators. Personal use only (which
+        means print out as many as you possibly can and give it to as many
+        people as possible so that Andrew Yang wins). Cannot be sold or put on
+        merchandise for profit. This website is not affiliated with the official
+        Yang2020 campaign. The official website for Yang2020 can be found at{' '}
         <Link href="https://yang2020.com">yang2020.com</Link>.
       </Typography>
     </Container>

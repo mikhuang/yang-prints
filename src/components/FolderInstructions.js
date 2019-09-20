@@ -17,15 +17,26 @@ export default function FolderInstructions({ folderKey }) {
               There are tons of places for cheap printing.
               <ul>
                 <li>
-                  Staples should be around $25 for 1000 double-sided color. Pick
-                  up in store to avoid delivery fees.
+                  Next day pickup:{' '}
+                  <Link href="https://staples.com">Staples</Link> should be
+                  around $25 for 1000 double-sided color. Pick up in store to
+                  avoid delivery fees.
+                </li>
+                <li>
+                  Slow but cheap:{' '}
+                  <Link href="https://360onlineprint.com">
+                    360onlineprint.com
+                  </Link>{' '}
+                  is around $25 for 4000 cards, with 2 week delivery.
                 </li>
                 <li>
                   <Link href="https://www.gotprint.com">GotPrint</Link> offers
                   10% off with code <b>YANG2020</b>.
                 </li>
                 <li>
-                  Vistaprint and tons of other places online can be cheap too.
+                  <Link href="https://vistaprint.com">Vistaprint</Link>,{' '}
+                  <Link href="https://psprint.com">PsPrint</Link> and tons of
+                  other places online tend to be in between, depending on promo.
                 </li>
               </ul>
             </li>

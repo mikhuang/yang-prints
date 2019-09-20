@@ -12,6 +12,18 @@ const useStyles = makeStyles(theme => ({
     maxWidth: 600,
   },
 }))
+
+function FAQSection({ title, children }) {
+  return (
+    <Box mb={3}>
+      <Typography gutterBottom variant="h6">
+        {title}
+      </Typography>
+      {children}
+    </Box>
+  )
+}
+
 export default () => {
   const classes = useStyles()
   return (
@@ -19,10 +31,7 @@ export default () => {
       <Title gutterBottom variant="h4">
         FAQ
       </Title>
-      <Box mb={3}>
-        <Typography gutterBottom variant="h6">
-          How do I get started?
-        </Typography>
+      <FAQSection title="How do I get started?">
         <Typography gutterBottom>
           If you're printing from home, just download files and try printing
           them out. For an awesome guide, check out{' '}
@@ -31,11 +40,9 @@ export default () => {
           </Link>
           .
         </Typography>
-      </Box>
-      <Box mb={3}>
-        <Typography gutterBottom variant="h6">
-          Where did these designs come from?
-        </Typography>
+      </FAQSection>
+
+      <FAQSection title="Where did these designs come from?">
         <Typography paragraph>
           The YangGang is creative and passionate. The designs on YangPrints
           come from all over. Sources are linked where I was able to find them.
@@ -60,11 +67,9 @@ export default () => {
             </li>
           </ul>
         </Typography>
-      </Box>
-      <Box mb={3}>
-        <Typography gutterBottom variant="h6">
-          I want to make something. Where do I get logos, photos, fonts, etc?
-        </Typography>
+      </FAQSection>
+
+      <FAQSection title="I want to make something. Where do I get logos, photos, fonts, etc?">
         <Typography component="div">
           <ul>
             <li>
@@ -90,7 +95,26 @@ export default () => {
           </ul>
           If you'd like to share, please submit your design below.
         </Typography>
-      </Box>
+      </FAQSection>
+
+      <FAQSection title="Where can I just like buy stuff?">
+        <Typography component="div">
+          <ul>
+            <li>
+              <Link href="https://shop.yang2020.com">Official store</Link>
+            </li>
+            <li>
+              <Link href="https://yangtrain.co">YANG TRAIN</Link> - designs by{' '}
+              <Link href="https://www.instagram.com/jdschang/">@jdschang</Link>,
+              creator of Mini Yang!!
+            </li>
+            <li>
+              Probably lots more places. Try to buy stuff that chips in to the
+              campaign, alternatively, just chip into the campaign 😹
+            </li>
+          </ul>
+        </Typography>
+      </FAQSection>
     </Container>
   )
 }
