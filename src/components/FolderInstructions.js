@@ -107,6 +107,21 @@ export default function FolderInstructions({ folderKey }) {
       </Fragment>
     )
   }
+  if (folderKey === 'ganged') {
+    return (
+      <Fragment>
+        <InstructionsTitle />
+        <Typography>
+          These files are{' '}
+          <Link href="https://en.wikipedia.org/wiki/Gang_run_printing">
+            &ldquo;ganged&rdquo;
+          </Link>{' '}
+          together so you can print many at a time, then cut them apart for
+          usage.
+        </Typography>
+      </Fragment>
+    )
+  }
   if (folderKey === 'button') {
     return (
       <Fragment>
@@ -124,6 +139,14 @@ export default function FolderInstructions({ folderKey }) {
               is pretty good.
             </li>
             <li>
+              <Link href="http://thebuttonguy.net">The Button Guy</Link> is okay
+              for information but he is like totally bought off by the store{' '}
+              <Link href="https://peoplepowerpress.org">
+                People Power Press
+              </Link>{' '}
+              (who are also fine)
+            </li>
+            <li>
               Button parts are available on Amazon at{' '}
               <Link href="https://www.amazon.com/Neil-Enterprises-Button-Parts-Machine/dp/B0042ST1B0/ref=sr_1_1?keywords=2.25+button+500&qid=1568440383&s=gateway&sr=8-1">
                 $100 for 500 buttons
@@ -138,6 +161,15 @@ export default function FolderInstructions({ folderKey }) {
             <li>
               Button presses can often be borrowed (check with elementary school
               teachers and politically active folks).
+            </li>
+            <li>
+              <Link href="https://www.amazon.com/Mophorn-Button-Machine-Circle-1000pcs/dp/B07DL5JNXM/">
+                Cheap button presses on Amazon (~$140, comes with 1000 button
+                parts)
+              </Link>{' '}
+              more or less work but some of them have backs that are made of
+              plastic, if you care about that sort of thing. Also, parts might
+              be specific to that machine.
             </li>
             <li>
               Alternatively, there are{' '}

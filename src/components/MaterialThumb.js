@@ -29,8 +29,8 @@ const useStyles = makeStyles(theme => ({
     },
   }),
   'material-sized-bcard': ({ zoom }) => ({
-    maxHeight: zoom * 50,
-    maxWidth: zoom * 50,
+    maxHeight: zoom * 80,
+    maxWidth: zoom * 80,
     [theme.breakpoints.up('sm')]: {
       maxHeight: zoom * 150,
       maxWidth: zoom * 150,
