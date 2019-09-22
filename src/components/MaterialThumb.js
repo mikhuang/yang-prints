@@ -22,10 +22,10 @@ const useStyles = makeStyles(theme => ({
   }),
   'material-sized-poster': ({ zoom }) => ({
     maxHeight: zoom * 125,
-    maxWidth: zoom * 100,
+    maxWidth: zoom * 125,
     [theme.breakpoints.up('sm')]: {
       maxHeight: zoom * 350,
-      maxWidth: zoom * 250,
+      maxWidth: zoom * 350,
     },
   }),
   'material-sized-bcard': ({ zoom }) => ({
