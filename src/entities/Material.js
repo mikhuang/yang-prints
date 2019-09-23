@@ -29,7 +29,7 @@ export const MATERIAL_FOLDERS = {
     url: '/handout/',
   },
   ganged: {
-    title: 'Ganged',
+    title: 'Mini-Handouts',
     url: '/ganged/',
   },
   banner: {
