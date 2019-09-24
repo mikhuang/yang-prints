@@ -31,7 +31,6 @@ export default function Material() {
 
   const { materials: materialsData } = useRouteData()
   const materials = toMaterialEntity(materialsData)
-
   const gridSizes = { xs: 6, sm: 3, lg: 2, xl: 2 }
 
   return (
