@@ -1,14 +1,21 @@
 import path from 'path'
 import materials from './data/materials.json'
 import Material, { MATERIAL_FOLDERS } from './src/entities/Material'
+import Tag from './src/entities/Tag'
 
-// check for URL collisions
-const { duplicates } = materials.reduce(
-  (acc, m) => {
-    const url = new Material(m).url
+// process tags, check for URL collisions
+const { duplicates, tagCounts } = materials.reduce(
+  (acc, materialRaw) => {
+    const material = new Material(materialRaw)
+    const url = material.url
     if (acc.urls.includes(url)) {
       acc.duplicates.push(url)
     } else {
+      material.tags.forEach(tag => {
+        if (tag) {
+          acc.tagCounts[tag] = (acc.tagCounts[tag] || 0) + 1
+        }
+      })
       acc.urls.push(url)
     }
     return acc
@@ -16,12 +23,16 @@ const { duplicates } = materials.reduce(
   {
     duplicates: [],
     urls: [],
+    tagCounts: {},
   }
 )
 
 if (duplicates.length > 0) {
   console.log('WARNING! DUPLICATES!', duplicates)
 }
+
+// can only pass raw objects, not classes
+const commonData = { materials, tagCounts }
 
 export default {
   getRoutes: () => {
@@ -31,7 +42,7 @@ export default {
         path: folder.url,
         template: 'src/containers/Folder',
         getData: () => ({
-          materials,
+          ...commonData,
           folder,
           folderKey,
         }),
@@ -42,8 +53,17 @@ export default {
       path: new Material(material).url,
       template: 'src/containers/Material',
       getData: () => ({
-        materials,
+        ...commonData,
         material,
+      }),
+    }))
+
+    const tagPages = Object.keys(tagCounts).map(tag => ({
+      path: new Tag(tag).url,
+      template: 'src/containers/Tag',
+      getData: () => ({
+        ...commonData,
+        tag,
       }),
     }))
 
@@ -51,18 +71,26 @@ export default {
       {
         path: '/',
         getData: () => ({
-          materials,
+          ...commonData,
         }),
         children: [
-          ...materialPages,
-          ...folderPages,
           {
             path: 'all',
             template: 'src/containers/All',
             getData: () => ({
-              materials,
+              ...commonData,
             }),
           },
+          {
+            path: 'tags',
+            template: 'src/containers/Tags',
+            getData: () => ({
+              ...commonData,
+            }),
+          },
+          ...materialPages,
+          ...folderPages,
+          ...tagPages,
         ],
       },
     ]

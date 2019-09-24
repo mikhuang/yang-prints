@@ -51,6 +51,10 @@ function splitFileExt(filename) {
   return []
 }
 
+function processTags(tags) {
+  return (tags || '').split(',').map(x => x.trim().toUpperCase())
+}
+
 /**
  * abstraction for material data, includes getters for images etc
  */
@@ -68,6 +72,7 @@ export default class Material {
     this.description = material.description
     this.srcPath = material.src_path
     this.buyUrl = material.buy_url
+    this.tags = processTags(material.tags)
   }
 
   get url() {

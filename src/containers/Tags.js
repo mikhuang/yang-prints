@@ -1,0 +1,57 @@
+import Badge from '@material-ui/core/Badge'
+import Box from '@material-ui/core/Box'
+import Button from '@material-ui/core/Button'
+import { makeStyles } from '@material-ui/core/styles'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
+import React, { Fragment } from 'react'
+import { Head, useRouteData } from 'react-static'
+import { AdapterLink } from '../components/Router'
+import Title from '../components/Title'
+import Tag from '../entities/Tag'
+
+const useStyles = makeStyles(theme => ({
+  button: {
+    margin: theme.spacing(1, 1.5),
+  },
+}))
+
+export default function Tags() {
+  const isLarge = useMediaQuery('(min-width:600px)')
+  const { tagCounts } = useRouteData()
+  const classes = useStyles()
+
+  return (
+    <Fragment>
+      <Head>
+        <title>YangPrints Tags</title>
+      </Head>
+      <Box p={5} mt={1}>
+        <Title align="center" variant={isLarge ? 'h2' : 'h4'}>
+          #Tags
+        </Title>
+        <Box my={4}>
+          {Object.keys(tagCounts).map(tag => {
+            const count = tagCounts[tag]
+            const tagEntity = new Tag(tag)
+            return (
+              <Badge
+                className={classes.button}
+                key={tag}
+                color="secondary"
+                badgeContent={count}
+              >
+                <Button
+                  variant="outlined"
+                  component={AdapterLink}
+                  to={tagEntity.url}
+                >
+                  {tagEntity.title}
+                </Button>
+              </Badge>
+            )
+          })}
+        </Box>
+      </Box>
+    </Fragment>
+  )
+}
