@@ -1,6 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles'
 import cx from 'clsx'
 import React from 'react'
+import LazyLoad from 'react-lazyload'
 import { Link } from '../components/Router'
 
 const useStyles = makeStyles(theme => ({
@@ -75,9 +76,11 @@ export default function MaterialThumb({
   zoom = 1,
   className = '',
   linkClassName = '',
+  lazy = true,
+  lazyOffset = 100,
 }) {
   const classes = useStyles({ zoom })
-  return (
+  const link = (
     <Link key={material.url} to={material.url} className={linkClassName}>
       <img
         className={cx(className, classes.material, {
@@ -90,4 +93,9 @@ export default function MaterialThumb({
       />
     </Link>
   )
+
+  if (lazy) {
+    return <LazyLoad offset={lazyOffset}>{link}</LazyLoad>
+  }
+  return link
 }

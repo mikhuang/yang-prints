@@ -20,7 +20,7 @@ function App(props) {
         <meta
           name="description"
           content="Andrew Yang 2020 posters, handouts, flyers, sticker templates to
-          download and print."
+          download and print. Promote Yang2020 fast, just grab and go, go, go!"
         />
       </Head>
       <CssBaseline />

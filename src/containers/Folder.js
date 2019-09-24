@@ -24,6 +24,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
+const PRELOAD_COUNT = 5
 export default function Material() {
   const classes = useStyles()
 
@@ -48,9 +49,10 @@ export default function Material() {
       >
         {orderBy(materials, ['date'], ['desc'])
           .filter(x => x.folderId === folderKey)
-          .map(material => (
+          .map((material, idx) => (
             <Grid item {...gridSizes} className={classes.gridItem}>
               <MaterialThumb
+                lazy={idx >= PRELOAD_COUNT}
                 linkClassName={classes.link}
                 className={classes.material}
                 sized={false}

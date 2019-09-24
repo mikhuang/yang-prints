@@ -46,6 +46,8 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
+const PRELOAD_ROWS_COUNT = 1
+
 export default () => {
   const isLarge = useMediaQuery('(min-width:600px)')
   const classes = useStyles()
@@ -83,8 +85,9 @@ export default () => {
             <div key={folderKey} className={classes.rowInner}>
               {orderBy(folderMaterials, ['date'], ['desc'])
                 .slice(0, ROW_LIMIT)
-                .map(material => (
+                .map((material, idx) => (
                   <MaterialThumb
+                    lazy={idx >= PRELOAD_ROWS_COUNT}
                     className={classes.material}
                     key={material.slug}
                     material={material}
