@@ -5,7 +5,6 @@ import useMediaQuery from '@material-ui/core/useMediaQuery'
 import orderBy from 'lodash/orderBy'
 import React, { Fragment } from 'react'
 import { Head, useRouteData } from 'react-static'
-import FolderInstructions from '../components/FolderInstructions'
 import MaterialThumb from '../components/MaterialThumb'
 import Title from '../components/Title'
 import { toMaterialEntity } from '../entities/Material'
@@ -29,21 +28,20 @@ const PRELOAD_COUNT = 5
 export default function Material() {
   const classes = useStyles()
   const isLarge = useMediaQuery('(min-width:600px)')
-  const { materials: materialsData, folder, folderKey } = useRouteData()
+
+  const { materials: materialsData } = useRouteData()
   const materials = toMaterialEntity(materialsData)
-  const gridSizes = folder.gridSizes || { xs: 6, sm: 4, lg: 3, xl: 2 }
-  const folderMaterials = orderBy(materials, ['date'], ['desc']).filter(
-    x => x.folderId === folderKey
-  )
+
+  const gridSizes = { xs: 6, sm: 3, lg: 2, xl: 2 }
 
   return (
     <Fragment>
       <Head>
-        <title>Yang2020 {folder.title}</title>
+        <title>All the YangPrints!</title>
       </Head>
       <Box p={5} mt={1}>
-        <Title align="center" variant={isLarge ? 'h2' : 'h4'}>
-          {folder.title}
+        <Title align="center" variant={isLarge ? 'h2' : 'h4'} after="!">
+          All the Prints
         </Title>
       </Box>
 
@@ -53,10 +51,10 @@ export default function Material() {
         justify="center"
         container
       >
-        {folderMaterials.map((material, idx) => (
+        {orderBy(materials, ['date'], ['desc']).map((material, idx) => (
           <Grid
-            key={material.url}
             item
+            key={material.url}
             {...gridSizes}
             className={classes.gridItem}
           >
@@ -70,9 +68,6 @@ export default function Material() {
           </Grid>
         ))}
       </Grid>
-      <Box px={2} mt={1}>
-        <FolderInstructions folderKey={folderKey} />
-      </Box>
     </Fragment>
   )
 }

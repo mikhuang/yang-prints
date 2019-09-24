@@ -58,6 +58,9 @@ export default function Navbar() {
           </List>
           <Divider />
           <List>
+            <ListItem component={AdapterLink} to="/all" button>
+              <ListItemText primary="All" />
+            </ListItem>
             {Object.keys(MATERIAL_FOLDERS).map(folderKey => {
               const folder = MATERIAL_FOLDERS[folderKey]
               return (
@@ -101,6 +104,13 @@ export default function Navbar() {
           </Button>
 
           <Hidden smDown>
+            <Button
+              component={AdapterLink}
+              to="/all"
+              className={classes.contrastColor}
+            >
+              All
+            </Button>
             {Object.keys(MATERIAL_FOLDERS).map(folderKey => {
               const folder = MATERIAL_FOLDERS[folderKey]
               return (
@@ -115,13 +125,6 @@ export default function Navbar() {
               )
             })}
           </Hidden>
-          <Button
-            component={MaterialLink}
-            href="https://shop.yang2020.com"
-            className={classes.contrastColor}
-          >
-            SHOP
-          </Button>
           <Button
             component={AdapterLink}
             to="/about"
