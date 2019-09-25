@@ -246,7 +246,10 @@ export default function Material(props) {
           </Grid>
         </Grid>
         <Box mt={6}>
-          <FolderInstructions folderKey={material.folderId} />
+          <FolderInstructions
+            folderKey={material.folderId}
+            tags={material.tags}
+          />
         </Box>
       </Container>
     </Fragment>
