@@ -1,6 +1,5 @@
 import Typography from '@material-ui/core/Typography'
 import React from 'react'
-import zineInstructions from './zine-instructions.jpg'
 
 export default function Zine() {
   return (
@@ -9,7 +8,7 @@ export default function Zine() {
       booklet like this:
       <br />
       <img
-        src={zineInstructions}
+        src="/img/zine-instructions.jpg"
         alt="Instructions on how to make a Zine!"
         style={{ maxWidth: '100%' }}
       />

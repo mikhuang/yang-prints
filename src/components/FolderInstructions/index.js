@@ -39,7 +39,6 @@ export default function FolderInstructions({ folderKey, tags = [] }) {
         <InstructionsTitle />
         {validKeys.map(key => {
           const Component = KEY_TO_COMPONENT_MAPPING[key]
-          console.log(Component)
           return <Component key={key} />
         })}
       </Fragment>
