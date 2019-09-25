@@ -11,7 +11,7 @@ import orderBy from 'lodash/orderBy'
 import React from 'react'
 import { useRouteData } from 'react-static'
 import { MATERIAL_FOLDERS, toMaterialEntity } from '../entities/Material'
-import yangprints from '../img/yangprints.png'
+import yangprints from './yangprints.png'
 
 const ROW_LIMIT = 12
 

@@ -1,11 +1,10 @@
-import Link from '@material-ui/core/Link'
 import Typography from '@material-ui/core/Typography'
 import React, { Fragment } from 'react'
 import Bcard from './bcard'
-import Sticker from './sticker'
-import Square from './square'
-import Ganged from './ganged'
 import Button from './button'
+import Ganged from './ganged'
+import Square from './square'
+import Sticker from './sticker'
 import Zine from './zine'
 
 const InstructionsTitle = () => <Typography variant="caption">TIPS</Typography>
