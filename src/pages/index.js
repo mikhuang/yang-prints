@@ -9,7 +9,7 @@ import Title from 'components/Title'
 import groupBy from 'lodash/groupBy'
 import orderBy from 'lodash/orderBy'
 import React from 'react'
-import { useRouteData } from 'react-static'
+import { useSiteData } from 'react-static'
 import { MATERIAL_FOLDERS, toMaterialEntity } from '../entities/Material'
 
 const ROW_LIMIT = 12
@@ -52,7 +52,7 @@ export default () => {
   const isLarge = useMediaQuery('(min-width:600px)')
   const classes = useStyles()
 
-  const { materials: materialsData } = useRouteData()
+  const { materials: materialsData } = useSiteData()
   const materials = toMaterialEntity(materialsData)
   const materialsByFolder = groupBy(materials, 'folderId')
 

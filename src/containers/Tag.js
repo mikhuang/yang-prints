@@ -1,32 +1,33 @@
-import { default as MaterialLink } from '@material-ui/core/Link'
-import Breadcrumbs from '@material-ui/core/Breadcrumbs'
 import Box from '@material-ui/core/Box'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
+import Breadcrumbs from '@material-ui/core/Breadcrumbs'
+import { default as MaterialLink } from '@material-ui/core/Link'
+import { Link as RouterLink } from '@reach/router'
 import orderBy from 'lodash/orderBy'
 import React, { Fragment } from 'react'
-import { Head, useRouteData } from 'react-static'
+import { Head, useRouteData, useSiteData } from 'react-static'
 import FolderInstructions from '../components/FolderInstructions'
 import MaterialGrid from '../components/MaterialGrid'
-import Title from '../components/Title'
 import { toMaterialEntity } from '../entities/Material'
-import { Link as RouterLink } from '@reach/router'
+import Tag from '../entities/Tag'
 
 const PRELOAD_COUNT = 5
-export default function Tag() {
-  const isLarge = useMediaQuery('(min-width:600px)')
-  const { materials: materialsData, tag } = useRouteData()
+export default function TagContainer() {
+  const { tag: tagKey } = useRouteData()
+  const { materials: materialsData } = useSiteData()
+
   const materials = toMaterialEntity(materialsData)
   const gridSizes = { xs: 6, sm: 4, lg: 3, xl: 2 }
   const tagMaterials = orderBy(materials, ['date'], ['desc']).filter(x =>
-    x.tags.includes(tag)
+    x.tags.includes(tagKey)
   )
+  const tag = new Tag(tagKey)
 
   return (
     <Fragment>
       <Head>
-        <title>Yang2020 #{tag}</title>
+        <title>Yang2020 {tag.title}</title>
       </Head>
-      <Box p={5} mt={1}>
+      <Box p={2}>
         <Breadcrumbs separator="›" aria-label="breadcrumb">
           <MaterialLink component={RouterLink} color="inherit" to="/">
             Home
@@ -34,10 +35,15 @@ export default function Tag() {
           <MaterialLink component={RouterLink} color="inherit" to="/tags">
             Tags
           </MaterialLink>
+          <MaterialLink
+            color="textPrimary"
+            aria-current="page"
+            component={RouterLink}
+            to={tag.url}
+          >
+            {tag.title}
+          </MaterialLink>
         </Breadcrumbs>
-        <Title align="center" variant={isLarge ? 'h2' : 'h4'}>
-          #{tag}
-        </Title>
       </Box>
 
       <MaterialGrid
@@ -47,7 +53,7 @@ export default function Tag() {
       />
 
       <Box px={2} mt={1}>
-        <FolderInstructions folderKey={tag} />
+        <FolderInstructions folderKey={tagKey} />
       </Box>
     </Fragment>
   )

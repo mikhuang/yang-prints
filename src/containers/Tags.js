@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button'
 import { makeStyles } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import React, { Fragment } from 'react'
-import { Head, useRouteData } from 'react-static'
+import { Head, useSiteData } from 'react-static'
 import { AdapterLink } from '../components/Router'
 import Title from '../components/Title'
 import Tag from '../entities/Tag'
@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function Tags() {
   const isLarge = useMediaQuery('(min-width:600px)')
-  const { tagCounts } = useRouteData()
+  const { tagCounts } = useSiteData()
   const classes = useStyles()
 
   return (

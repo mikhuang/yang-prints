@@ -31,10 +31,8 @@ if (duplicates.length > 0) {
   console.log('WARNING! DUPLICATES!', duplicates)
 }
 
-// can only pass raw objects, not classes
-const commonData = { materials, tagCounts }
-
 export default {
+  getSiteData: () => ({ materials, tagCounts }),
   getRoutes: () => {
     const folderPages = Object.keys(MATERIAL_FOLDERS).map(folderKey => {
       const folder = MATERIAL_FOLDERS[folderKey]
@@ -42,7 +40,6 @@ export default {
         path: folder.url,
         template: 'src/containers/Folder',
         getData: () => ({
-          ...commonData,
           folder,
           folderKey,
         }),
@@ -53,7 +50,6 @@ export default {
       path: new Material(material).url,
       template: 'src/containers/Material',
       getData: () => ({
-        ...commonData,
         material,
       }),
     }))
@@ -62,7 +58,6 @@ export default {
       path: new Tag(tag).url,
       template: 'src/containers/Tag',
       getData: () => ({
-        ...commonData,
         tag,
       }),
     }))
@@ -70,23 +65,14 @@ export default {
     return [
       {
         path: '/',
-        getData: () => ({
-          ...commonData,
-        }),
         children: [
           {
             path: 'all',
             template: 'src/containers/All',
-            getData: () => ({
-              ...commonData,
-            }),
           },
           {
             path: 'tags',
             template: 'src/containers/Tags',
-            getData: () => ({
-              ...commonData,
-            }),
           },
           ...materialPages,
           ...folderPages,

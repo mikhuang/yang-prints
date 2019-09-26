@@ -1,4 +1,5 @@
 import lastIndexOf from 'lodash/lastIndexOf'
+import Tag from './Tag'
 export const MATERIAL_FOLDERS = {
   poster: {
     title: 'Posters',
@@ -73,6 +74,7 @@ export default class Material {
     this.srcPath = material.src_path
     this.buyUrl = material.buy_url
     this.tags = processTags(material.tags)
+    this.tagEntities = this.tags.map(tag => new Tag(tag))
   }
 
   get url() {

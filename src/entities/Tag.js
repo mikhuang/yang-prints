@@ -6,10 +6,11 @@ function slugify(tag) {
  * abstraction for tag data
  */
 export default class Tag {
-  constructor(tag) {
+  constructor(tag, count = 1) {
     this.tag = tag
     this.title = `#${tag}`
     this.slug = slugify(tag)
+    this.count = count
   }
 
   get url() {

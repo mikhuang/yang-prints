@@ -15,7 +15,7 @@ import { Link as RouterLink } from '@reach/router'
 import cx from 'clsx'
 import orderBy from 'lodash/orderBy'
 import React, { Fragment } from 'react'
-import { Head, useRouteData } from 'react-static'
+import { Head, useRouteData, useSiteData } from 'react-static'
 import MaterialThumb from '../components/MaterialThumb'
 import ReactGA from 'react-ga'
 import {
@@ -23,6 +23,7 @@ import {
   toMaterialEntity,
 } from '../entities/Material'
 import FolderInstructions from '../components/FolderInstructions'
+import MaterialTags from '../components/MaterialTags'
 import { useHotkeys } from 'react-hotkeys-hook'
 import { navigate } from '@reach/router'
 
@@ -63,7 +64,8 @@ const useStyles = makeStyles(theme => ({
 export default function Material(props) {
   const classes = useStyles()
 
-  const { materials: materialsData, material: materialData } = useRouteData()
+  const { material: materialData } = useRouteData()
+  const { materials: materialsData } = useSiteData()
   const materials = toMaterialEntity(materialsData)
   const material = new MaterialEntity(materialData)
 
@@ -113,7 +115,7 @@ export default function Material(props) {
           }
         />
       </Head>
-      <Box px={2} py={1}>
+      <Box p={2}>
         <Breadcrumbs separator="›" aria-label="breadcrumb">
           <MaterialLink component={RouterLink} color="inherit" to="/">
             Home
@@ -160,6 +162,7 @@ export default function Material(props) {
           <Typography variant="caption" display="block" gutterBottom>
             {material.description}
           </Typography>
+          <MaterialTags variant="caption" material={material} />
         </Box>
 
         <Box mx={-1}>
