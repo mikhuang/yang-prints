@@ -125,6 +125,9 @@ export default function Navbar({ tags }) {
             <ListItem component={AdapterLink} to={'/'} button>
               <ListItemText primary="Home" />
             </ListItem>
+            <ListItem component={AdapterLink} to={'/tags'} button>
+              <ListItemText primary="Tags" />
+            </ListItem>
           </List>
           <Divider />
           <List>
