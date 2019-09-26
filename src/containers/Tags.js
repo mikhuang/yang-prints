@@ -20,6 +20,9 @@ export default function Tags() {
   const { tagCounts } = useSiteData()
   const classes = useStyles()
 
+  function countSorter(a, b) {
+    return tagCounts[a] < tagCounts[b] ? 1 : -1
+  }
   return (
     <Fragment>
       <Head>
@@ -30,26 +33,28 @@ export default function Tags() {
           #Tags
         </Title>
         <Box my={4}>
-          {Object.keys(tagCounts).map(tag => {
-            const count = tagCounts[tag]
-            const tagEntity = new Tag(tag)
-            return (
-              <Badge
-                className={classes.button}
-                key={tag}
-                color="secondary"
-                badgeContent={count}
-              >
-                <Button
-                  variant="outlined"
-                  component={AdapterLink}
-                  to={tagEntity.url}
+          {Object.keys(tagCounts)
+            .sort(countSorter)
+            .map(tag => {
+              const count = tagCounts[tag]
+              const tagEntity = new Tag(tag)
+              return (
+                <Badge
+                  className={classes.button}
+                  key={tag}
+                  color="secondary"
+                  badgeContent={count}
                 >
-                  {tagEntity.title}
-                </Button>
-              </Badge>
-            )
-          })}
+                  <Button
+                    variant="outlined"
+                    component={AdapterLink}
+                    to={tagEntity.url}
+                  >
+                    {tagEntity.title}
+                  </Button>
+                </Badge>
+              )
+            })}
         </Box>
       </Box>
     </Fragment>
