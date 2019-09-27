@@ -4,8 +4,8 @@ import React from 'react'
 export default function Zine() {
   return (
     <Typography>
-      This design is a zine! Print it out on regular paper and turn it into a
-      booklet like this:
+      Zines are awesome! Print them out on regular paper and turn them into
+      booklets like this:
       <br />
       <img
         src="/img/zine-instructions.jpg"

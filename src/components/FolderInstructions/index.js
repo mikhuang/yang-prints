@@ -1,3 +1,6 @@
+import Container from '@material-ui/core/Container'
+import { makeStyles } from '@material-ui/core/styles'
+
 import Typography from '@material-ui/core/Typography'
 import React, { Fragment } from 'react'
 import Bcard from './bcard'
@@ -17,11 +20,17 @@ const KEY_TO_COMPONENT_MAPPING = {
   button: Button,
   ZINE: Zine,
 }
-
+const useStyles = makeStyles(theme => ({
+  root: {
+    maxWidth: 600,
+  },
+}))
 /**
  * Show instructions depending on folder and tags
  */
 export default function FolderInstructions({ folderKey, tags = [] }) {
+  const classes = useStyles()
+
   const validKeys = []
   const keys = Object.keys(KEY_TO_COMPONENT_MAPPING)
   if (keys.includes(folderKey)) {
@@ -35,13 +44,13 @@ export default function FolderInstructions({ folderKey, tags = [] }) {
 
   if (validKeys.length > 0) {
     return (
-      <Fragment>
+      <Container className={classes.root}>
         <InstructionsTitle />
         {validKeys.map(key => {
           const Component = KEY_TO_COMPONENT_MAPPING[key]
           return <Component key={key} />
         })}
-      </Fragment>
+      </Container>
     )
   }
 
