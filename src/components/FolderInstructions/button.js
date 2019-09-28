@@ -63,8 +63,19 @@ export default function Button() {
           put a bunch on a single page). Here are some examples of ganged files.
           <ul>
             <li>
+              <Link href="/media/20190928/8.5x11-yanggang-math to print.pdf">
+                8.5x11" Sheet - YangGang, Math
+              </Link>
+            </li>
+
+            <li>
+              <Link href="/media/20190928/8.5x11-yang-persona to print.pdf">
+                8.5x11" Sheet - Yang Persona
+              </Link>
+            </li>
+            <li>
               <Link href="/media/20190928/oakland-8.5x11 to print.pdf">
-                8.5x11" Sheet 1
+                8.5x11" Sheet - Oakland, CA
               </Link>
             </li>
             <li>
