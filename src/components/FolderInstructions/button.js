@@ -58,6 +58,37 @@ export default function Button() {
           Yang2020 on their phones, or to promise to talk to their parents about
           Yang.
         </li>
+        <li>
+          When you're ready to print your buttons, it's useful to gang them (AKA
+          put a bunch on a single page). Here are some examples of ganged files.
+          <ul>
+            <li>
+              <Link href="/media/20190928/oakland-8.5x11 to print.pdf">
+                8.5x11" Sheet 1
+              </Link>
+            </li>
+            <li>
+              <Link href="/media/20190928/yang_btn_02 to print 2.pdf">
+                13x19" Sheet 1
+              </Link>
+            </li>
+            <li>
+              <Link href="/media/20190928/yang_btn_02 to print.pdf">
+                13x19" Sheet 2
+              </Link>
+            </li>
+            <li>
+              <Link href="/media/20190928/yang_btn_03 to print 2.pdf">
+                13x19" Sheet 3
+              </Link>
+            </li>
+            <li>
+              <Link href="/media/20190928/yang_btn_03 to print.pdf">
+                13x19" Sheet 4
+              </Link>
+            </li>
+          </ul>
+        </li>
       </ul>
     </Typography>
   )
