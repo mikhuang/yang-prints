@@ -12,11 +12,15 @@ export default function TagList({ tags, ...otherProps }) {
   return (
     <Typography {...otherProps}>
       {tags.map((tag, idx) => {
-        const link = <Link to={tag.url}>{tag.title}</Link>
+        const link = (
+          <Link to={tag.url} key={tag.title}>
+            {tag.title}
+          </Link>
+        )
         if (idx === 0) {
           return link
         }
-        return <Fragment key={tag}>, {link}</Fragment>
+        return <Fragment key={tag.title}>, {link}</Fragment>
       })}
     </Typography>
   )

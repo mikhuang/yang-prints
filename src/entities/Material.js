@@ -37,6 +37,10 @@ export const MATERIAL_FOLDERS = {
     title: 'Banners',
     url: '/banner/',
   },
+  hanger: {
+    title: 'Hangers',
+    url: '/hanger/',
+  },
   invite: {
     title: 'Invites',
     url: '/invite/',
@@ -53,7 +57,13 @@ function splitFileExt(filename) {
 }
 
 function processTags(tags) {
-  return (tags || '').split(',').map(x => x.trim().toUpperCase())
+  return (tags || '').split(',').reduce((acc, x) => {
+    const possibleTag = x.trim().toUpperCase()
+    if (possibleTag) {
+      acc.push(possibleTag)
+    }
+    return acc
+  }, [])
 }
 
 /**
