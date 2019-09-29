@@ -5,7 +5,8 @@ import { makeStyles } from '@material-ui/core/styles'
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 import React from 'react'
-import Title from '../components/Title'
+import Title from '../../components/Title'
+import FooterTagsWrapper from './FooterTagsWrapper'
 const useStyles = makeStyles(theme => ({
   root: {
     marginTop: theme.spacing(10),
@@ -40,7 +41,7 @@ export default function Navbar() {
           Submit Materials
         </Button>
       </Box>
-
+      <FooterTagsWrapper />
       <Typography gutterBottom variant="caption">
         All artwork is property of their creators. Personal use only (which
         means print out as many as you possibly can and give it to as many

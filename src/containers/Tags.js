@@ -28,7 +28,7 @@ export default function Tags() {
       <Head>
         <title>YangPrints Tags</title>
       </Head>
-      <Box p={5} mt={1}>
+      <Box p={isLarge ? 5 : 1} mt={1}>
         <Title align="center" variant={isLarge ? 'h2' : 'h4'}>
           #Tags
         </Title>

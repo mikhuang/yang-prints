@@ -23,7 +23,7 @@ import {
   toMaterialEntity,
 } from '../entities/Material'
 import FolderInstructions from '../components/FolderInstructions'
-import MaterialTags from '../components/MaterialTags'
+import TagList from '../components/TagList'
 import { useHotkeys } from 'react-hotkeys-hook'
 import { navigate } from '@reach/router'
 
@@ -162,7 +162,7 @@ export default function Material(props) {
           <Typography variant="caption" display="block" gutterBottom>
             {material.description}
           </Typography>
-          <MaterialTags variant="caption" material={material} />
+          <TagList variant="caption" tags={material.tagEntities} />
         </Box>
 
         <Box mx={-1}>

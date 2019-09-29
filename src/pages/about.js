@@ -69,6 +69,17 @@ export default () => {
         </Typography>
       </FAQSection>
 
+      <FAQSection title="Where can I find translated materials?">
+        <Typography>
+          Try the{' '}
+          <Link href="https://drive.google.com/drive/u/1/folders/1DnW7_BmbrUXf3SIyEgT0fQ4GeUTKNDMY">
+            Yang Gang Translation Project
+          </Link>
+          . If you just need a website in different languages, try{' '}
+          <Link href="https://humanityforyang.com">Humanity For Yang.</Link>
+        </Typography>
+      </FAQSection>
+
       <FAQSection title="I want to make something. Where do I get logos, photos, fonts, etc?">
         <Typography component="div">
           <ul>
