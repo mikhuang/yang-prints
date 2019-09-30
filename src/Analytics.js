@@ -3,12 +3,13 @@ import ReactGA from 'react-ga'
 import { GA_TRACKING_ID } from './config'
 
 export default function Analytics({ location }) {
-  const { href } = location
+  const { pathname, search } = location
   useEffect(() => {
     ReactGA.initialize(GA_TRACKING_ID)
   }, [])
   useEffect(() => {
-    ReactGA.pageview(href)
-  }, [href])
+    const page = pathname + search
+    ReactGA.pageview(page)
+  }, [pathname, search])
   return null
 }
