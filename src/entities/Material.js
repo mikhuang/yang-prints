@@ -30,7 +30,8 @@ export const MATERIAL_FOLDERS = {
     url: '/handout/',
   },
   ganged: {
-    title: 'Combo',
+    title: 'Many per Sheets',
+    shortTitle: 'Many',
     url: '/ganged/',
   },
   banner: {
