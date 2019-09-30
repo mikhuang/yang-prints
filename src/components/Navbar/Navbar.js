@@ -215,7 +215,7 @@ export default function Navbar({ tags }) {
                     key={folderKey}
                     onClick={handleMenuClose}
                   >
-                    {folder.shortTitle || folder.title}
+                    {folder.title}
                   </MenuItem>
                 )
               })}
