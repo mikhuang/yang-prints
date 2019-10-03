@@ -15,7 +15,7 @@ export default function TagContainer() {
   const { tag: tagKey } = useRouteData()
   const { materials: materialsData } = useSiteData()
 
-  const materials = toMaterialEntity(materialsData)
+  const materials = toMaterialEntity(materialsData).filter(m => m.isVisible)
   const gridSizes = { xs: 6, sm: 4, lg: 3, xl: 2 }
   const tagMaterials = orderBy(materials, ['date'], ['desc']).filter(x =>
     x.tags.includes(tagKey)

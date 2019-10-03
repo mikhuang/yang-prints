@@ -66,7 +66,7 @@ export default function Material(props) {
   const classes = useStyles()
 
   const { material: materialData } = useRouteData()
-  const { materials: materialsData } = useSiteData()
+  const { materials: materialsData, tagCounts } = useSiteData()
   const materials = toMaterialEntity(materialsData)
   const material = new MaterialEntity(materialData)
 
@@ -170,7 +170,11 @@ export default function Material(props) {
           <Typography variant="caption" display="block" gutterBottom>
             {material.description}
           </Typography>
-          <TagList variant="caption" tags={material.tagEntities} />
+          <TagList
+            tagCounts={tagCounts}
+            variant="caption"
+            tags={material.tagEntities}
+          />
         </Box>
 
         <Box mx={-1}>

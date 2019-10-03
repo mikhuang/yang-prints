@@ -11,11 +11,14 @@ const { duplicates, tagCounts } = materials.reduce(
     if (acc.urls.includes(url)) {
       acc.duplicates.push(url)
     } else {
-      material.tags.forEach(tag => {
-        if (tag) {
-          acc.tagCounts[tag] = (acc.tagCounts[tag] || 0) + 1
-        }
-      })
+      // only count material tags if the material is visible
+      if (material.isVisible) {
+        material.tags.forEach(tag => {
+          if (tag) {
+            acc.tagCounts[tag] = (acc.tagCounts[tag] || 0) + 1
+          }
+        })
+      }
       acc.urls.push(url)
     }
     return acc
