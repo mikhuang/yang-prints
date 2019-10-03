@@ -13,7 +13,7 @@ export default function Material() {
   const isLarge = useMediaQuery('(min-width:600px)')
   const { folder, folderKey } = useRouteData()
   const { materials: materialsData } = useSiteData()
-  const materials = toMaterialEntity(materialsData)
+  const materials = toMaterialEntity(materialsData).filter(m => m.isVisible)
   const gridSizes = folder.gridSizes || { xs: 6, sm: 4, lg: 3, xl: 2 }
   const folderMaterials = orderBy(materials, ['date'], ['desc']).filter(
     x => x.folderId === folderKey

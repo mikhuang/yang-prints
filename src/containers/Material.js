@@ -24,6 +24,7 @@ import {
 } from '../entities/Material'
 import FolderInstructions from '../components/FolderInstructions'
 import TagList from '../components/TagList'
+import MaterialUpdateNotice from '../components/MaterialUpdateNotice'
 import { useHotkeys } from 'react-hotkeys-hook'
 import { navigate } from '@reach/router'
 
@@ -70,7 +71,7 @@ export default function Material(props) {
   const material = new MaterialEntity(materialData)
 
   const folderMaterials = orderBy(
-    materials.filter(x => x.folderId === material.folderId),
+    materials.filter(x => x.folderId === material.folderId && x.isVisible),
     ['date'],
     ['desc']
   )
@@ -129,6 +130,13 @@ export default function Material(props) {
           </MaterialLink>
         </Breadcrumbs>
       </Box>
+
+      {!material.isVisible && (
+        <Box mx={2} mb={3}>
+          <MaterialUpdateNotice material={material} />
+        </Box>
+      )}
+
       <Box mb={1} display="flex" justifyContent="center">
         <a
           download

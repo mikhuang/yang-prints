@@ -53,7 +53,7 @@ export default () => {
   const classes = useStyles()
 
   const { materials: materialsData } = useSiteData()
-  const materials = toMaterialEntity(materialsData)
+  const materials = toMaterialEntity(materialsData).filter(m => m.isVisible)
   const materialsByFolder = groupBy(materials, 'folderId')
 
   return (

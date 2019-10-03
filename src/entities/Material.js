@@ -72,20 +72,23 @@ function processTags(tags) {
  */
 export default class Material {
   constructor(material) {
-    this.category = material.category
-    this.date = material.date
-    this.originalUrl = material.original_url
-    this.creator = material.creator
-    this.path = material.path
-    this.filename = material.filename
-    this.slug = material.slug
-    this.folderId = material.folder
-    this.title = material.title
-    this.description = material.description
-    this.srcPath = material.src_path
+    const tags = processTags(material.tags)
+
     this.buyUrl = material.buy_url
-    this.tags = processTags(material.tags)
-    this.tagEntities = this.tags.map(tag => new Tag(tag))
+    this.category = material.category
+    this.creator = material.creator
+    this.date = material.date
+    this.description = material.description
+    this.filename = material.filename
+    this.folderId = material.folder
+    this.originalUrl = material.original_url
+    this.path = material.path
+    this.replacedBy = material.replaced_by
+    this.slug = material.slug
+    this.srcPath = material.src_path
+    this.tagEntities = tags.map(tag => new Tag(tag))
+    this.tags = tags
+    this.title = material.title
   }
 
   get url() {
@@ -117,6 +120,11 @@ export default class Material {
 
   get isRound() {
     return this.folder.isRound
+  }
+
+  get isVisible() {
+    // Should this material be generally shown?
+    return !this.replacedBy
   }
 }
 
