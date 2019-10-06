@@ -18,7 +18,7 @@ const KEY_TO_COMPONENT_MAPPING = {
   square: Square,
   ganged: Ganged,
   button: Button,
-  ZINE: Zine,
+  zine: Zine,
 }
 const useStyles = makeStyles(theme => ({
   root: {
@@ -37,8 +37,9 @@ export default function FolderInstructions({ folderKey, tags = [] }) {
     validKeys.push(folderKey)
   }
   tags.forEach(tag => {
-    if (keys.includes(tag)) {
-      validKeys.push(tag)
+    const tagKey = tag.toLowerCase()
+    if (keys.includes(tagKey)) {
+      validKeys.push(tagKey)
     }
   })
 
