@@ -38,9 +38,9 @@ const useStyles = makeStyles(theme => ({
     },
   }),
   'material-sized-square': ({ zoom }) => ({
-    maxWidth: zoom * 60,
+    maxWidth: zoom * 70,
     [theme.breakpoints.up('sm')]: {
-      maxWidth: zoom * 170,
+      maxWidth: zoom * 190,
     },
   }),
   'material-sized-sticker': ({ zoom }) => ({
