@@ -12,8 +12,12 @@ Design doc https://docs.google.com/document/d/1jCGLqFaIzJGq8D6josI9v5f0oG3R0w5st
 
 ## Deploy
 
-Continuous Integration with Netlify.
+Continuous Integration with Netlify. Netlify also provides DNS.
 
-## Maintainers
+## Email
+
+ImprovMX is used.
+
+## Technical Maintainers
 
 - m@mikhuang.com - Michael Huang
