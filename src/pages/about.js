@@ -31,6 +31,7 @@ export default () => {
       <Title gutterBottom variant="h4">
         FAQ
       </Title>
+
       <FAQSection title="How do I get started?">
         <Typography gutterBottom>
           If you're printing from home, just download files and try printing
@@ -124,6 +125,34 @@ export default () => {
               campaign, alternatively, just chip into the campaign 😹
             </li>
           </ul>
+        </Typography>
+      </FAQSection>
+
+      <FAQSection title="Are there any print shops that are Yang Gang?">
+        <Typography gutterBottom>
+          <b>Los Angeles</b>
+          <br />
+          <Link href="https://patricklabel.com">Patrick Label Printing Co</Link>
+          <br />
+          1915 Wilshire Blvd, Los Angeles, CA 90057
+          <br />
+          (213) 484-2673
+        </Typography>
+        <Typography gutterBottom>
+          {' '}
+          <b>San Francisco</b>
+          <br />
+          <Link href="http://www.brianwebster.com">
+            Brian Webster and Associates
+          </Link>
+          <br />
+          190 O'Farrell Street, Suite 409, San Francisco, CA 94102
+          <br />
+          (415) 243-8900
+        </Typography>
+        <Typography gutterBottom>
+          If you know of more,{' '}
+          <Link href="mailto:m@yangprints.com">please let us know</Link>.
         </Typography>
       </FAQSection>
     </Container>
