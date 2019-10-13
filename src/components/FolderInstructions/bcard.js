@@ -12,6 +12,18 @@ export default function Bcard() {
           There are tons of places for cheap printing.
           <ul>
             <li>
+              <b>FREE:</b>{' '}
+              <Link href="http://4over4.com/printing/Free-Business-Cards">
+                4OVER4.COM
+              </Link>{' '}
+              offers 200 single-sided (they stamp their logo on the back) cards
+              with 5 day shipping if you Facebook or Twitter post them. After
+              getting started, go to <i>Select A Category</i> >{' '}
+              <i>START FROM SCRATCH</i>. The image you choose will need to be a
+              JPG or PNG. After tweeting, it took a few refreshes before it let
+              me order for free.
+            </li>
+            <li>
               Next day pickup: <Link href="https://staples.com">Staples</Link>{' '}
               should be around $25 for 1000 double-sided color. Pick up in store
               to avoid delivery fees.
