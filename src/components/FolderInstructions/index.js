@@ -1,11 +1,11 @@
 import Container from '@material-ui/core/Container'
 import { makeStyles } from '@material-ui/core/styles'
-
 import Typography from '@material-ui/core/Typography'
-import React, { Fragment } from 'react'
+import React from 'react'
 import Bcard from './bcard'
 import Button from './button'
 import Ganged from './ganged'
+import Round2x20 from './round2x20'
 import Square from './square'
 import Sticker from './sticker'
 import Zine from './zine'
@@ -19,6 +19,7 @@ const KEY_TO_COMPONENT_MAPPING = {
   ganged: Ganged,
   button: Button,
   zine: Zine,
+  '2in round 20x': Round2x20,
 }
 const useStyles = makeStyles(theme => ({
   root: {

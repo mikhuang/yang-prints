@@ -53,7 +53,7 @@ export default function TagContainer() {
       />
 
       <Box px={2} mt={1}>
-        <FolderInstructions folderKey={tagKey} />
+        <FolderInstructions tags={[tagKey]} />
       </Box>
     </Fragment>
   )
