@@ -46,6 +46,10 @@ export const MATERIAL_FOLDERS = {
     title: 'Invites',
     url: '/invite/',
   },
+  tshirt: {
+    title: 'T-Shirts',
+    url: '/tshirt/',
+  },
 }
 
 function splitFileExt(filename) {
