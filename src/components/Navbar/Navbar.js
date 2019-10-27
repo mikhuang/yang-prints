@@ -18,7 +18,7 @@ import cx from 'clsx'
 import React, { Fragment, useState } from 'react'
 import { AdapterLink } from '../../components/Router'
 import { MATERIAL_FOLDERS } from '../../entities/Material'
-
+import TwitterIcon from './TwitterIcon'
 const useStyles = makeStyles(theme => ({
   list: {
     width: 250,
@@ -229,6 +229,16 @@ export default function Navbar({ tags }) {
           >
             FAQ
           </Button>
+          <IconButton
+            rel="noreferrer noopener"
+            target="_blank"
+            color="inherit"
+            component={'a'}
+            aria-label="twitter"
+            href="https://twitter.com/yanggangprints"
+          >
+            <TwitterIcon />
+          </IconButton>
         </Toolbar>
       </AppBar>
     </Fragment>

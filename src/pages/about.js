@@ -45,9 +45,10 @@ export default () => {
 
       <FAQSection title="Where did these designs come from?">
         <Typography paragraph>
-          The YangGang is creative and passionate. The designs on YangPrints
-          come from all over. Sources are linked where I was able to find them.
-          In general, I really like the following sites:
+          YangPrints is powered by volunteers and their work. The Yang Gang is
+          creative and passionate. The designs on YangPrints come from all over.
+          Sources are linked where we were able to find them. In general, we
+          really like the following sites:
         </Typography>
         <Typography component="div">
           <ul>
