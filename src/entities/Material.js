@@ -1,20 +1,18 @@
 import lastIndexOf from 'lodash/lastIndexOf'
 import Tag from './Tag'
 export const MATERIAL_FOLDERS = {
-  poster: {
-    title: 'Posters',
-    url: '/poster/',
-  },
   bcard: {
     title: 'Business Cards',
     shortTitle: 'Biz Cards',
     url: '/bcard/',
   },
-  button: {
-    title: 'Buttons',
-    url: '/button/',
-    isRound: true,
-    gridSizes: { xs: 4, sm: 3, lg: 2, xl: 2 },
+  poster: {
+    title: 'Posters',
+    url: '/poster/',
+  },
+  handout: {
+    title: 'Handouts',
+    url: '/handout/',
   },
   square: {
     title: 'Square/Post-its',
@@ -25,30 +23,32 @@ export const MATERIAL_FOLDERS = {
     title: 'Stickers',
     url: '/sticker/',
   },
-  handout: {
-    title: 'Handouts',
-    url: '/handout/',
+  banner: {
+    title: 'Banners',
+    url: '/banner/',
+  },
+  tshirt: {
+    title: 'T-Shirts',
+    url: '/tshirt/',
+  },
+  button: {
+    title: 'Buttons',
+    url: '/button/',
+    isRound: true,
+    gridSizes: { xs: 4, sm: 3, lg: 2, xl: 2 },
   },
   ganged: {
     title: 'Many per Sheets',
     shortTitle: 'Many',
     url: '/ganged/',
   },
-  banner: {
-    title: 'Banners',
-    url: '/banner/',
-  },
-  hanger: {
-    title: 'Hangers',
-    url: '/hanger/',
-  },
   invite: {
     title: 'Invites',
     url: '/invite/',
   },
-  tshirt: {
-    title: 'T-Shirts',
-    url: '/tshirt/',
+  hanger: {
+    title: 'Hangers',
+    url: '/hanger/',
   },
 }
 
