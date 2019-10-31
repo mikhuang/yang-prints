@@ -1,3 +1,5 @@
+import CircularProgress from '@material-ui/core/CircularProgress'
+import Box from '@material-ui/core/Box'
 import { makeStyles } from '@material-ui/core/styles'
 import cx from 'clsx'
 import React from 'react'
@@ -80,22 +82,36 @@ export default function MaterialThumb({
   lazyOffset = 100,
 }) {
   const classes = useStyles({ zoom })
-  const link = (
-    <Link key={material.url} to={material.url} className={linkClassName}>
-      <img
-        className={cx(className, classes.material, {
-          [classes[`material-sized-${material.folderId}`]]: sized,
-          [classes['material-sized']]: sized,
-          [classes['round']]: material.isRound,
-        })}
-        src={material.thumbSrc}
-        alt={material.slug}
-      />
-    </Link>
+  const img = (
+    <img
+      className={cx(className, classes.material, {
+        [classes[`material-sized-${material.folderId}`]]: sized,
+        [classes['material-sized']]: sized,
+        [classes['round']]: material.isRound,
+      })}
+      src={material.thumbSrc}
+      alt={material.slug}
+    />
   )
 
-  if (lazy) {
-    return <LazyLoad offset={lazyOffset}>{link}</LazyLoad>
-  }
-  return link
+  const inner = lazy ? (
+    <LazyLoad
+      offset={lazyOffset}
+      placeholder={
+        <Box my={3} mx={5}>
+          <CircularProgress size={20} />
+        </Box>
+      }
+    >
+      {img}
+    </LazyLoad>
+  ) : (
+    img
+  )
+
+  return (
+    <Link key={material.url} to={material.url} className={linkClassName}>
+      {inner}
+    </Link>
+  )
 }

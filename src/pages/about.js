@@ -5,6 +5,8 @@ import Typography from '@material-ui/core/Typography'
 import React from 'react'
 import Title from '../components/Title'
 import { makeStyles } from '@material-ui/core/styles'
+import { useSiteData } from 'react-static'
+
 const useStyles = makeStyles(theme => ({
   root: {
     marginTop: theme.spacing(10),
@@ -26,6 +28,8 @@ function FAQSection({ title, children }) {
 
 export default () => {
   const classes = useStyles()
+  const { buildId } = useSiteData()
+
   return (
     <Container className={classes.root}>
       <Title gutterBottom variant="h4">
@@ -156,6 +160,7 @@ export default () => {
           <Link href="mailto:m@yangprints.com">please let us know</Link>.
         </Typography>
       </FAQSection>
+      <small style={{ display: 'none' }}>{buildId}</small>
     </Container>
   )
 }

@@ -10,6 +10,7 @@ import Footer from './components/Footer'
 import ManageScroll from './components/ManageScroll'
 import Navbar from './components/Navbar'
 import { Router } from './components/Router'
+import ErrorBoundary from './ErrorBoundary'
 
 function App() {
   return (
@@ -27,17 +28,19 @@ function App() {
       <ManageScroll />
       <Location>{({ location }) => <Analytics location={location} />}</Location>
       <Navbar />
-      <React.Suspense
-        fallback={
-          <Box p={3} textAlign="center">
-            <CircularProgress />
-          </Box>
-        }
-      >
-        <Router primary={false}>
-          <Routes path="*" />
-        </Router>
-      </React.Suspense>
+      <ErrorBoundary>
+        <React.Suspense
+          fallback={
+            <Box p={3} textAlign="center">
+              <CircularProgress />
+            </Box>
+          }
+        >
+          <Router primary={false}>
+            <Routes path="*" />
+          </Router>
+        </React.Suspense>
+      </ErrorBoundary>
       <Footer />
     </Root>
   )

@@ -35,7 +35,11 @@ if (duplicates.length > 0) {
 }
 
 export default {
-  getSiteData: () => ({ materials, tagCounts }),
+  getSiteData: () => ({
+    materials,
+    tagCounts,
+    buildId: process.env.BUILD_ID || '',
+  }),
   getRoutes: () => {
     const folderPages = Object.keys(MATERIAL_FOLDERS).map(folderKey => {
       const folder = MATERIAL_FOLDERS[folderKey]
