@@ -147,8 +147,8 @@ export default () => {
           {' '}
           <b>San Francisco</b>
           <br />
-          <Link href="http://www.brianwebster.com">
-            Brian Webster and Associates
+          <Link href="http://www.betterworldprinting.com">
+            Better World Printing
           </Link>
           <br />
           190 O'Farrell Street, Suite 409, San Francisco, CA 94102
