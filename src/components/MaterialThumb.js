@@ -3,7 +3,7 @@ import Box from '@material-ui/core/Box'
 import { makeStyles } from '@material-ui/core/styles'
 import cx from 'clsx'
 import React from 'react'
-import LazyLoad from 'react-lazyload'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { Link } from '../components/Router'
 
 const useStyles = makeStyles(theme => ({
@@ -80,10 +80,17 @@ export default function MaterialThumb({
   linkClassName = '',
   lazy = true,
   lazyOffset = 100,
+  scrollPosition,
 }) {
   const classes = useStyles({ zoom })
+  const Component = lazy ? LazyLoadImage : 'img'
+  const addlImgProps = {}
+  if (scrollPosition && lazy) {
+    addlImgProps.scrollPosition = scrollPosition
+  }
+
   const img = (
-    <img
+    <Component
       className={cx(className, classes.material, {
         [classes[`material-sized-${material.folderId}`]]: sized,
         [classes['material-sized']]: sized,
@@ -91,27 +98,13 @@ export default function MaterialThumb({
       })}
       src={material.thumbSrc}
       alt={material.slug}
+      {...addlImgProps}
     />
-  )
-
-  const inner = lazy ? (
-    <LazyLoad
-      offset={lazyOffset}
-      placeholder={
-        <Box my={3} mx={5}>
-          <CircularProgress size={20} />
-        </Box>
-      }
-    >
-      {img}
-    </LazyLoad>
-  ) : (
-    img
   )
 
   return (
     <Link key={material.url} to={material.url} className={linkClassName}>
-      {inner}
+      {img}
     </Link>
   )
 }

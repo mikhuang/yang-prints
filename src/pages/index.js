@@ -11,6 +11,7 @@ import orderBy from 'lodash/orderBy'
 import React from 'react'
 import { useSiteData } from 'react-static'
 import { MATERIAL_FOLDERS, toMaterialEntity } from '../entities/Material'
+import { trackWindowScroll } from 'react-lazy-load-image-component'
 
 const ROW_LIMIT = 12
 
@@ -48,7 +49,7 @@ const useStyles = makeStyles(theme => ({
 
 const PRELOAD_ROWS_COUNT = 1
 
-export default () => {
+function Index({ scrollPosition }) {
   const isLarge = useMediaQuery('(min-width:600px)')
   const classes = useStyles()
 
@@ -67,6 +68,9 @@ export default () => {
 
       {Object.keys(MATERIAL_FOLDERS).map(folderKey => {
         const folder = MATERIAL_FOLDERS[folderKey]
+        if (folder.hide) {
+          return null
+        }
         const folderMaterials = materialsByFolder[folderKey]
         const addlCount = folderMaterials.length - ROW_LIMIT
         return (
@@ -92,6 +96,7 @@ export default () => {
                     className={classes.material}
                     key={material.slug}
                     material={material}
+                    scrollPosition={scrollPosition}
                   />
                 ))}
               {addlCount > 0 && (
@@ -113,3 +118,4 @@ export default () => {
     </Box>
   )
 }
+export default trackWindowScroll(Index)

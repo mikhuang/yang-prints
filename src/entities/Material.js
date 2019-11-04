@@ -41,6 +41,7 @@ export const MATERIAL_FOLDERS = {
     title: 'Many per Sheets',
     shortTitle: 'Many',
     url: '/ganged/',
+    hide: true,
   },
   invite: {
     title: 'Invites',
@@ -128,7 +129,7 @@ export default class Material {
   }
 
   get isRound() {
-    return this.folder.isRound
+    return this.folder.isRound && !this.tags.includes('GANGED')
   }
 
   get isVisible() {

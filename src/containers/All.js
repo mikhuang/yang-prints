@@ -14,7 +14,11 @@ export default function Material() {
   const { materials: materialsData } = useSiteData()
   const materials = toMaterialEntity(materialsData)
   const gridSizes = { xs: 6, sm: 3, lg: 2, xl: 2 }
-  const allMaterials = orderBy(materials, ['date'], ['desc'])
+  const allMaterials = orderBy(
+    materials.filter(x => x.isVisible),
+    ['date'],
+    ['desc']
+  )
   return (
     <Fragment>
       <Head>

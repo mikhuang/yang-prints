@@ -50,6 +50,22 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
+/**
+ * Return list of tags to show in dropdown
+ * @param {array} tags - tags sorted in order of count
+ */
+function getTopTags(tags) {
+  const CRIT_TAG_SLUGS = ['women']
+  const topTags = tags.slice(0, 10)
+  // just loop through all the rest lol
+  tags.slice(10).forEach(tag => {
+    if (CRIT_TAG_SLUGS.includes(tag.slug)) {
+      topTags.push(tag)
+    }
+  })
+  return topTags
+}
+
 export default function Navbar({ tags }) {
   const classes = useStyles()
   const [isOpen, setIsOpen] = useState(false)
@@ -87,7 +103,7 @@ export default function Navbar({ tags }) {
         <MenuItem component={AdapterLink} to="/tags" onClick={handleMenuClose}>
           All Tags
         </MenuItem>
-        {tags.slice(0, 10).map(tag => {
+        {getTopTags(tags).map(tag => {
           return (
             <MenuItem
               component={AdapterLink}
@@ -136,6 +152,9 @@ export default function Navbar({ tags }) {
             </ListItem>
             {Object.keys(MATERIAL_FOLDERS).map(folderKey => {
               const folder = MATERIAL_FOLDERS[folderKey]
+              if (folder.hide) {
+                return null
+              }
               return (
                 <ListItem
                   component={AdapterLink}
@@ -208,6 +227,9 @@ export default function Navbar({ tags }) {
               </MenuItem>
               {Object.keys(MATERIAL_FOLDERS).map(folderKey => {
                 const folder = MATERIAL_FOLDERS[folderKey]
+                if (folder.hide) {
+                  return null
+                }
                 return (
                   <MenuItem
                     component={AdapterLink}

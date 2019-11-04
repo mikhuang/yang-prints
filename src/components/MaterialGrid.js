@@ -2,6 +2,7 @@ import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core/styles'
 import React from 'react'
 import MaterialThumb from '../components/MaterialThumb'
+import { trackWindowScroll } from 'react-lazy-load-image-component'
 
 const useStyles = makeStyles(theme => ({
   grid: { padding: theme.spacing(1) },
@@ -21,7 +22,7 @@ const useStyles = makeStyles(theme => ({
 /**
  * Show materials on a grid
  */
-export default function MaterialGrid({ materials, gridSizes, preloadCount }) {
+function MaterialGrid({ scrollPosition, materials, gridSizes, preloadCount }) {
   const classes = useStyles()
   return (
     <Grid
@@ -43,9 +44,11 @@ export default function MaterialGrid({ materials, gridSizes, preloadCount }) {
             className={classes.material}
             sized={false}
             material={material}
+            scrollPosition={scrollPosition}
           />
         </Grid>
       ))}
     </Grid>
   )
 }
+export default trackWindowScroll(MaterialGrid)
