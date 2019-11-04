@@ -52,11 +52,16 @@ export const MATERIAL_FOLDERS = {
   },
 }
 
+/**
+ * Return [file, ext] for file.ext. Doesn't work if filename is not in URL. Rudimentary support for '?'
+ * @param {string} filename - Full filename
+ */
 function splitFileExt(filename) {
   const possibleFilename = filename.split('/').pop()
   const idx = lastIndexOf(possibleFilename, '.')
   if (idx !== -1) {
-    return [possibleFilename.substr(0, idx), possibleFilename.substr(idx + 1)]
+    const ext = possibleFilename.substr(idx + 1).split('?')[0]
+    return [possibleFilename.substr(0, idx), ext]
   }
   return []
 }
