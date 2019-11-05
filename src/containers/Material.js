@@ -6,27 +6,27 @@ import Grid from '@material-ui/core/Grid'
 import { default as MaterialLink } from '@material-ui/core/Link'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
-import SaveIcon from '@material-ui/icons/SaveAltSharp'
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCartSharp'
-import PhotoIcon from '@material-ui/icons/InsertPhotoSharp'
 import ArrowBack from '@material-ui/icons/ArrowBackIosSharp'
 import ArrowForward from '@material-ui/icons/ArrowForwardIosSharp'
-import { Link as RouterLink } from '@reach/router'
+import PhotoIcon from '@material-ui/icons/InsertPhotoSharp'
+import SaveIcon from '@material-ui/icons/SaveAltSharp'
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCartSharp'
+import { Link as RouterLink, navigate } from '@reach/router'
 import cx from 'clsx'
 import orderBy from 'lodash/orderBy'
 import React, { Fragment } from 'react'
-import { Head, useRouteData, useSiteData } from 'react-static'
-import MaterialThumb from '../components/MaterialThumb'
 import ReactGA from 'react-ga'
+import { useHotkeys } from 'react-hotkeys-hook'
+import { Head, useRouteData, useSiteData } from 'react-static'
+import FolderInstructions from '../components/FolderInstructions'
+import MaterialThumb from '../components/MaterialThumb'
+import MaterialUpdateNotice from '../components/MaterialUpdateNotice'
+import SubmitUpdate from '../components/SubmitUpdate'
+import TagList from '../components/TagList'
 import {
   default as MaterialEntity,
   toMaterialEntity,
 } from '../entities/Material'
-import FolderInstructions from '../components/FolderInstructions'
-import TagList from '../components/TagList'
-import MaterialUpdateNotice from '../components/MaterialUpdateNotice'
-import { useHotkeys } from 'react-hotkeys-hook'
-import { navigate } from '@reach/router'
 
 const useStyles = makeStyles(theme => ({
   img: {
@@ -175,6 +175,9 @@ export default function Material(props) {
             variant="caption"
             tags={material.tagEntities}
           />
+          <Box>
+            <SubmitUpdate material={material} />
+          </Box>
         </Box>
 
         <Box mx={-1}>

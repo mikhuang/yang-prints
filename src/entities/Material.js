@@ -83,7 +83,6 @@ function processTags(tags) {
 export default class Material {
   constructor(material) {
     const tags = processTags(material.tags)
-
     this.buyUrl = material.buy_url
     this.category = material.category
     this.creator = material.creator
@@ -93,12 +92,14 @@ export default class Material {
     this.folderId = material.folder
     this.originalUrl = material.original_url
     this.path = material.path
+    this.rawTags = material.tags
     this.replacedBy = material.replaced_by
     this.slug = material.slug
     this.srcPath = material.src_path
     this.tagEntities = tags.map(tag => new Tag(tag))
     this.tags = tags
     this.title = material.title
+    this.transcription = material.transcription || ''
   }
 
   get url() {
@@ -135,6 +136,18 @@ export default class Material {
   get isVisible() {
     // Should this material be generally shown?
     return !this.replacedBy
+  }
+
+  get editURL() {
+    // URL from which edits to this material can be suggested
+    const e = encodeURIComponent
+    return `https://docs.google.com/forms/d/e/1FAIpQLSdRUDCwMzof14qp4mKYtv55ZzdkDsgcxSiRMLloZ0adGwvMtg/viewform?usp=pp_url&entry.2085137922=${e(
+      this.url
+    )}&entry.1766080520=${e(this.title)}&entry.1527464278=${e(
+      this.description
+    )}&entry.53038913=${e(this.rawTags)}&entry.115847501=${e(
+      this.transcription
+    )}`
   }
 }
 

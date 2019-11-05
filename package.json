@@ -2,14 +2,15 @@
   "name": "react-static-example-basic",
   "private": true,
   "scripts": {
-    "start": "yarn run convert-csv && yarn run start-static",
+    "start": "yarn run import-csv && yarn run convert-csv && yarn run start-static",
     "start-static": "react-static start",
     "stage": "react-static build --staging",
     "build": "react-static build",
     "analyze": "react-static build --analyze",
     "serve": "serve dist -p 3000",
     "postinstall": "patch-package",
-    "convert-csv": "yarn run --silent csvtojson data/materials.csv > data/materials.json"
+    "convert-csv": "yarn run --silent csvtojson data/materials.csv > data/materials.json",
+    "import-csv": "sh ./import-csv.sh"
   },
   "dependencies": {
     "@material-ui/core": "^4.4.1",
