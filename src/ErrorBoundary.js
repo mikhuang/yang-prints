@@ -1,5 +1,5 @@
 import React from 'react'
-
+import Box from '@material-ui/core/Box'
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props)
@@ -13,8 +13,11 @@ class ErrorBoundary extends React.Component {
 
   render() {
     if (this.state.hasError) {
-      // You can render any custom fallback UI
-      return <h1>Something went wrong. Please refresh and try again.</h1>
+      return (
+        <Box p={4}>
+          <h1>Something went wrong. Please refresh and try again.</h1>
+        </Box>
+      )
     }
 
     return this.props.children
