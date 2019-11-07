@@ -9,6 +9,7 @@ import Round2x20 from './round2x20'
 import Square from './square'
 import Sticker from './sticker'
 import Zine from './zine'
+import Flag from './flag'
 
 const InstructionsTitle = () => <Typography variant="caption">TIPS</Typography>
 
@@ -19,6 +20,7 @@ const KEY_TO_COMPONENT_MAPPING = {
   ganged: Ganged,
   button: Button,
   zine: Zine,
+  flag: Flag,
   '2in round 20x': Round2x20,
 }
 const useStyles = makeStyles(theme => ({
