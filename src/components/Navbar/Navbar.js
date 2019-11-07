@@ -257,7 +257,7 @@ export default function Navbar({ tags }) {
             color="inherit"
             component={'a'}
             aria-label="twitter"
-            href="https://twitter.com/yanggangprints"
+            href="https://twitter.com/yangprints"
           >
             <TwitterIcon />
           </IconButton>
