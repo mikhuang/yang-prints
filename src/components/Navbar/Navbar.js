@@ -21,7 +21,9 @@ import { MATERIAL_FOLDERS } from '../../entities/Material'
 import TwitterIcon from './TwitterIcon'
 const useStyles = makeStyles(theme => ({
   toolBar: {
-    paddingRight: theme.spacing(0.5),
+    [theme.breakpoints.down('sm')]: {
+      paddingRight: theme.spacing(0.5),
+    },
   },
   list: {
     width: 250,
@@ -254,7 +256,7 @@ export default function Navbar({ tags, materials }) {
               FAQ
             </Button>
           </Hidden>
-          {materials && <SearchWidget materials={materials} />}
+
           <IconButton
             rel="noreferrer noopener"
             target="_blank"
@@ -265,6 +267,7 @@ export default function Navbar({ tags, materials }) {
           >
             <TwitterIcon />
           </IconButton>
+          {materials && <SearchWidget materials={materials} />}
         </Toolbar>
       </AppBar>
     </Fragment>
