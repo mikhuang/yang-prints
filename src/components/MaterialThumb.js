@@ -1,5 +1,3 @@
-import CircularProgress from '@material-ui/core/CircularProgress'
-import Box from '@material-ui/core/Box'
 import { makeStyles } from '@material-ui/core/styles'
 import cx from 'clsx'
 import React from 'react'
@@ -79,7 +77,6 @@ export default function MaterialThumb({
   className = '',
   linkClassName = '',
   lazy = true,
-  lazyOffset = 100,
   scrollPosition,
 }) {
   const classes = useStyles({ zoom })

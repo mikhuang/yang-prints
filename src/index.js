@@ -1,5 +1,5 @@
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
-import * as Sentry from '@sentry/browser'
+// import * as Sentry from '@sentry/browser'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
@@ -10,9 +10,9 @@ import theme from './theme'
 // Export your top level component as JSX (for static rendering)
 export default App
 
-Sentry.init({
-  dsn: 'https://b44f4615143444b69ed2e4e3ae80e64c@sentry.io/1727642',
-})
+// Sentry.init({
+//   dsn: 'https://b44f4615143444b69ed2e4e3ae80e64c@sentry.io/1727642',
+// })
 
 // Render your app
 if (typeof document !== 'undefined') {

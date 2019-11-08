@@ -1,5 +1,6 @@
 import Box from '@material-ui/core/Box'
 import Button from '@material-ui/core/Button'
+import Hidden from '@material-ui/core/Hidden'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
@@ -23,7 +24,10 @@ const useStyles = makeStyles(theme => ({
     '-webkit-overflow-scrolling': 'touch',
     display: 'flex',
     alignItems: 'center',
-    padding: theme.spacing(2, 0),
+    padding: 0,
+    [theme.breakpoints.up('sm')]: {
+      padding: theme.spacing(2, 0),
+    },
     '&::-webkit-scrollbar': {
       '-webkit-appearance': 'none',
       height: theme.spacing(1.25),
@@ -58,12 +62,18 @@ function Index({ scrollPosition }) {
   const materialsByFolder = groupBy(materials, 'folderId')
 
   return (
-    <Box my={3}>
-      <Box mx={2} py={3} textAlign="center">
-        <img width={225} src="/img/yangprints.png" alt="YangPrints.com" />
-        <Title variant={isLarge ? 'h2' : 'h4'} after="!">
-          Print All the Yang
-        </Title>
+    <Box my={isLarge ? 3 : 1}>
+      <Box mx={2} py={isLarge ? 3 : 0} textAlign="center">
+        <img
+          width={isLarge ? 225 : 150}
+          src="/img/yangprints.png"
+          alt="YangPrints.com"
+        />
+        <Hidden xsDown>
+          <Title variant="h2" after="!">
+            Print All the Yang
+          </Title>
+        </Hidden>
       </Box>
 
       {Object.keys(MATERIAL_FOLDERS).map(folderKey => {
@@ -74,12 +84,12 @@ function Index({ scrollPosition }) {
         const folderMaterials = materialsByFolder[folderKey]
         const addlCount = folderMaterials.length - ROW_LIMIT
         return (
-          <Box mb={5} key={folderKey} className={classes.row}>
+          <Box mb={isLarge ? 5 : 3} key={folderKey} className={classes.row}>
             <Link to={folder.url}>
               <Box
                 display="flex"
-                p={2}
-                pb={0}
+                pt={isLarge ? 2 : 0}
+                px={2}
                 alignItems="baseline"
                 justifyContent="space-between"
               >

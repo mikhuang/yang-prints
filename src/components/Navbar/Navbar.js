@@ -14,32 +14,34 @@ import { makeStyles } from '@material-ui/core/styles'
 import Toolbar from '@material-ui/core/Toolbar'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMoreSharp'
 import MenuIcon from '@material-ui/icons/Menu'
-import cx from 'clsx'
 import React, { Fragment, useState } from 'react'
+import SearchWidget from '../../components/SearchWidget'
 import { AdapterLink } from '../../components/Router'
 import { MATERIAL_FOLDERS } from '../../entities/Material'
 import TwitterIcon from './TwitterIcon'
 const useStyles = makeStyles(theme => ({
+  toolBar: {
+    paddingRight: theme.spacing(0.5),
+  },
   list: {
     width: 250,
   },
   fullList: {
     width: 'auto',
   },
-  menuButton: {
-    marginRight: theme.spacing(0.5),
-  },
-  title: {
-    marginRight: 'auto',
-    fontSize: '130%',
-  },
-  titleHighlight: {
-    color: theme.palette.secondary.main,
-  },
   contrastColor: {
     minWidth: 50,
     color: theme.palette.primary.contrastText,
     marginLeft: theme.spacing(1),
+  },
+  title: {
+    color: theme.palette.primary.contrastText,
+    marginRight: 'auto',
+    fontSize: '130%',
+    marginLeft: 0,
+  },
+  titleHighlight: {
+    color: theme.palette.secondary.main,
   },
   icon: {
     marginRight: theme.spacing(-0.5),
@@ -66,7 +68,7 @@ function getTopTags(tags) {
   return topTags
 }
 
-export default function Navbar({ tags }) {
+export default function Navbar({ tags, materials }) {
   const classes = useStyles()
   const [isOpen, setIsOpen] = useState(false)
   const closeDrawer = () => setIsOpen(false)
@@ -176,10 +178,13 @@ export default function Navbar({ tags }) {
         </div>
       </Drawer>
       <AppBar position="static">
-        <Toolbar>
+        <Toolbar
+          classes={{
+            root: classes.toolBar,
+          }}
+        >
           <IconButton
             edge="start"
-            className={classes.menuButton}
             color="inherit"
             aria-label="menu"
             onClick={() => setIsOpen(true)}
@@ -187,15 +192,11 @@ export default function Navbar({ tags }) {
             <MenuIcon />
           </IconButton>
 
-          <Button
-            component={AdapterLink}
-            to="/"
-            className={cx(classes.contrastColor, classes.title)}
-          >
+          <Button component={AdapterLink} to="/" className={classes.title}>
             YANG<span className={classes.titleHighlight}>PRINTS</span>
           </Button>
 
-          <Hidden xsDown>
+          <Hidden mdDown>
             <Button
               component={AdapterLink}
               to="/all"
@@ -203,6 +204,8 @@ export default function Navbar({ tags }) {
             >
               All the Prints
             </Button>
+          </Hidden>
+          <Hidden xsDown>
             <Button
               aria-controls="format-menu"
               aria-haspopup="true"
@@ -243,14 +246,15 @@ export default function Navbar({ tags }) {
               })}
             </Menu>
             {tagsMenu}
+            <Button
+              component={AdapterLink}
+              to="/about"
+              className={classes.contrastColor}
+            >
+              FAQ
+            </Button>
           </Hidden>
-          <Button
-            component={AdapterLink}
-            to="/about"
-            className={classes.contrastColor}
-          >
-            FAQ
-          </Button>
+          {materials && <SearchWidget materials={materials} />}
           <IconButton
             rel="noreferrer noopener"
             target="_blank"
