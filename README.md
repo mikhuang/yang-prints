@@ -21,3 +21,12 @@ ImprovMX is used.
 ## Technical Maintainers
 
 - m@mikhuang.com - Michael Huang
+
+## Downloading Google Drive files
+
+Use gdown and make sure the URLs look like the following:
+
+```bash
+pip install gdown
+gdown https://drive.google.com/uc?id=1fLZoE-9cpQ0Bkm9ozhgK7Y3H6KX-CUtc
+```
