@@ -8,6 +8,7 @@ import React, { useEffect, useState } from 'react'
 import SearchForm from './SearchForm'
 
 const fuseOptions = {
+  tokenize: true,
   keys: [
     {
       name: 'title',
@@ -16,6 +17,10 @@ const fuseOptions = {
     {
       name: 'description',
       weight: 0.2,
+    },
+    {
+      name: 'transcription',
+      weight: 0.1,
     },
     {
       name: 'tags',

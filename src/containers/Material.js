@@ -23,6 +23,7 @@ import MaterialThumb from '../components/MaterialThumb'
 import MaterialUpdateNotice from '../components/MaterialUpdateNotice'
 import SubmitUpdate from '../components/SubmitUpdate'
 import TagList from '../components/TagList'
+import MaterialTranscript from '../components/MaterialTranscript'
 import {
   default as MaterialEntity,
   toMaterialEntity,
@@ -170,6 +171,7 @@ export default function Material(props) {
           <Typography variant="caption" display="block" gutterBottom>
             {material.description}
           </Typography>
+          <MaterialTranscript material={material} />
           <TagList
             tagCounts={tagCounts}
             variant="caption"
