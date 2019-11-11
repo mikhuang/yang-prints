@@ -5,10 +5,11 @@ import Typography from '@material-ui/core/Typography'
 import SearchIcon from '@material-ui/icons/SearchSharp'
 import Autocomplete from '@material-ui/lab/Autocomplete'
 import { navigate } from '@reach/router'
-import throttle from 'lodash/throttle'
+import debounce from 'lodash/debounce'
 import React, { useEffect, useState } from 'react'
 
 const MAX_RESULTS = 20
+const DEBOUNCE_AMOUNT = 500
 
 const useStyles = makeStyles(theme => ({
   search: {
@@ -81,11 +82,11 @@ export default function SearchForm({ fuse, shrinkable, onNavigate }) {
 
   const search = React.useMemo(
     () =>
-      throttle(inputValue => {
+      debounce(inputValue => {
         if (fuse) {
           setOptions(fuse.search(inputValue).slice(0, MAX_RESULTS))
         }
-      }, 200),
+      }, DEBOUNCE_AMOUNT),
     [setOptions, fuse]
   )
 

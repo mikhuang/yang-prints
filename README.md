@@ -10,6 +10,14 @@ Design doc https://docs.google.com/document/d/1jCGLqFaIzJGq8D6josI9v5f0oG3R0w5st
 2. Export `Materials` sheet as CSV. Save to `data/materials.csv` for sanity.
 3. Run `yarn run convert-csv`. Alternatively, use a [CSV to JSON tool](https://www.csvjson.com/csv2json) to convert and save to `data/materials.json`
 
+## Material column fields and how they show up
+
+- The pink "Download" link is created from the `${path}/${filename}` (written as es6 Template string notation)
+- The thumbnail naively takes the `filename`, splits off the extension, and expects to find an identically named JPG in `${thumb}/${filename_without_ext}.jpg`
+- The blue Source button (like on /bcard/1106-1000question-bcard) comes from the `src_path` column. It'll either be a full URL to wherever or a relative to site root if the file is also hosted on YangPrints.
+- The Buy From Creator button (like on /button/yang-rainbow) comes from the `buy_url` column
+- The `By @NAME_HERE` attribution combines the `creator` column and the `original_url` column
+
 ## Deploy
 
 Continuous Integration with Netlify. Netlify also provides DNS.
