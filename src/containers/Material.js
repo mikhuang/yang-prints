@@ -63,6 +63,13 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
+function getSource(material) {
+  if (material.srcPath.indexOf('canva.com/design')) {
+    return 'Edit on Canva.com'
+  }
+  return <span>Source{material.srcExt && ` .${material.srcExt}`}</span>
+}
+
 export default function Material(props) {
   const classes = useStyles()
 
@@ -226,7 +233,7 @@ export default function Material(props) {
                 target="_blank"
               >
                 <PhotoIcon className={classes.icon} />
-                Source{material.srcExt && ` .${material.srcExt}`}
+                {getSource(material)}
               </Button>
             )}
           </Box>
