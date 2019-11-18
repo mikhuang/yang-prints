@@ -20,8 +20,8 @@ export default function Tags() {
   const { tagCounts } = useSiteData()
   const classes = useStyles()
 
-  function countSorter(a, b) {
-    return tagCounts[a] < tagCounts[b] ? 1 : -1
+  function alphabeticalSorter(a, b) {
+    return a > b ? 1 : -1
   }
   return (
     <Fragment>
@@ -30,11 +30,11 @@ export default function Tags() {
       </Head>
       <Box p={isLarge ? 5 : 1} mt={1}>
         <Title align="center" variant={isLarge ? 'h2' : 'h4'}>
-          #Tags
+          Tags
         </Title>
         <Box my={4}>
           {Object.keys(tagCounts)
-            .sort(countSorter)
+            .sort(alphabeticalSorter)
             .map(tag => {
               const count = tagCounts[tag]
               const tagEntity = new Tag(tag)
