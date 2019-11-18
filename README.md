@@ -18,6 +18,10 @@ Design doc https://docs.google.com/document/d/1jCGLqFaIzJGq8D6josI9v5f0oG3R0w5st
 - The Buy From Creator button (like on /button/yang-rainbow) comes from the `buy_url` column
 - The `By @NAME_HERE` attribution combines the `creator` column and the `original_url` column
 
+## Generating thumbnails
+
+Use Thumbsup and set to JPG 512x512 in subfolder 'thumb' or use ImageMagick `brew install imagemagick` and `convert -flatten -density 300 -resize 512x512 78.pdf thumb/78.jpg` etc. Use ImageOptim or similar to make more efficient.
+
 ## Deploy
 
 Continuous Integration with Netlify. Netlify also provides DNS.
