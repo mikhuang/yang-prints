@@ -10,6 +10,7 @@ import Square from './square'
 import Sticker from './sticker'
 import Zine from './zine'
 import Flag from './flag'
+import Stencil from './stencil'
 
 const InstructionsTitle = () => <Typography variant="caption">TIPS</Typography>
 
@@ -21,6 +22,7 @@ const KEY_TO_COMPONENT_MAPPING = {
   button: Button,
   zine: Zine,
   flag: Flag,
+  stencil: Stencil,
   '2in round 20x': Round2x20,
 }
 const useStyles = makeStyles(theme => ({
