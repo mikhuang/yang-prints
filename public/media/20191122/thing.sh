@@ -1,0 +1,13 @@
+convert -flatten -density 300 -resize 512x512 CVarelaKunst19_YangButtons_14.pdf thumb/CVarelaKunst19_YangButtons_14.jpg
+convert -flatten -density 300 -resize 512x512 CVarelaKunst19_YangButtons_13.pdf thumb/CVarelaKunst19_YangButtons_13.jpg
+convert -flatten -density 300 -resize 512x512 CVarelaKunst19_YangButtons_12.pdf thumb/CVarelaKunst19_YangButtons_12.jpg
+convert -flatten -density 300 -resize 512x512 CVarelaKunst19_YangButtons_11.pdf thumb/CVarelaKunst19_YangButtons_11.jpg
+convert -flatten -density 300 -resize 512x512 CVarelaKunst19_YangButtons_10.pdf thumb/CVarelaKunst19_YangButtons_10.jpg
+convert -flatten -density 300 -resize 512x512 CVarelaKunst19_YangButtons_9.pdf thumb/CVarelaKunst19_YangButtons_9.jpg
+convert -flatten -density 300 -resize 512x512 CVarelaKunst19_YangButtons_8.pdf thumb/CVarelaKunst19_YangButtons_8.jpg
+convert -flatten -density 300 -resize 512x512 CVarelaKunst19_YangButtons_7.pdf thumb/CVarelaKunst19_YangButtons_7.jpg
+convert -flatten -density 300 -resize 512x512 CVarelaKunst19_YangButtons_6.pdf thumb/CVarelaKunst19_YangButtons_6.jpg
+convert -flatten -density 300 -resize 512x512 CVarelaKunst19_YangButtons_5.pdf thumb/CVarelaKunst19_YangButtons_5.jpg
+convert -flatten -density 300 -resize 512x512 CVarelaKunst19_YangButtons_4.pdf thumb/CVarelaKunst19_YangButtons_4.jpg
+convert -flatten -density 300 -resize 512x512 CVarelaKunst19_YangButtons_3.pdf thumb/CVarelaKunst19_YangButtons_3.jpg
+convert -flatten -density 300 -resize 512x512 CVarelaKunst19_YangButtons_2.pdf thumb/CVarelaKunst19_YangButtons_2.jpg
