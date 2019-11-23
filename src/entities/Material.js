@@ -44,7 +44,7 @@ export const MATERIAL_FOLDERS = {
     hide: true,
   },
   invite: {
-    title: 'Invites',
+    title: 'Stationery',
     url: '/invite/',
   },
   hanger: {
