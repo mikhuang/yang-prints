@@ -6,6 +6,10 @@ export const MATERIAL_FOLDERS = {
     shortTitle: 'Biz Cards',
     url: '/bcard/',
   },
+  invite: {
+    title: 'Stationery',
+    url: '/invite/',
+  },
   poster: {
     title: 'Posters',
     url: '/poster/',
@@ -42,10 +46,6 @@ export const MATERIAL_FOLDERS = {
     shortTitle: 'Many',
     url: '/ganged/',
     hide: true,
-  },
-  invite: {
-    title: 'Stationery',
-    url: '/invite/',
   },
   hanger: {
     title: 'Hangers',
