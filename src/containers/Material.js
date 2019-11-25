@@ -64,7 +64,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 function getSource(material) {
-  if (material.srcPath.indexOf('canva.com/design')) {
+  if (material.srcPath.includes('canva.com/design')) {
     return 'Edit on Canva.com'
   }
   return <span>Source{material.srcExt && ` .${material.srcExt}`}</span>

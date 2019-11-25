@@ -20,7 +20,7 @@ Design doc https://docs.google.com/document/d/1jCGLqFaIzJGq8D6josI9v5f0oG3R0w5st
 
 ## Generating thumbnails
 
-Use Thumbsup and set to JPG 512x512 in subfolder 'thumb' or use ImageMagick `brew install imagemagick` and `convert -flatten -density 300 -resize 512x512 78.pdf thumb/78.jpg` etc. Use ImageOptim or similar to make more efficient.
+Use Thumbsup and set to JPG 512x512 in subfolder 'thumb' or use ImageMagick `brew install imagemagick` and `convert -colorspace sRGB -background white -flatten -density 300 -quality 75 -resize 512x512 two-snowmen-new-bg-card.pdf thumb/two-snowmen-new-bg-card.jpg` etc. Use ImageOptim or similar to make more efficient.
 
 ## Deploy
 
