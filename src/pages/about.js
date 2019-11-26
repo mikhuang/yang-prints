@@ -90,8 +90,13 @@ export default () => {
         <Typography component="div">
           <ul>
             <li>
+              <Link href="https://drive.google.com/file/d/1XqPsQ_VRbHKJUqeHB7Y54mBQJKHn5xL4/view">
+                Official brand bible
+              </Link>
+            </li>
+            <li>
               <Link href="https://drive.google.com/file/d/1BG69BLEiOlvl0W98F3xbN5ysfNTYoSlq/view">
-                Official styleguide
+                Old official styleguide
               </Link>
             </li>
             <li>
