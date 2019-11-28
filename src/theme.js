@@ -1,5 +1,3 @@
-import { red, blue } from '@material-ui/core/colors'
-
 export default {
   typography: {
     fontFamily: 'Montserrat, sans-serif',
