@@ -14,7 +14,7 @@ const AutoScrollToTop = ({ children }) => (
         typeof window !== 'undefined' &&
         typeof window.history !== 'undefined'
       ) {
-        // Ininitial rendering and back/forward navigation uses browsers
+        // Initial rendering and back/forward navigation uses browsers
         // native scroll history mechanism which tracks scroll position
         // for each history entry automatically
         if (lastNavigationFromBrowserUI) {
