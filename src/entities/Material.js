@@ -85,7 +85,7 @@ export default class Material {
     const tags = processTags(material.tags)
     this.buyUrl = material.buy_url
     this.category = material.category
-    this.creator = material.creator
+    this.creator = material.creator || 'Yang Gang'
     this.date = material.date
     this.description = material.description
     this.filename = material.filename
