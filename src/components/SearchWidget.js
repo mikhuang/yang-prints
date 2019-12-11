@@ -9,18 +9,15 @@ import SearchForm from './SearchForm'
 
 const fuseOptions = {
   tokenize: true,
+  shouldSort: true,
   keys: [
     {
       name: 'title',
-      weight: 1,
+      weight: 0.9,
     },
     {
       name: 'description',
       weight: 0.2,
-    },
-    {
-      name: 'transcription',
-      weight: 0.1,
     },
     {
       name: 'tags',
@@ -29,14 +26,6 @@ const fuseOptions = {
     {
       name: 'creator',
       weight: 0.2,
-    },
-    {
-      name: 'filename',
-      weight: 0.1,
-    },
-    {
-      name: 'path',
-      weight: 0.05,
     },
   ],
 }
