@@ -27,6 +27,10 @@ const fuseOptions = {
       name: 'creator',
       weight: 0.2,
     },
+    {
+      name: 'filename',
+      weight: 0.2,
+    },
   ],
 }
 
