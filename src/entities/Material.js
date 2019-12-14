@@ -10,13 +10,17 @@ export const MATERIAL_FOLDERS = {
     title: 'Stationery',
     url: '/invite/',
   },
-  poster: {
-    title: 'Posters',
-    url: '/poster/',
-  },
   handout: {
     title: 'Handouts',
     url: '/handout/',
+  },
+  hanger: {
+    title: 'Door Hangers',
+    url: '/hanger/',
+  },
+  poster: {
+    title: 'Posters',
+    url: '/poster/',
   },
   square: {
     title: 'Square/Post-its',
@@ -46,10 +50,6 @@ export const MATERIAL_FOLDERS = {
     shortTitle: 'Many',
     url: '/ganged/',
     hide: true,
-  },
-  hanger: {
-    title: 'Hangers',
-    url: '/hanger/',
   },
 }
 
