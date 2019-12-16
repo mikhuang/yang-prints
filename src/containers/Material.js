@@ -1,3 +1,4 @@
+import Linkify from 'react-linkify'
 import Box from '@material-ui/core/Box'
 import Breadcrumbs from '@material-ui/core/Breadcrumbs'
 import Button from '@material-ui/core/Button'
@@ -176,7 +177,7 @@ export default function Material(props) {
             By {material.creator}
           </Typography>
           <Typography variant="caption" display="block" gutterBottom>
-            {material.description}
+            <Linkify>{material.description}</Linkify>
           </Typography>
           <MaterialTranscript material={material} />
           <TagList

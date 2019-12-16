@@ -165,6 +165,33 @@ export default () => {
           <Link href="mailto:m@yangprints.com">please let us know</Link>.
         </Typography>
       </FAQSection>
+
+      <FAQSection title="Where are people buying printing?">
+        <Typography gutterBottom>
+          People buy printing from tons of places. Here are a few:
+        </Typography>
+        <Typography component="div">
+          <li>
+            Cheap:{' '}
+            <Link href="https://www.bizay.com/en-us/invite/60205122340053E8">
+              Bizay.com
+            </Link>{' '}
+            Generally considered the cheapest, sometimes they have promos. If
+            you can find something cheaper than Bizay, you know it's a really
+            good deal. Buying with this link helps SoCal Yang Gang print more
+            stuff for nation-wide usage.
+          </li>
+          <li>
+            <Link href="https://www.gotprint.com">GotPrint</Link> offers 10% off
+            with code <b>YANG2020</b>.
+          </li>
+          <li>
+            <Link href="https://vistaprint.com">Vistaprint</Link>,{' '}
+            <Link href="https://psprint.com">PsPrint</Link> and tons of other
+            places online tend to be in between, depending on promo.
+          </li>
+        </Typography>
+      </FAQSection>
       <small style={{ display: 'none' }}>{buildId}</small>
     </Container>
   )
