@@ -1,0 +1,1 @@
+curl -s -d /dev/null https://docs.google.com/spreadsheets/d/1IzxvWSg6jifUGh7bZi_jhvEU1Bf_1XwE6pmLLuHuWa4/export?format=csv\&id=1IzxvWSg6jifUGh7bZi_jhvEU1Bf_1XwE6pmLLuHuWa4\&gid=1899210587 > data/updates.csv

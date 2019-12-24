@@ -10,7 +10,8 @@
     "serve": "serve dist -p 3000",
     "postinstall": "patch-package",
     "convert-csv": "yarn run --silent csvtojson data/materials.csv > data/materials.json",
-    "import-csv": "sh ./import-csv.sh"
+    "import-csv": "sh ./import-csv.sh",
+    "compare-updates": "sh ./import-updates.sh && node ./scripts/compare_updates/index.js -r esm > UPDATE_TODO.md"
   },
   "dependencies": {
     "@material-ui/core": "^4.5.2",
@@ -48,6 +49,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^2.0.1",
+    "esm": "^3.2.25",
     "patch-package": "^6.1.4",
     "postinstall-postinstall": "^2.0.0",
     "serve": "^11.1.0"

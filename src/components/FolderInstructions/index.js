@@ -5,6 +5,7 @@ import React from 'react'
 import Bcard from './bcard'
 import Button from './button'
 import Ganged from './ganged'
+import Ultimate from './ultimate'
 import Round2x20 from './round2x20'
 import Square from './square'
 import Sticker from './sticker'
@@ -23,6 +24,7 @@ const KEY_TO_COMPONENT_MAPPING = {
   zine: Zine,
   flag: Flag,
   stencil: Stencil,
+  ultimate: Ultimate,
   '2in round 20x': Round2x20,
 }
 const useStyles = makeStyles(theme => ({
