@@ -24,17 +24,6 @@ export default function Bcard() {
               me order for free.
             </li>
             <li>
-              Cheap:{' '}
-              <Link href="https://www.bizay.com/en-us/invite/60205122340053E8">
-                Bizay.com
-              </Link>{' '}
-              is around $18 for 4000 double-sided color. Generally considered
-              the cheapest, sometimes they have promos. If you can find
-              something cheaper than Bizay, you know it's a really good deal.
-              Buying with this link helps SoCal Yang Gang print more stuff for
-              nation-wide usage.
-            </li>
-            <li>
               Next day pickup: <Link href="https://staples.com">Staples</Link>{' '}
               should be around $25 for 1000 double-sided color. Pick up in store
               to avoid delivery fees.

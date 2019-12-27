@@ -1,6 +1,7 @@
 import Box from '@material-ui/core/Box'
 import Container from '@material-ui/core/Container'
 import Link from '@material-ui/core/Link'
+import { Link as InternalLink } from '../components/Router'
 import Typography from '@material-ui/core/Typography'
 import React from 'react'
 import Title from '../components/Title'
@@ -76,13 +77,40 @@ export default () => {
       </FAQSection>
 
       <FAQSection title="Where can I find translated materials?">
+        <Typography gutterBottom>
+          On YangPrints, there are some materials in{' '}
+          <InternalLink to="/tags/spanish">Spanish</InternalLink>,{' '}
+          <InternalLink to="/tags/chinese">Chinese</InternalLink>,{' '}
+          <InternalLink to="/tags/tagalog">Tagalog</InternalLink>,{' '}
+          <InternalLink to="/tags/korean">Korean</InternalLink>,{' '}
+          <InternalLink to="/tags/japanese">Japanese</InternalLink>, and{' '}
+          <InternalLink to="/tags/german">German</InternalLink>.
+        </Typography>
         <Typography>
-          Try the{' '}
+          For more materials, try the{' '}
           <Link href="https://drive.google.com/drive/u/1/folders/1DnW7_BmbrUXf3SIyEgT0fQ4GeUTKNDMY">
             Yang Gang Translation Project
           </Link>
           . If you just need a website in different languages, try{' '}
           <Link href="https://humanityforyang.com">Humanity For Yang.</Link>
+        </Typography>
+      </FAQSection>
+
+      <FAQSection title="How can I customize materials?">
+        <Typography component="div">
+          <ul>
+            <li>
+              <Link href="https://everysinglemonth.org">
+                Every Single Month
+              </Link>
+              lets you enter your town name to get customized fliers.
+            </li>
+            <li>
+              Materials tagged{' '}
+              <InternalLink to="/tags/canva">CANVA</InternalLink> are editable
+              online at Canva.com.
+            </li>
+          </ul>
         </Typography>
       </FAQSection>
 
@@ -119,11 +147,12 @@ export default () => {
         </Typography>
       </FAQSection>
 
-      <FAQSection title="Where can I just like buy stuff?">
+      <FAQSection title="Where can I just buy stuff?">
         <Typography component="div">
           <ul>
             <li>
-              <Link href="https://shop.yang2020.com">Official store</Link>
+              <Link href="https://shop.yang2020.com">Official store</Link> - buy
+              here to support the campaign!
             </li>
             <li>
               <Link href="https://yangtrain.co">YANG TRAIN</Link> - designs by{' '}
@@ -131,8 +160,8 @@ export default () => {
               creator of Mini Yang!!
             </li>
             <li>
-              Probably lots more places. Try to buy stuff that chips in to the
-              campaign, alternatively, just chip into the campaign 😹
+              Probably lots more places. Try to buy stuff that supports the
+              campaign, alternatively, just donate 😉.
             </li>
           </ul>
         </Typography>
@@ -171,16 +200,6 @@ export default () => {
           People buy printing from tons of places. Here are a few:
         </Typography>
         <Typography component="div">
-          <li>
-            Cheap:{' '}
-            <Link href="https://www.bizay.com/en-us/invite/60205122340053E8">
-              Bizay.com
-            </Link>{' '}
-            Generally considered the cheapest, sometimes they have promos. If
-            you can find something cheaper than Bizay, you know it's a really
-            good deal. Buying with this link helps SoCal Yang Gang print more
-            stuff for nation-wide usage.
-          </li>
           <li>
             <Link href="https://www.gotprint.com">GotPrint</Link> offers 10% off
             with code <b>YANG2020</b>.
