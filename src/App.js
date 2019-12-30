@@ -3,15 +3,18 @@ import CircularProgress from '@material-ui/core/CircularProgress'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { Location } from '@reach/router'
 import React from 'react'
-import { Head, Root, Routes } from 'react-static'
+import { addPrefetchExcludes, Head, Root, Routes } from 'react-static'
 import Analytics from './Analytics'
 import './app.css'
 import Footer from './components/Footer'
 import ManageScroll from './components/ManageScroll'
 import Navbar from './components/Navbar'
 import { Router } from './components/Router'
-import ErrorBoundary from './ErrorBoundary'
 import Tag from './containers/Tag'
+import ErrorBoundary from './ErrorBoundary'
+
+addPrefetchExcludes(['/tags'])
+
 const TagPage = ({ tag }) => {
   return <Tag tag={tag} />
 }
