@@ -11,11 +11,10 @@ import { toMaterialEntity, normalizeTag } from '../entities/Material'
 import Tag from '../entities/Tag'
 
 const PRELOAD_COUNT = 5
-export default function TagContainer({ tag: passedTag }) {
-  const { tag: tagKey } = useRouteData()
+export default function TagContainer() {
+  const { tag: rawTag } = useRouteData()
   const { materials: materialsData } = useSiteData()
 
-  const rawTag = tagKey || normalizeTag(passedTag)
   const materials = toMaterialEntity(materialsData).filter(m => m.isVisible)
   const gridSizes = { xs: 6, sm: 4, lg: 3, xl: 2 }
   const tagMaterials = orderBy(materials, ['date'], ['desc']).filter(x =>
