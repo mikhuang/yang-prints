@@ -19,6 +19,7 @@ import SearchWidget from '../../components/SearchWidget'
 import { AdapterLink } from '../../components/Router'
 import { MATERIAL_FOLDERS } from '../../entities/Material'
 import TwitterIcon from './TwitterIcon'
+import { Typography } from '@material-ui/core'
 const useStyles = makeStyles(theme => ({
   toolBar: {
     [theme.breakpoints.down('sm')]: {
@@ -49,8 +50,8 @@ const useStyles = makeStyles(theme => ({
     marginRight: theme.spacing(-0.5),
     marginLeft: theme.spacing(0.5),
   },
-  tagCount: {
-    paddingRight: theme.spacing(1),
+  count: {
+    paddingLeft: theme.spacing(0.5),
   },
 }))
 
@@ -115,13 +116,14 @@ export default function Navbar({ tags, materials }) {
               key={tag.tag}
               onClick={handleMenuClose}
             >
-              <Badge
-                className={classes.tagCount}
-                color="secondary"
-                badgeContent={tag.count}
+              {tag.title}
+              <Typography
+                className={classes.count}
+                variant="caption"
+                color="textSecondary"
               >
-                {tag.title}
-              </Badge>
+                ({tag.count})
+              </Typography>
             </MenuItem>
           )
         })}

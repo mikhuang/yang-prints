@@ -19,7 +19,7 @@ export default function Tags() {
   const isLarge = useMediaQuery('(min-width:600px)')
   const { tagCounts } = useSiteData()
   const classes = useStyles()
-
+  const [showSingles, setShowSingles] = React.useState(false)
   function alphabeticalSorter(a, b) {
     return a > b ? 1 : -1
   }
@@ -38,6 +38,9 @@ export default function Tags() {
             .map(tag => {
               const count = tagCounts[tag]
               const tagEntity = new Tag(tag)
+              if (!showSingles && count < 2) {
+                return null
+              }
               return (
                 <Badge
                   className={classes.button}
@@ -55,6 +58,9 @@ export default function Tags() {
                 </Badge>
               )
             })}
+          <Button onClick={() => setShowSingles(true)}>
+            Show singleton tags
+          </Button>
         </Box>
       </Box>
     </Fragment>

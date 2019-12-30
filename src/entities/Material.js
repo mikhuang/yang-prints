@@ -6,9 +6,9 @@ export const MATERIAL_FOLDERS = {
     shortTitle: 'Biz Cards',
     url: '/bcard/',
   },
-  invite: {
-    title: 'Stationery',
-    url: '/invite/',
+  poster: {
+    title: 'Posters',
+    url: '/poster/',
   },
   handout: {
     title: 'Handouts',
@@ -17,10 +17,6 @@ export const MATERIAL_FOLDERS = {
   hanger: {
     title: 'Door Hangers',
     url: '/hanger/',
-  },
-  poster: {
-    title: 'Posters',
-    url: '/poster/',
   },
   square: {
     title: 'Square/Post-its',
@@ -44,6 +40,10 @@ export const MATERIAL_FOLDERS = {
     url: '/button/',
     isRound: true,
     gridSizes: { xs: 4, sm: 3, lg: 2, xl: 2 },
+  },
+  invite: {
+    title: 'Stationery',
+    url: '/invite/',
   },
   ganged: {
     title: 'Many per Sheets',
