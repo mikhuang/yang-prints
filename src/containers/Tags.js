@@ -58,9 +58,11 @@ export default function Tags() {
                 </Badge>
               )
             })}
-          <Button onClick={() => setShowSingles(true)}>
-            Show singleton tags
-          </Button>
+          <Box mt={3}>
+            <Button onClick={() => setShowSingles(true)}>
+              Show singleton tags
+            </Button>
+          </Box>
         </Box>
       </Box>
     </Fragment>

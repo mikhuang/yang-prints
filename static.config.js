@@ -3,6 +3,8 @@ import materials from './data/materials.json'
 import Material, { MATERIAL_FOLDERS } from './src/entities/Material'
 import Tag from './src/entities/Tag'
 
+const DYNAMIC_TAG_PAGES = true
+
 // process tags, check for URL collisions
 const { duplicates, tagCounts } = materials.reduce(
   (acc, materialRaw) => {
@@ -61,13 +63,15 @@ export default {
       }),
     }))
 
-    const tagPages = Object.keys(tagCounts).map(tag => ({
-      path: new Tag(tag).url,
-      template: 'src/containers/Tag',
-      getData: () => ({
-        tag,
-      }),
-    }))
+    const tagPages = DYNAMIC_TAG_PAGES
+      ? []
+      : Object.keys(tagCounts).map(tag => ({
+          path: new Tag(tag).url,
+          template: 'src/containers/Tag',
+          getData: () => ({
+            tag,
+          }),
+        }))
 
     return [
       {

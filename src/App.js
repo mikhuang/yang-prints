@@ -11,6 +11,10 @@ import ManageScroll from './components/ManageScroll'
 import Navbar from './components/Navbar'
 import { Router } from './components/Router'
 import ErrorBoundary from './ErrorBoundary'
+import Tag from './containers/Tag'
+const TagPage = ({ tag }) => {
+  return <Tag tag={tag} />
+}
 
 function App() {
   return (
@@ -37,6 +41,7 @@ function App() {
           }
         >
           <Router primary={false}>
+            <TagPage path="/tags/:tag" />
             <Routes path="*" />
           </Router>
         </React.Suspense>

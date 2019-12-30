@@ -1,5 +1,7 @@
 import lastIndexOf from 'lodash/lastIndexOf'
+import slugify from 'slugify'
 import Tag from './Tag'
+
 export const MATERIAL_FOLDERS = {
   bcard: {
     title: 'Business Cards',
@@ -67,9 +69,13 @@ function splitFileExt(filename) {
   return []
 }
 
+export function normalizeTag(x) {
+  return slugify(x.trim()).toUpperCase()
+}
+
 function processTags(tags) {
   return (tags || '').split(',').reduce((acc, x) => {
-    const possibleTag = x.trim().toUpperCase()
+    const possibleTag = normalizeTag(x)
     if (possibleTag) {
       acc.push(possibleTag)
     }
