@@ -7,7 +7,7 @@ import React, { Fragment } from 'react'
 import { Head, useRouteData, useSiteData } from 'react-static'
 import FolderInstructions from '../components/FolderInstructions'
 import MaterialGrid from '../components/MaterialGrid'
-import { toMaterialEntity, normalizeTag } from '../entities/Material'
+import { toMaterialEntity } from '../entities/Material'
 import Tag from '../entities/Tag'
 
 const PRELOAD_COUNT = 5

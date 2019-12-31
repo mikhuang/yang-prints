@@ -1,5 +1,5 @@
 {
-  "name": "react-static-example-basic",
+  "name": "yang-prints",
   "private": true,
   "scripts": {
     "start": "yarn run import-csv && yarn run convert-csv && yarn run start-static",
@@ -29,7 +29,7 @@
     "react-ga": "^2.6.0",
     "react-hotkeys-hook": "^1.5.3",
     "react-jss": "10.0.0-alpha.24",
-    "react-lazy-load-image-component": "^1.3.2",
+    "react-lazy-load-image-component": "^1.4.0",
     "react-linkify": "^1.0.0-alpha",
     "react-static": "^7.2.0",
     "react-static-plugin-jss": "^7.2.2",

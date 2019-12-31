@@ -68,6 +68,9 @@ const useStyles = makeStyles(theme => ({
       maxWidth: zoom * 130,
     },
   }),
+  placeholder: {
+    minHeight: 200,
+  },
 }))
 
 export default function MaterialThumb({
@@ -84,6 +87,10 @@ export default function MaterialThumb({
   const addlImgProps = {}
   if (scrollPosition && lazy) {
     addlImgProps.scrollPosition = scrollPosition
+  }
+
+  if (lazy) {
+    addlImgProps.placeholder = <div className={classes.placeholder} />
   }
 
   const img = (
