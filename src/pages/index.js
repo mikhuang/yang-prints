@@ -4,15 +4,15 @@ import Hidden from '@material-ui/core/Hidden'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
-import MaterialThumb from 'components/MaterialThumb'
-import { AdapterLink, Link } from 'components/Router'
-import Title from 'components/Title'
+import MaterialThumb from '@src/components/MaterialThumb'
+import { AdapterLink, Link } from '@src/components/Router'
+import Title from '@src/components/Title'
+import useData from '@src/hooks/useData'
 import groupBy from 'lodash/groupBy'
 import orderBy from 'lodash/orderBy'
 import React from 'react'
-import { useSiteData } from 'react-static'
-import { MATERIAL_FOLDERS, toMaterialEntity } from '../entities/Material'
 import { trackWindowScroll } from 'react-lazy-load-image-component'
+import { MATERIAL_FOLDERS } from '../entities/Material'
 
 const ROW_LIMIT = 12
 
@@ -57,8 +57,8 @@ function Index({ scrollPosition }) {
   const isLarge = useMediaQuery('(min-width:600px)')
   const classes = useStyles()
 
-  const { materials: materialsData } = useSiteData()
-  const materials = toMaterialEntity(materialsData).filter(m => m.isVisible)
+  const { materials: materialsData } = useData()
+  const materials = materialsData.filter(m => m.isVisible)
   const materialsByFolder = groupBy(materials, 'folderId')
 
   return (

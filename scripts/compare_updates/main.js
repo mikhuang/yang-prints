@@ -19,9 +19,9 @@ class Update {
 }
 
 const main = async () => {
-  const updatesData = await csv().fromFile('./data/updates.csv')
+  const updatesData = await csv().fromFile('./src/data/updates.csv')
   const updates = updatesData.map(x => new Update(x))
-  const materialsData = await csv().fromFile('./data/materials.csv') // TODO: consider using the JSON file?
+  const materialsData = await csv().fromFile('./src/data/materials.csv') // TODO: consider using the JSON file?
   const materials = materialsData.map(x => new Material(x))
   const materialsByUrl = materials.reduce((acc, x) => {
     acc[x.url] = x

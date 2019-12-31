@@ -4,7 +4,8 @@ import Button from '@material-ui/core/Button'
 import { makeStyles } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import React, { Fragment } from 'react'
-import { Head, useSiteData } from 'react-static'
+import { Helmet } from 'react-helmet'
+import useData from '@src/hooks/useData'
 import { AdapterLink } from '../components/Router'
 import Title from '../components/Title'
 import Tag from '../entities/Tag'
@@ -17,7 +18,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function Tags() {
   const isLarge = useMediaQuery('(min-width:600px)')
-  const { tagCounts } = useSiteData()
+  const { tagCounts } = useData()
   const classes = useStyles()
   const [showSingles, setShowSingles] = React.useState(false)
   function alphabeticalSorter(a, b) {
@@ -25,9 +26,9 @@ export default function Tags() {
   }
   return (
     <Fragment>
-      <Head>
+      <Helmet>
         <title>YangPrints Tags</title>
-      </Head>
+      </Helmet>
       <Box p={isLarge ? 5 : 1} mt={1}>
         <Title align="center" variant={isLarge ? 'h2' : 'h4'}>
           Tags

@@ -2,3 +2,7 @@ node_modules
 artifacts/
 tmp/
 dist/
+build/
+
+# Local Netlify folder
+.netlify

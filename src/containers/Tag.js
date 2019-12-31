@@ -2,21 +2,20 @@ import Box from '@material-ui/core/Box'
 import Breadcrumbs from '@material-ui/core/Breadcrumbs'
 import { default as MaterialLink } from '@material-ui/core/Link'
 import { Link as RouterLink } from '@reach/router'
+import useData from '@src/hooks/useData'
 import orderBy from 'lodash/orderBy'
 import React, { Fragment } from 'react'
-import { Head, useRouteData, useSiteData } from 'react-static'
+import { Helmet } from 'react-helmet'
 import FolderInstructions from '../components/FolderInstructions'
 import MaterialGrid from '../components/MaterialGrid'
-import { toMaterialEntity, normalizeTag } from '../entities/Material'
+import { normalizeTag } from '../entities/Material'
 import Tag from '../entities/Tag'
 
 const PRELOAD_COUNT = 5
-export default function TagContainer({ tag: passedTag }) {
-  const { tag: tagKey } = useRouteData()
-  const { materials: materialsData } = useSiteData()
-
-  const rawTag = tagKey || normalizeTag(passedTag)
-  const materials = toMaterialEntity(materialsData).filter(m => m.isVisible)
+export default function TagContainer({ tagSlug }) {
+  const { materials: materialsData } = useData()
+  const rawTag = normalizeTag(tagSlug)
+  const materials = materialsData.filter(m => m.isVisible)
   const gridSizes = { xs: 6, sm: 4, lg: 3, xl: 2 }
   const tagMaterials = orderBy(materials, ['date'], ['desc']).filter(x =>
     x.tags.includes(rawTag)
@@ -25,9 +24,9 @@ export default function TagContainer({ tag: passedTag }) {
 
   return (
     <Fragment>
-      <Head>
+      <Helmet>
         <title>Yang2020 {tag.title}</title>
-      </Head>
+      </Helmet>
       <Box p={2}>
         <Breadcrumbs separator="›" aria-label="breadcrumb">
           <MaterialLink component={RouterLink} color="inherit" to="/">

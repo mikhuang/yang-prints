@@ -1,12 +1,12 @@
 import Box from '@material-ui/core/Box'
 import Container from '@material-ui/core/Container'
 import Link from '@material-ui/core/Link'
-import { Link as InternalLink } from '../components/Router'
-import Typography from '@material-ui/core/Typography'
-import React from 'react'
-import Title from '../components/Title'
 import { makeStyles } from '@material-ui/core/styles'
-import { useSiteData } from 'react-static'
+import Typography from '@material-ui/core/Typography'
+import useData from '@src/hooks/useData'
+import React from 'react'
+import { Link as InternalLink } from '../components/Router'
+import Title from '../components/Title'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -29,7 +29,7 @@ function FAQSection({ title, children }) {
 
 export default () => {
   const classes = useStyles()
-  const { buildId } = useSiteData()
+  const { buildId } = useData()
 
   return (
     <Container className={classes.root}>

@@ -59,7 +59,8 @@ export default function SearchWidget({ materials }) {
   const [open, setOpen] = useState(false)
   useEffect(() => {
     const validMaterials = materials.filter(x => x.isVisible)
-    setFuse(new Fuse(validMaterials, fuseOptions))
+    const nextFuse = new Fuse(validMaterials, fuseOptions)
+    setFuse(nextFuse)
   }, [materials])
 
   if (!fuse) {

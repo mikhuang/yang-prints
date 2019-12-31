@@ -1,4 +1,3 @@
-import Linkify from 'react-linkify'
 import Box from '@material-ui/core/Box'
 import Breadcrumbs from '@material-ui/core/Breadcrumbs'
 import Button from '@material-ui/core/Button'
@@ -13,22 +12,21 @@ import PhotoIcon from '@material-ui/icons/InsertPhotoSharp'
 import SaveIcon from '@material-ui/icons/SaveAltSharp'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCartSharp'
 import { Link as RouterLink, navigate } from '@reach/router'
+import useData from '@src/hooks/useData'
+import NotFound from '@src/pages/404'
 import cx from 'clsx'
 import orderBy from 'lodash/orderBy'
 import React, { Fragment } from 'react'
 import ReactGA from 'react-ga'
+import { Helmet } from 'react-helmet'
 import { useHotkeys } from 'react-hotkeys-hook'
-import { Head, useRouteData, useSiteData } from 'react-static'
+import Linkify from 'react-linkify'
 import FolderInstructions from '../components/FolderInstructions'
 import MaterialThumb from '../components/MaterialThumb'
+import MaterialTranscript from '../components/MaterialTranscript'
 import MaterialUpdateNotice from '../components/MaterialUpdateNotice'
 import SubmitUpdate from '../components/SubmitUpdate'
 import TagList from '../components/TagList'
-import MaterialTranscript from '../components/MaterialTranscript'
-import {
-  default as MaterialEntity,
-  toMaterialEntity,
-} from '../entities/Material'
 
 const useStyles = makeStyles(theme => ({
   img: {
@@ -71,19 +69,20 @@ function getSource(material) {
   return <span>Source{material.srcExt && ` .${material.srcExt}`}</span>
 }
 
-export default function Material(props) {
+export default function Material({ materialSlug, folderSlug }) {
   const classes = useStyles()
-
-  const { material: materialData } = useRouteData()
-  const { materials: materialsData, tagCounts } = useSiteData()
-  const materials = toMaterialEntity(materialsData)
-  const material = new MaterialEntity(materialData)
-
-  const folderMaterials = orderBy(
-    materials.filter(x => x.folderId === material.folderId && x.isVisible),
-    ['date'],
-    ['desc']
+  const { materials, tagCounts } = useData()
+  const material = materials.find(
+    x => x.slug === materialSlug && x.folderId === folderSlug
   )
+
+  const folderMaterials = material
+    ? orderBy(
+        materials.filter(x => x.folderId === material.folderId && x.isVisible),
+        ['date'],
+        ['desc']
+      )
+    : []
 
   const currentIndex = folderMaterials.findIndex(x => x.slug === material.slug)
   const prev = folderMaterials[currentIndex - 1]
@@ -97,6 +96,10 @@ export default function Material(props) {
 
   useHotkeys('right', () => goToUrl(next), [next, goToUrl])
   useHotkeys('left', () => goToUrl(prev), [prev, goToUrl])
+
+  if (!material) {
+    return <NotFound />
+  }
 
   // if we have originalUrl, link the creator
   const creatorLinkProps = material.originalUrl
@@ -112,7 +115,7 @@ export default function Material(props) {
   }
   return (
     <Fragment>
-      <Head>
+      <Helmet>
         <meta charSet="UTF-8" />
         <title>
           YangPrints - {material.title || 'Andrew Yang 2020 Print materials'}
@@ -124,7 +127,7 @@ export default function Material(props) {
             'Andrew Yang 2020 posters, handouts, flyers, sticker templates to download and print.'
           }
         />
-      </Head>
+      </Helmet>
       <Box p={2}>
         <Breadcrumbs separator="›" aria-label="breadcrumb">
           <MaterialLink component={RouterLink} color="inherit" to="/">

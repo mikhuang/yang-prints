@@ -1,4 +1,4 @@
-import Badge from '@material-ui/core/Badge'
+import { Typography } from '@material-ui/core'
 import AppBar from '@material-ui/core/AppBar'
 import Button from '@material-ui/core/Button'
 import Divider from '@material-ui/core/Divider'
@@ -14,12 +14,18 @@ import { makeStyles } from '@material-ui/core/styles'
 import Toolbar from '@material-ui/core/Toolbar'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMoreSharp'
 import MenuIcon from '@material-ui/icons/Menu'
+import useData from '@src/hooks/useData'
 import React, { Fragment, useState } from 'react'
-import SearchWidget from '../../components/SearchWidget'
 import { AdapterLink } from '../../components/Router'
+import SearchWidget from '../../components/SearchWidget'
 import { MATERIAL_FOLDERS } from '../../entities/Material'
+import Tag from '../../entities/Tag'
 import TwitterIcon from './TwitterIcon'
-import { Typography } from '@material-ui/core'
+
+function tagCompareFn(a, b) {
+  return a.count > b.count ? -1 : 1
+}
+
 const useStyles = makeStyles(theme => ({
   toolBar: {
     [theme.breakpoints.down('sm')]: {
@@ -71,7 +77,13 @@ function getTopTags(tags) {
   return topTags
 }
 
-export default function Navbar({ tags, materials }) {
+export default function Navbar() {
+  const { materials, tagCounts } = useData()
+
+  const tags = Object.keys(tagCounts)
+    .map(key => new Tag(key, tagCounts[key]))
+    .sort(tagCompareFn)
+
   const classes = useStyles()
   const [isOpen, setIsOpen] = useState(false)
   const closeDrawer = () => setIsOpen(false)
