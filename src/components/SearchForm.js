@@ -68,6 +68,7 @@ export default function SearchForm({ fuse, shrinkable, onNavigate }) {
 
   const [options, setOptions] = useState([])
   const [inputValue, setInputValue] = useState('')
+  const [popupOpen, setPopupOpen] = useState(false)
 
   const handleChange = event => {
     setInputValue(event.target.value)
@@ -84,7 +85,9 @@ export default function SearchForm({ fuse, shrinkable, onNavigate }) {
     () =>
       debounce(inputValue => {
         if (fuse) {
-          setOptions(fuse.search(inputValue).slice(0, MAX_RESULTS))
+          const nextOptions = fuse.search(inputValue).slice(0, MAX_RESULTS)
+          console.log(nextOptions)
+          setOptions(nextOptions)
         }
       }, DEBOUNCE_AMOUNT),
     [setOptions, fuse]
@@ -100,17 +103,21 @@ export default function SearchForm({ fuse, shrinkable, onNavigate }) {
       filterOptions={x => x}
       options={options}
       autoComplete
+      onClose={() => setPopupOpen(false)}
+      onOpen={() => setPopupOpen(true)}
+      open={popupOpen}
       includeInputInList
       onChange={handleSelect}
       disableOpenOnFocus
       clearOnEscape
       renderInput={params => {
         return (
-          <div className={classes.search} ref={params.ref}>
+          <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
             <InputBase
+              ref={params.InputProps.ref}
               inputProps={params.inputProps}
               placeholder="Search…"
               classes={{

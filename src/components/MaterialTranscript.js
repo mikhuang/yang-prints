@@ -1,7 +1,6 @@
-import Typography from '@material-ui/core/Typography'
-import React, { useState, Fragment } from 'react'
-import Button from '@material-ui/core/Button'
 import Link from '@material-ui/core/Link'
+import Typography from '@material-ui/core/Typography'
+import React, { useState } from 'react'
 
 /**
  * Show list of tags
