@@ -40,7 +40,13 @@ export default function Bcard() {
           </ul>
         </li>
         <li>These are great for handing out since they're nice and compact.</li>
-        <li>They can also be slipped anywhere a credit card can go 😅.</li>
+        <li>
+          They can also be slipped anywhere a credit card can go{' '}
+          <span role="img" aria-label="nervous face">
+            😅
+          </span>
+          .
+        </li>
       </ul>
     </Typography>
   )
