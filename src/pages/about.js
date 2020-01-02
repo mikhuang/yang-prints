@@ -161,7 +161,11 @@ export default () => {
             </li>
             <li>
               Probably lots more places. Try to buy stuff that supports the
-              campaign, alternatively, just donate 😉.
+              campaign, alternatively, just donate{' '}
+              <span role="img" aria-label="winky face">
+                😉
+              </span>
+              .
             </li>
           </ul>
         </Typography>
