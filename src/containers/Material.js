@@ -163,6 +163,7 @@ export default function Material({ materialSlug, folderSlug }) {
             })}
             src={material.thumbSrc}
             alt={material.title || material.slug}
+            key={material.thumbSrc}
           />
         </a>
       </Box>
