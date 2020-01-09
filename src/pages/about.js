@@ -128,14 +128,17 @@ export default () => {
               </Link>
             </li>
             <li>
-              <Link href="https://drive.google.com/drive/folders/1W3Gzd6rzV0BnoBXgf3mA59dJORc1aE2n">
+              <Link href="http://bit.ly/Yang_Gang_Resources">
                 Official media/press kit for logos and photos
               </Link>
             </li>
             <li>
               <Link href="https://drive.google.com/drive/folders/1bBXFz6LEscDbDafELmcsw3pSa-hYjQw7">
-                Official graphics folder
+                Yang Gang Resources folder
               </Link>
+            </li>
+            <li>
+              <Link href="/random/Press Kit.zip">Press Kit ZIP file</Link>
             </li>
             <li>
               <Link href="https://fonts.google.com/specimen/Montserrat">
