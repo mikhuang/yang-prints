@@ -66,11 +66,11 @@ const useStyles = makeStyles(theme => ({
  * @param {array} tags - tags sorted in order of count
  */
 function getTopTags(tags) {
-  const CRIT_TAG_SLUGS = ['women']
+  const PERMANENT_TAG_SLUGS = ['women', 'spanish', 'chinese']
   const topTags = tags.slice(0, 10)
   // just loop through all the rest lol
   tags.slice(10).forEach(tag => {
-    if (CRIT_TAG_SLUGS.includes(tag.slug)) {
+    if (PERMANENT_TAG_SLUGS.includes(tag.slug)) {
       topTags.push(tag)
     }
   })
