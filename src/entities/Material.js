@@ -1,7 +1,8 @@
 import lastIndexOf from 'lodash/lastIndexOf'
 import slugify from 'slugify'
 import Tag from './Tag'
-
+import parse from 'date-fns/parse'
+import differenceInDays from 'date-fns/differenceInDays'
 export const MATERIAL_FOLDERS = {
   bcard: {
     title: 'Business Cards',
@@ -54,6 +55,8 @@ export const MATERIAL_FOLDERS = {
     hide: true,
   },
 }
+
+const NEW_CUTOFF = 7
 
 /**
  * Return [file, ext] for file.ext. Doesn't work if filename is not in URL. Rudimentary support for '?'
@@ -154,6 +157,21 @@ export default class Material {
     )}&entry.53038913=${e(this.rawTags)}&entry.115847501=${e(
       this.transcription
     )}`
+  }
+
+  get badge() {
+    if (this.date) {
+      const now = new Date()
+      const date = parse(this.date, 'y-MM-dd', now)
+
+      if (date.getFullYear() > 3000) {
+        return 'Hot'
+      }
+      if (differenceInDays(now, date) < NEW_CUTOFF) {
+        return 'New'
+      }
+    }
+    return null
   }
 }
 

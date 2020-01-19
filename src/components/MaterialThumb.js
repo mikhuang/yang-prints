@@ -1,5 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles'
 import cx from 'clsx'
+import Typography from '@material-ui/core/Typography'
 import React from 'react'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { Link } from '../components/Router'
@@ -71,6 +72,19 @@ const useStyles = makeStyles(theme => ({
   placeholder: {
     minHeight: 200,
   },
+  materialLink: {
+    position: 'relative',
+  },
+  badge: {
+    position: 'absolute',
+    top: theme.spacing(0.25),
+    left: theme.spacing(0.25),
+    background: theme.palette.secondary.main,
+    color: theme.palette.secondary.contrastText,
+    padding: theme.spacing(0, 0.5),
+    borderRadius: theme.spacing(1),
+    border: `1px solid ${theme.palette.secondary.contrastText}`,
+  },
 }))
 
 export default function MaterialThumb({
@@ -81,6 +95,7 @@ export default function MaterialThumb({
   linkClassName = '',
   lazy = true,
   scrollPosition,
+  badge = true,
 }) {
   const classes = useStyles({ zoom })
   const Component = lazy ? LazyLoadImage : 'img'
@@ -107,8 +122,17 @@ export default function MaterialThumb({
   )
 
   return (
-    <Link key={material.url} to={material.url} className={linkClassName}>
+    <Link
+      key={material.url}
+      to={material.url}
+      className={cx(classes.materialLink, linkClassName)}
+    >
       {img}
+      {badge && material.badge && (
+        <Typography variant="caption" className={classes.badge}>
+          {material.badge}
+        </Typography>
+      )}
     </Link>
   )
 }

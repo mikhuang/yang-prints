@@ -86,7 +86,6 @@ export default function SearchForm({ fuse, shrinkable, onNavigate }) {
       debounce(inputValue => {
         if (fuse) {
           const nextOptions = fuse.search(inputValue).slice(0, MAX_RESULTS)
-          console.log(nextOptions)
           setOptions(nextOptions)
         }
       }, DEBOUNCE_AMOUNT),
