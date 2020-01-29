@@ -58,6 +58,19 @@ export const MATERIAL_FOLDERS = {
 
 const NEW_CUTOFF = 7
 
+function getDateTag(rawDate) {
+  const now = new Date()
+  const date = parse(rawDate, 'y-MM-dd', now)
+
+  if (date.getFullYear() > 3000) {
+    return 'Hot'
+  }
+  if (differenceInDays(now, date) < NEW_CUTOFF) {
+    return 'New'
+  }
+  return null
+}
+
 /**
  * Return [file, ext] for file.ext. Doesn't work if filename is not in URL. Rudimentary support for '?'
  * @param {string} filename - Full filename
@@ -91,7 +104,11 @@ function processTags(tags) {
  */
 export default class Material {
   constructor(material) {
+    const dateTag = getDateTag(material.date)
     const tags = processTags(material.tags)
+    if (dateTag) {
+      tags.push(normalizeTag(dateTag))
+    }
     this.buyUrl = material.buy_url
     this.category = material.category
     this.creator = material.creator || 'Yang Gang'
@@ -161,15 +178,7 @@ export default class Material {
 
   get badge() {
     if (this.date) {
-      const now = new Date()
-      const date = parse(this.date, 'y-MM-dd', now)
-
-      if (date.getFullYear() > 3000) {
-        return 'Hot'
-      }
-      if (differenceInDays(now, date) < NEW_CUTOFF) {
-        return 'New'
-      }
+      return getDateTag(this.date)
     }
     return null
   }
